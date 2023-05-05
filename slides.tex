@@ -1,0 +1,539 @@
+% Copyright (c) 2022 by Lars Spreng
+% This work is licensed under the Creative Commons Attribution 4.0 International License. 
+% To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% You can add your packages and commands to the loadslides.tex file. 
+% The files in the folder "styles" can be modified to change the layout and design of your slides.
+% I have included examples on how to use the template below. 
+% Some of it these examples are taken from the Metropolis template.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+\documentclass[
+14pt,notheorems,hyperref={pdfauthor=whatever}
+]{beamer}
+\graphicspath{ {images/} }
+
+\input{loadslides.tex} % Loads packages and some defined commands
+
+\title[
+% Text entered here will appear in the bottom middle
+]{Theory of Financial Markets}
+
+\subtitle{BUS 891 - Fall 2023}
+
+\author[
+% Text entered here will appear in the bottom left corner
+]{
+    Eduardo Schwartz 
+}
+\institute{
+    Ryan Beedie Chair in Finance, \\
+    Simon Fraser University}
+\date{\today}
+
+\AtBeginSection[]{
+  \begin{frame}{Topic \thesection}
+  \vfill
+  \centering
+    \usebeamerfont{title}\insertsectionhead\par%
+  \vfill
+  \end{frame}
+}
+
+\begin{document}
+
+% Generate title page
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+  \titlepage
+\end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+%% FRAME Table of Contents
+\begin{frame}[plain,noframenumbering]{Theory of Financial Markets}
+    \setcounter{tocdepth}{2}
+        \tableofcontents[sections={1-4}]
+\end{frame}
+\begin{frame}[plain,noframenumbering]{Theory of Financial Markets (cont.)}
+    \setcounter{tocdepth}{2}
+        \tableofcontents[sections={5-9}]
+\end{frame}
+\begin{frame}[plain,noframenumbering]{Theory of Financial Markets (cont.)}
+    \setcounter{tocdepth}{2}
+        \tableofcontents[sections={10-14}]
+\end{frame}
+\begin{frame}[plain,noframenumbering]{Theory of Financial Markets (cont.)}
+    \setcounter{tocdepth}{2}
+        \tableofcontents[sections={15-20}]
+        \vspace{166px}
+\end{frame}
+
+\section{Intro to Expected Utility \& Risk Aversion}
+\begin{frame}
+\alert{\textbf{Basic Ideas}}
+\begin{itemize}
+    \item St. Petersburg Paradox
+    \item Expected Utility Theorem
+    \item Risk Aversion
+    \item Absolute and Relative Risk Aversion
+    \item Useful Utility Functions
+\end{itemize} 
+\end{frame}
+
+
+\subsection{St. Petersburg Paradox}
+
+\begin{frame}
+Coin flipping game: toss a coin, and continue to do so until it lands "heads".
+\begin{table}
+    %\caption{}
+    \begin{tabular}{@{} lr @{}}
+      \toprule
+      Payout & Probability\\
+      \midrule
+      \$1 if “heads” the first time (H) & $\sfrac{1}{2}$\\
+      \$2 if “heads” the second time (TH) & $\sfrac{1}{4}$\\
+      \$4 if “heads” the third time (TTH) & $\sfrac{1}{8}$\\
+      ...\\
+      \$2 if “heads” the $i^{th}$ time (TT...TH) & $(\sfrac{1}{2})^i$\\
+      \bottomrule
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+    \item Poll: How much are you willing to pay to play this game?
+\end{itemize}
+\hfill \break
+\begin{enumerate}
+\setlength{\itemindent}{.5in}
+    \item Not more than \$2
+    \item Not more than \$5
+    \item Not more than \$10
+    \item Not more than \$20
+    \item Not more than \$100
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+Expected payoff:
+\begin{align*}
+    \bar{x} &= \sum_{i=1}^{\infty}p_i x_i = \frac{1}{2}\cdot1 + \frac{1}{4}\cdot2+ \frac{1}{8}\cdot4 + ... + (\frac{1}{2})^i \cdot2^{i-1} + ...\\
+    &= \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + ... + \frac{1}{2} + ... = \frac{1}{2} (1+1+1+...+1+...) = \infty
+\end{align*}
+The “paradox” is that the expected value is infinity, but most individuals would pay only a moderate amount to play this game.
+\end{frame}
+
+
+\subsection{Expected Utility Theorem}
+
+\begin{frame}
+Bernoulli (1738) provided and explanation of the paradox: individuals do not maximize expected value, but \textbf{expected utility}:
+\[ V \equiv E[u(\tilde{x})] = \sum_{i=1}^n p_i u(x_i)\]
+The maximum they would pay is an amount that has the same utility as the expected utility of this lottery (Certainty Equivalent). $V=u(CE)$\\
+The first complete axiomatic development of expected utility is due to von Neumann and Morgenstern (1944).
+\end{frame}
+
+\begin{frame}
+Axioms of Rational Behaviour\\
+\hfill \break
+1. \textit{Completeness}: there exists a preference ordering over all risky prospects which is complete. i.e. for any two gambles x and y\\
+\begin{center}
+    $x \succ y$ or $x \prec y$ or $x \approx y$
+\end{center}
+\begin{figure}[ut1]
+    \includegraphics[width=0.5\textwidth]{L1UT1}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Axioms of Rational Behaviour\\
+\hfill \break
+2. \textit{Transitivity}: the preference ordering is transitive\\
+\begin{center}
+    if $x \succ y$ and $y \succ z \implies x \succ z$\\
+    if $x \approx y$ and $y \approx z \implies x \approx z$
+\end{center}
+\begin{figure}[ut2]
+    \includegraphics[width=0.5\textwidth]{L1UT2}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Axioms of Rational Behaviour\\
+\hfill \break
+3. \textit{Independence}: Let $g(x,z;p)$ represent a gamble with probability p of paying x and (1-p) of paying z\\
+\begin{figure}[ut3]
+    \includegraphics[width=0.4\textwidth]{L1UT3}
+    \centering
+\end{figure}
+\begin{align*}
+    &\textrm{if } x \approx y\\
+    &\textrm{then } g(x,z;p) \approx g(y,z;p)
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Axioms of Rational Behaviour\\
+\hfill \break
+4. \textit{Continuity}: If $x \succ\approx y \succ\approx z$ then there exists a probability p (unique unless $x \approx y \approx z$) such that $y \approx g(x,z;p)$\\
+\begin{figure}[ut4]
+    \includegraphics[width=0.5\textwidth]{L1UT4}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Axioms of Rational Behaviour\\
+\hfill \break
+5. \textit{Dominance}: If $x \succ y \succ z$ and $x \succ t \succ z$, $y \approx g(x,z;p_1)$ and $t \approx g(x,z;p_2)$\\
+\begin{center}
+    then $p_1 > p_2 \implies y \succ t$\\
+    and $p_1 = p_2 \implies y \approx t$\\
+\end{center}
+\begin{figure}[ut4]
+    \includegraphics[width=0.5\textwidth]{L1UT4}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Rational Preferences Under Uncertainty\\
+\hfill \break
+\textbf{Existence}: A preference ordering on risky prospects which satisfy these rationality requirements can be represented by a utility function u defined over the set of outcomes in the sense that\\
+\hfill \break
+\begin{center}
+    $E[u(x)] \geq E[u(y)]$\\
+    $iff\;x \succ\approx y$\\
+\end{center}
+\end{frame}
+
+\begin{frame}
+Rational Preferences Under Uncertainty\\
+\hfill \break
+\textbf{Uniqueness}: u(x) is unique up to a positive linear transformation.\\
+\hfill \break
+If u(x) is a utility function, so is $v(x)=au(x)+b$ with $a>0$ \\
+\begin{center}
+    $E[v(x)] \geq E[u(y)]$\\
+    $E[au(x)+b] \geq E[au(y)+b]$\\
+    $aE[u(x)]+b \geq aE[u(y)]+b$\\
+    $E[u(x)] \geq E[u(y)]$\\
+\end{center}
+\end{frame}
+
+
+\subsection{Risk Aversion}
+
+\begin{frame}
+Concave utility function for wealth: $u''<0$\\
+\hfill \break
+Feel more “pain” to lose \$100 than “pleasure” to win \$100. Decreasing marginal utility of money\\
+\hfill \break
+($u'>0$ since more is preferred to less!)\\
+\end{frame}
+
+\begin{frame}
+Investor will not trade \$100 for sure for 50/50 chance of getting \$200 or nothing\\
+\hfill \break
+With concave utility:\\
+\begin{center}
+    $u(100) > 0.5 u(200) + 0.5 u(0)$\\
+\end{center}
+\end{frame}
+
+\begin{frame}
+Linear utility function for wealth: $u''=0$\\
+\hfill \break
+Investor maximizes expected wealth\\
+\end{frame}
+
+\begin{frame}
+Risk Averse\\
+\hfill \break
+\begin{itemize}
+    \item Investor will not trade \$100 for sure for 50/50 chance of getting \$200 or nothing
+    \item With concave utility:
+\end{itemize}
+\begin{center}
+    $u(100) > 0.5 u(200) + 0.5 u(0)$\\
+\end{center}
+\end{frame}
+
+\begin{frame}
+Risk Neutral\\
+\hfill \break
+\begin{itemize}
+    \item Linear utility function for wealth: $u''=0$
+\end{itemize}
+\hfill \break
+Investor maximizes expected wealth\\
+\end{frame}
+
+\begin{frame}
+Risk Seeking\\
+\hfill \break
+\begin{itemize}
+    \item Convex utility function for wealth: $u''>0$
+\end{itemize}
+\hfill \break
+Gambling?\\
+\end{frame}
+
+\begin{frame}
+\textbf{Certainty Equivalent for Complex Gambles ($W_c$)}\\
+\begin{center}
+    $u(W_c) > E[u(complex\;gamble)]$\\
+\end{center}
+\begin{center}
+    Amount you would accept for certain instead of the gamble.
+\end{center}
+\hfill \break
+If $\bar{W}$ is the expected outcome:\\
+\begin{enumerate}
+\setlength{\itemindent}{.5in}
+    \item risk averse if $W_c < \bar{W} \impliedby u''<0$  concave
+    \item risk neutral if $W_c = \bar{W} \impliedby u''=0$  linear
+    \item risk seeker if $W_c > \bar{W} \impliedby u''>0$  convex
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+Risk Averse Certainty Equivalent\\
+\end{frame}
+
+\subsection{Absolute and Relative Risk Aversion}
+
+\begin{frame}
+\textbf{Measures of Risk Aversion}\\
+\hfill \break
+Size of  $u''(W)<0$  is not meaningful (unique up to a positive linear transformation),  $u'(W)>0$ more is preferred to less.\\
+\begin{itemize}
+    \item Absolute Risk Aversion $\;A(W) = -\frac{u''(W)}{u'(W)}$\\
+    \item Relative Risk Aversion $\;\;R(W) = -\frac{Wu''(W)}{u'(W)} = W\cdot A(W)$\\
+\end{itemize}
+\hfill \break
+Independent of positive linear transformation of the utility fn.
+\begin{center}
+    $v(W)=au(W)+b$, with $a>0$\\
+\end{center}
+Allows comparisons between individuals.\\
+\end{frame}
+
+\begin{frame}
+\textbf{Measures of Risk Aversion}\\
+\hfill \break
+\begin{align*}
+    v(W)&=au(W)+b, a>0\\
+    v'(W)&=au'(W)>0\\
+    v''(W)&=au''(W)<0\\
+\end{align*}
+\begin{align*}
+    A(W)&=-\frac{u''(W)}{u'(W)}=-\frac{v''(W)}{v'(W)}>0\\
+    R(W)&=-\frac{Wu''(W)}{u'(W)}=-\frac{Wv''(W)}{v'(W)}>0\\
+\end{align*}
+\end{frame}
+
+\subsection{Useful Utility Functions}
+
+\begin{frame}
+\textbf{Exponential}: constant absolute risk aversion\\
+\begin{align*}
+    u(W)&=-\frac{1}{a}e^{-aW} \textit{ with } a>0\\
+    u'(W)&=e^{-aW}>0\\
+    u''(W)&=-ae^{-aW}<0\\
+    A(W)&=-\frac{u''(W)}{u'(W)} = a\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\textbf{Power}: constant relative risk aversion\\
+\begin{align*}
+    u(W)&=\frac{W^\gamma}{\gamma} \textit{ for } \gamma<1, \gamma\neq0\\
+    u'(W)&=W^{\gamma-1}>0\\
+    u''(W)&=(\gamma-1)W^{\gamma-2}<0\\
+    R(W)&=-\frac{Wu''(W)}{u'(W)} = 1-\gamma = c > 0, \gamma < 1 \;\; u(W)=\frac{W^{1-c}}{1-c}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\textbf{Log}: also constant relative risk aversion\\
+\begin{align*}
+    u(W)&=\ln{W} (\gamma=0)\\
+    u'(W)&=\frac{1}{W}>0\\
+    u''(W)&=-\frac{1}{W^2}<0\\
+    R(W)&=-\frac{Wu''(W)}{u'(W)}=1\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\textbf{Quadratic}\\
+\begin{align*}
+    u(W)&=W-\frac{1}{2}bW^2 \textit{\;\;for } 0\leq W\leq \frac{1}{b}\\
+    u'(W)&=1-bW>0 \textit{\;\;for } 0\leq W\leq \frac{1}{b}\\
+    u''(W)&=-b<0\\
+    A(W)&=-\frac{b}{1-bW} \textit{\;\;increasing with W (not good)}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Expected utility max. and mean variance analysis are equivalent when...\\
+\hfill \break
+\begin{outline}
+    \1 Utility functions are quadratic
+    \begin{align*}
+        u(W)&=W-\frac{1}{2}bW^2\\
+        E[u(W)]&=\Bar{W}-\frac{1}{2}b[\Bar{W}^2+Var(W)]
+    \end{align*}
+    \1 Distributions of returns are joint normal
+        \2 Normal is completely defined by mean and variance
+        \2 Additive
+        \2 Indifference curves (constant Eu) can be written in terms of mean and s.d. only
+    \1 Be careful when distributions are not normal (options)
+\end{outline}
+\end{frame}
+
+\begin{frame}
+Indifference Curves (for risk averse)\\
+\hfill \break
+A and B have the same expected utility
+\end{frame}
+
+\begin{frame}
+Expected Utility - Example
+\hfill \break
+\begin{outline}
+    \1 Your current wealth is \$100,000.
+    \1 You want to purchase a homeowner’s insurance policy to cover potential loss due to fire.
+    \1 You estimate that the probability of fire is 10\%
+    \1 If your house is damaged by fire your loss would be \$60,000. 
+    \1 You have determined that your utility of wealth is $U(W) = \sqrt{W}$. 
+    \1 What is the maximum amount you would be willing to pay to fully insure against possible losses due to fire?
+\end{outline}
+\end{frame}
+
+\begin{frame}
+Expected Utility - Solution
+\hfill \break
+\begin{outline}
+    \1 Let us assume that you will at the most be willing to pay \$D\break
+    \1 If you buy insurance your wealth is \$(100,000 – D) for sure.\break
+    \1 If you do not buy insurance there is a 10\% chance that you will end with a wealth of \$40,000 and a 90\% chance that you will end with a wealth of \$100,000\break
+\end{outline}
+\end{frame}
+
+\begin{frame}
+Expected Utility - Solution
+\end{frame}
+
+\begin{frame}
+Expected Utility - Solution
+\hfill \break
+\begin{outline}
+    \1 We defined certainty equivalent, $W_c$  as that amount of wealth which makes you indifferent between this wealth and a gamble\break
+    \1 That is $U(W_c) = E[U]$
+    \begin{align*}
+        U(100,000 - D) &= 0.1\cdot U(40,000) + 0.9\cdot U(100,000)\\
+        \sqrt(100000-D) &= 0.1\sqrt{40,000} + 0.9\sqrt{100,000}\\
+        D &= 7,215.80 > 6,000 \textit{ expected loss }\\
+    \end{align*}
+\end{outline}
+\end{frame}
+
+\section{Utility Theory}  % TOPIC 2: Utility Theory
+\begin{frame}
+    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+\end{frame}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+\subsubsection{Subsubsection}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+\subsubsection{Subsubsection}
+
+\section{Risk Aversion}
+\begin{frame}
+    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+\end{frame}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+\subsubsection{Subsubsection}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+\subsubsection{Subsubsection}
+
+\section{Portfolio Selection Problem}
+\begin{frame}
+    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+\end{frame}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Discrete Time Portfolio Selection}
+\begin{frame}
+    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+\end{frame}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Mean-Variance Portfolio Choice and Asset Pricing}
+\begin{frame}
+    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+    This frame has a custom title and a custom subtitle.\footnote{This is a footnote. See also \textcite{example_2022}. }
+\end{frame}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Math of Continuous Time Finance}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Continuous Time Diffusion Process}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Continuous Time Portfolio Selection}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Continuous Time Portfolio Selection and Asset Pricing}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Extended Model}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Consumption Based CAPM}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Introduction to Options}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Continuous Time Option Pricing}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{The Options Approach to Valuing Risky Debt}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section{Stochastic Models of the Term Structure}
+\subsection{Subsection}
+\subsection{Subsection}
+
+\section*{References}
+\begin{frame}[allowframebreaks]{References}
+    \printbibliography
+\end{frame}
+
+\end{document}
