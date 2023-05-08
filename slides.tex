@@ -72,6 +72,9 @@
         \vspace{166px}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% TOPIC 1  Expected Utility and RA %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Intro to Expected Utility \& Risk Aversion}
 \begin{frame}
 \alert{\textbf{Basic Ideas}}
@@ -430,7 +433,7 @@ Expected Utility - Solution
 \end{frame}
 
 \begin{frame}
-Expected Utility - Solution
+Expected Utility - Solution\\
 TODO: img
 \end{frame}
 
@@ -448,17 +451,132 @@ Expected Utility - Solution
 \end{outline}
 \end{frame}
 
-\section{Utility Theory}  % TOPIC 2: Utility Theory
-\begin{frame}
-    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
-\end{frame}
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% TOPIC 2  Utility Theorem %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Utility Theory}  % TOPIC 2: Utility Theory
+
+\begin{frame}
+Rational "preferences" under uncertainty (over consumption hurdles):\\
+\begin{outline}
+    \1 Completeness
+    \1 Transitivity
+    \1 Continuity
+    \1 Monotonicity (more is preferred to less)
+\end{outline}
+Ordinal utility fn: any positive transformation preserves the same ordering\\
+\end{frame}
+
+\begin{frame}
+Rational "preferences" under uncertainty:\\
+\hfill \break
+Existence and uniqueness theorems based on certain rationality requirements (axioms of rational behaviour).\\
+Even though these axioms have been challenged there is no theory competing with this:\\
+\begin{outline}
+    \1 measurable or Von Neumann-Morgenstern utility fn.
+      \2 "Preferences over gambles"
+\end{outline}
+\hfill \break
+Let $S$ be the set of all risky prospects  payoff distributions).\\
+\end{frame}
+
+\subsection{Expected Utility Theorem}
+
+\begin{frame}
+Let $S$ be the set of all risky prospects  payoff distributions).\\
+\hfill \break
+\underline{\textbf{Expected Utility Theorem}}: A preference ordering on $S$ which satisfies certain rationality requirements (A1-A5) can be represented by a utility function $u$ defined on the set of outcomes in the sense that:\\
+\hfill \break
+\textit{Existence}
+\begin{align*}
+    E[u(x)] \geq& E[u(y)]\\
+    x, y \; \epsilon& \; S\\
+    \textit{ iff } x \succsim & \; y\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, u(x) is unique up to a positive linear transformation. \\
+\hfill \break
+\textit{Uniqueness}
+\begin{align*}
+    E[u(x)] =& \Sum_i u(x)_i p(x_i)\\
+    =& \int_{-\infty}^\infty u(x)f(x)dx\\
+    =& \int_{-\infty}^\infty u(x)dF(x)\\
+\end{align*}
+\begin{align*}
+    F(x) =& Pr{X \lew x}\\
+    f(x) =& \frac{dF(x)}{dx}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Axioms governing investors' behavior\\
+\hfill \break
+\textbf{A1 (Completeness)}: There exists a preference ordering over all risky prospects which is complete.\\
+\hfill \break
+ie. For any two gambles $x,y$
+\hfill \break
+\begin{align*}
+    x &\succ y\\
+    x &\prec y\\
+    x &\sim y\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Axioms governing investors' behavior\\
+\hfill \break
+\textbf{A2 (Transitivity)}: The preference ordering is transitive\\
+\hfill \break
+\begin{align*}
+    \textit{If }x &\succ y \textit{ and } y \succ z \implies x \succ z\\
+    x &\sim y \textit{ and } y \sim z \implies x \sim z\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Axioms governing investors' behavior\\
+\hfill \break
+\textbf{A3 (Independence)}: Let $g(x,z;p)$ represent a gamble with probability $p$ of paying $x$ and $(1-p)$ of paying $z$.\\
+TODO: gamble img\\
+\hfill \break
+\begin{align*}
+    \textit{If }x &\sim y\\
+    \textit{Then }g(x,y;p) &\sim g(y,z;p)\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Axioms governing investors' behavior\\
+\hfill \break
+\textbf{A4 (Continuity)}: If $x \succsim y \succsim z$ then there exists a probability $p$ (unique unless $x \sim y \sim z$) such that\\
+\hfill \break
+\begin{align*}
+    y &\sim g(x,z;p)\\
+\end{align*}
+\end{frame}
+
+\subsubsection{Axioms governing investors' behavior}
+\begin{frame}
+Axioms governing investors' behavior\\
+\hfill \break
+\textbf{A5 (Dominance)}:
+\begin{align*}
+    \textit{If }\;\;x \succsim y \succsim z,&\;\; x \succsim t \succsim z\\
+    \textit{and }\;\;y \sim g(x,z;p_1),&\;\; t \sim g(x,z;p_2)\\
+\end{align*}
+\begin{align*}
+    \textit{Then }\;\;p_1 > p_2 \implies& y \succ t\\
+    \textit{and }\;\;p_1 = p_2 \implies& y \sim t\\
+\end{align*}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 3  Risk Aversion %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Risk Aversion}
 \begin{frame}
     Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
