@@ -497,16 +497,14 @@ Let $S$ be the set of all risky prospects  payoff distributions).\\
 \end{frame}
 
 \begin{frame}
-If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, u(x) is unique up to a positive linear transformation. \\
+If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, $u(x)$ is unique up to a positive linear transformation. \\
 \hfill \break
 \textit{Uniqueness}
 \begin{align*}
-    E[u(x)] =& \Sum_i u(x)_i p(x_i)\\
+    E[u(x)] =& \sum_i u(x)_i p(x_i)\\
     =& \int_{-\infty}^\infty u(x)f(x)dx\\
     =& \int_{-\infty}^\infty u(x)dF(x)\\
-\end{align*}
-\begin{align*}
-    F(x) =& Pr{X \lew x}\\
+    F(x) =& Pr\{X \leq x\}\\
     f(x) =& \frac{dF(x)}{dx}\\
 \end{align*}
 \end{frame}
@@ -558,7 +556,6 @@ Axioms governing investors' behavior\\
 \end{align*}
 \end{frame}
 
-\subsubsection{Axioms governing investors' behavior}
 \begin{frame}
 Axioms governing investors' behavior\\
 \hfill \break
@@ -571,6 +568,65 @@ Axioms governing investors' behavior\\
     \textit{Then }\;\;p_1 > p_2 \implies& y \succ t\\
     \textit{and }\;\;p_1 = p_2 \implies& y \sim t\\
 \end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{\textbf{Derivation}}:\\
+\hfill \break
+Consider a set of (simple) gambles $g(M,m;h)$, that is, the payment $M$ with probability $h$ and $m<M$ with probability $1-h$.\\
+From A4 (Continuity) we have $W_i\;\epsilon\;(m,M)$ such that\\
+\[W_i \sim g(M,m;h(W_i))\]
+\hfill \break
+$W_i$ is the certainty equivalent of the gamble.
+\end{frame}
+
+\begin{frame}
+We can construct the indifference set for $h=(0,1)$, (for a given individual)\\
+TODO: indiff curve image\\
+\[W_i = hM+(1-h)m\]
+\hfill \break
+For this preference function (concave) CE < Expected payoff of the gamble ($W_i<\bar{W_i}$)
+\end{frame}
+
+\begin{frame}
+Consider a (complex) gamble with payoffs $X_i$ with probabilities $p_i$, $i=1,...,n$\\
+TODO: complex gamble\\
+By A4 (Continuity) we can find $h_i$ such that $X_i \sim g(M,m;h_i)$.\\
+By A3 (Independence)\\
+TODO: equivalence
+\end{frame}
+
+\begin{frame}
+Consider a second (complex) gamble with outcomes $Y_i$ and probabilities $q_i$, $i=1,...,N$\\
+Then this gamble is equivalent to $g(M,m;Q)$
+for
+\[Q \equiv \sum_{i=1}^N q_i\;h(Y_i)\;\;,\;\;Y_i\sim g(M,m;h(Y_i))\]
+\begin{align*}
+    \therefore \;\; \Tilde{X}&\sim g(M,m;H)\\
+    \Tilde{Y}&\sim g(M,m;Q)\\
+\end{align*}
+From A5 (Dominance) $\Tilde{X} \succ \Tilde{Y}$ iff $H > Q$ ...
+\end{frame}
+
+\begin{frame}
+...we can write the probabilities $h(X_i) = u(x)$\\
+\[\therefore \;\; \Tilde{X}\succ\Tilde{Y}\;\; \textit{ iff }\;\; E[u(x)]>E[u(y)]\]
+\begin{center}
+    \textbf{This is the expect utility theorem}\\
+\end{center}
+\hfill \break
+The same preference ordering can be obtained by:\\
+\[v(x)=a\;u(x)+b \;\;\;\; a,b \textit{ constants; } a>0\]
+$\implies$ unique up to a positive linear transformation.\\
+(Note: Interpersonal comparisons of utility are not possible.)
+\end{frame}
+
+\begin{frame}
+\[v(x)=a\;u(x)+b \;\;\;\; a,b \textit{ constants; } a>0\]
+\hfill \break
+\underline{b} determines the origin and \underline{a} determines the scale of the utility measures (but they don't change the preference ordering).\\
+\hfill \break
+This should not be surprising because the selection of \$m and \$M were an arbitrary two points in the utility function.
 \end{frame}
 
 
