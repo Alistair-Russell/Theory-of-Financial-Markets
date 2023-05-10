@@ -147,7 +147,7 @@ Axioms of Rational Behaviour\\
 \hfill \break
 1. \textit{Completeness}: there exists a preference ordering over all risky prospects which is complete. i.e. for any two gambles x and y\\
 \begin{center}
-    $x \succ y$ or $x \prec y$ or $x \approx y$
+    $x \succ y$ or $x \prec y$ or $x \sim y$
 \end{center}
 \begin{figure}[ut1]
     \includegraphics[width=0.5\textwidth]{L1UT1}
@@ -161,7 +161,7 @@ Axioms of Rational Behaviour\\
 2. \textit{Transitivity}: the preference ordering is transitive\\
 \begin{center}
     if $x \succ y$ and $y \succ z \implies x \succ z$\\
-    if $x \approx y$ and $y \approx z \implies x \approx z$
+    if $x \sim y$ and $y \sim z \implies x \sim z$
 \end{center}
 \begin{figure}[ut2]
     \includegraphics[width=0.5\textwidth]{L1UT2}
@@ -178,15 +178,15 @@ Axioms of Rational Behaviour\\
     \centering
 \end{figure}
 \begin{align*}
-    &\textrm{if } x \approx y\\
-    &\textrm{then } g(x,z;p) \approx g(y,z;p)
+    &\textrm{if } x \sim y\\
+    &\textrm{then } g(x,z;p) \sim g(y,z;p)
 \end{align*}
 \end{frame}
 
 \begin{frame}
 Axioms of Rational Behaviour\\
 \hfill \break
-4. \textit{Continuity}: If $x \succ\approx y \succ\approx z$ then there exists a probability p (unique unless $x \approx y \approx z$) such that $y \approx g(x,z;p)$\\
+4. \textit{Continuity}: If $x \succsim y \succsim z$ then there exists a probability p (unique unless $x \sim y \sim z$) such that $y \sim g(x,z;p)$\\
 \begin{figure}[ut4]
     \includegraphics[width=0.5\textwidth]{L1UT4}
     \centering
@@ -196,10 +196,10 @@ Axioms of Rational Behaviour\\
 \begin{frame}
 Axioms of Rational Behaviour\\
 \hfill \break
-5. \textit{Dominance}: If $x \succ y \succ z$ and $x \succ t \succ z$, $y \approx g(x,z;p_1)$ and $t \approx g(x,z;p_2)$\\
+5. \textit{Dominance}: If $x \succ y \succ z$ and $x \succ t \succ z$, $y \sim g(x,z;p_1)$ and $t \sim g(x,z;p_2)$\\
 \begin{center}
     then $p_1 > p_2 \implies y \succ t$\\
-    and $p_1 = p_2 \implies y \approx t$\\
+    and $p_1 = p_2 \implies y \sim t$\\
 \end{center}
 \begin{figure}[ut4]
     \includegraphics[width=0.5\textwidth]{L1UT4}
@@ -214,7 +214,7 @@ Rational Preferences Under Uncertainty\\
 \hfill \break
 \begin{center}
     $E[u(x)] \geq E[u(y)]$\\
-    $iff\;x \succ\approx y$\\
+    $iff\;x \succsim y$\\
 \end{center}
 \end{frame}
 
@@ -253,12 +253,6 @@ With concave utility:\\
 \end{frame}
 
 \begin{frame}
-Linear utility function for wealth: $u''=0$\\
-\hfill \break
-Investor maximizes expected wealth\\
-\end{frame}
-
-\begin{frame}
 Risk Averse\\
 \hfill \break
 \begin{itemize}
@@ -268,6 +262,7 @@ Risk Averse\\
 \begin{center}
     $u(100) > 0.5 u(200) + 0.5 u(0)$\\
 \end{center}
+TODO: risk-aversion image
 \end{frame}
 
 \begin{frame}
@@ -276,6 +271,7 @@ Risk Neutral\\
 \begin{itemize}
     \item Linear utility function for wealth: $u''=0$
 \end{itemize}
+TODO: risk-neutral image
 \hfill \break
 Investor maximizes expected wealth\\
 \end{frame}
@@ -286,6 +282,7 @@ Risk Seeking\\
 \begin{itemize}
     \item Convex utility function for wealth: $u''>0$
 \end{itemize}
+TODO: risk-seeking image
 \hfill \break
 Gambling?\\
 \end{frame}
@@ -310,6 +307,7 @@ If $\bar{W}$ is the expected outcome:\\
 
 \begin{frame}
 Risk Averse Certainty Equivalent\\
+TODO: certainty equivalent image
 \end{frame}
 
 \subsection{Absolute and Relative Risk Aversion}
@@ -345,7 +343,6 @@ Allows comparisons between individuals.\\
 \end{frame}
 
 \subsection{Useful Utility Functions}
-
 \begin{frame}
 \textbf{Exponential}: constant absolute risk aversion\\
 \begin{align*}
@@ -354,6 +351,7 @@ Allows comparisons between individuals.\\
     u''(W)&=-ae^{-aW}<0\\
     A(W)&=-\frac{u''(W)}{u'(W)} = a\\
 \end{align*}
+TODO: exponential ut fn
 \end{frame}
 
 \begin{frame}
@@ -364,6 +362,7 @@ Allows comparisons between individuals.\\
     u''(W)&=(\gamma-1)W^{\gamma-2}<0\\
     R(W)&=-\frac{Wu''(W)}{u'(W)} = 1-\gamma = c > 0, \gamma < 1 \;\; u(W)=\frac{W^{1-c}}{1-c}\\
 \end{align*}
+TODO: power ut fn
 \end{frame}
 
 \begin{frame}
@@ -472,6 +471,7 @@ Ordinal utility fn: any positive transformation preserves the same ordering\\
 Rational "preferences" under uncertainty:\\
 \hfill \break
 Existence and uniqueness theorems based on certain rationality requirements (axioms of rational behaviour).\\
+\hfill \break
 Even though these axioms have been challenged there is no theory competing with this:\\
 \begin{outline}
     \1 measurable or Von Neumann-Morgenstern utility fn.
@@ -508,6 +508,8 @@ If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, $u(x)$ 
     f(x) =& \frac{dF(x)}{dx}\\
 \end{align*}
 \end{frame}
+
+\subsection{Axioms}
 
 \begin{frame}
 Axioms governing investors' behavior\\
@@ -570,6 +572,8 @@ Axioms governing investors' behavior\\
 \end{align*}
 \end{frame}
 
+\subsection{Derivation}
+
 \begin{frame}
 \underline{\textbf{Derivation}}:\\
 \hfill \break
@@ -624,11 +628,47 @@ $\implies$ unique up to a positive linear transformation.\\
 \begin{frame}
 \[v(x)=a\;u(x)+b \;\;\;\; a,b \textit{ constants; } a>0\]
 \hfill \break
-\underline{b} determines the origin and \underline{a} determines the scale of the utility measures (but they don't change the preference ordering).\\
+\underline{\textbf{b}} determines the origin and \underline{\textbf{a}} determines the scale of the utility measures (but they don't change the preference ordering).\\
 \hfill \break
-This should not be surprising because the selection of \$m and \$M were an arbitrary two points in the utility function.
+This should not be surprising because the selection of $\$m$ and $\$M$ were an arbitrary two points in the utility function.
 \end{frame}
 
+\subsection{Certainty Equivalent}
+
+\begin{frame}
+Certainty equivalent $W_c$ for complex gambles:
+\[W_c \sim g(M,m;H)\]
+\[\textit{ie. } u(W_c) = E[u(\textit{complex gamble}]\]
+\hfill \break
+If $\bar{W}$ is the expected outcome, then the individual is said to be:
+\begin{align*}
+    \textit{risk-averse if } W_c &< \bar{W} \impliedby u''<0\\
+    \textit{risk-neutral if } W_c &= \bar{W} \impliedby u''=0\\
+    \textit{risk-seeking if } W_c &> \bar{W} \impliedby u''>0\\
+\end{align*}
+It is easy to show this by Taylor's Theorem...
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    \textit{risk-averse if } W_c &< \bar{W} \impliedby u''<0\\
+    \textit{risk-neutral if } W_c &= \bar{W} \impliedby u''=0\\
+    \textit{risk-seeking if } W_c &> \bar{W} \impliedby u''>0\\
+\end{align*}
+By Taylor's Theorem:
+\begin{align*}
+    E[u(W)] &= E[u(\bar{W}+(W-\bar{W}))]\\
+    &= E[u(\bar{W})]+u'(\bar{W})(W-\bar{W})\\
+    &\;\;\;+\frac{1}{2}u''(\bar{W}(1-\theta)+\theta W)(W-\bar{W})^2\;\;\textit{for some }\theta, 0 \leq \theta \leq 1\\
+    \therefore \;\; E[u(W)]-E[u(\bar{W})] &= u(W_c)-u(\bar{W}) = \frac{1}{2}E[u''(\cdot)(W-\bar{W})^2\\
+\end{align*}
+\end{frame}
+
+\subsection{Example}
+
+\begin{frame}
+TODO: add illustrated risk-* examples.
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 3  Risk Aversion %%%%%%%%%%%%%%%
