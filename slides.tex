@@ -263,6 +263,15 @@ Risk Averse\\
     $u(100) > 0.5 u(200) + 0.5 u(0)$\\
 \end{center}
 TODO: risk-aversion image
+\begin{tikzpicture}[scale=0.5]
+\begin{axis}[axis lines=left,xlabel=Wealth (W),ylabel=Utility $u(W)$,xmin=0, xmax=200,ymin=0, ymax=10,xtick={0,50,100,150,200},clip=false,domain=0:200,samples=100,thick,]
+\addplot+[mark=none, dashed] {x/200*10};
+\addplot+[mark=none,smooth] coordinates {(0,0) (20,2) (50,5) (100,7.5) (200,10)};
+\addplot+[only marks, mark=*, mark options={fill=red}] coordinates {(50,5)};
+\addplot+[mark=none, dashed] coordinates {(50,0) (50,5)};
+\node[label={150:{E[u(•)] = u(Wc)}},circle,fill,inner sep=2pt] at (axis cs:50,5) {};
+\end{axis}
+\end{tikzpicture}
 \end{frame}
 
 \begin{frame}
@@ -685,21 +694,115 @@ We will assume that decision makers maximize expected utility of terminal wealth
 \end{frame}
 
 \begin{frame}
-We will assume that decision makers maximize expected utility of terminal wealth (one period model). Expected Utility Theorem: Von Neumann-Morgenstern utility function existence and uniqueness (if axioms of rational behaviour hold).\\
+Theorem: A necessary and sufficient condition for (global) risk aversion is a utility function of wealth that is strictly concave.\\
 \hfill \break
-\underline{risk averse}: if unwilling to accept every actuarially fair and immediately resolved gamble.\\
-\[\textit{ie. } u(W) > E[u(W+\hat{\varepsilon})]\]
-\[\textit{for all gambles with $E[\hat{\varepsilon}]=0$ and $\sigma_\varepsilon^2 >0$}\]
-\underline{globally risk averse}: if risk averse at all levels of wealth.\\
+Proof: if $u(\cdot)$ is strictly concave at W by Jensen's inequality\\
+\[ E[U(W+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
+\hfill \break
+Actuarially Fair Gamble:\\
+\[p\varepsilon_1+(1-p)\varepsilon_2 = 0\]
+\[\varepsilon_1>0\;\;,\;\;\varepsilon_2<0\]
 \end{frame}
 
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
+\begin{frame}
+Risk Averse\\
+\hfill \break
+\[ u(W)+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
+\begin{align*}
+    u(W) &= u(p(W+\varepsilon_1)+(1-p)(W+\varepsilon_2))\\
+    &> p u(W+\varepsilon_1)+(1-p)u(W+\varepsilon_2)
+\end{align*}
+TODO: add risk aversion concave function image\\
+$\therefore$ risk averse $\implies$ concave utility function.\\
+A reversal of these steps demonstrates that concave utility function $\implies$ risk averse.\\
+\end{frame}
 
+\begin{frame}
+To avoid a gamble, a risk averse person would be willing to pay an \underline{insurance risk premium}, $\pi_i$ (used in economic analyses)\\
+\hfill \break
+1. $E[U(W+\tilde\varepsilon)] = U(W-\pi_i)$\\
+\hfill \break
+$W-\pi_i$: the certainty equivalent of gamble $W+\tilde\varepsilon$\\
+To induce a risk averse investor to undertake a gamble, a \underline{compensatory} risk premium $\pi_C$ would have to be offered.\\
+\hfill \break
+2. $E[U(W+\pi_c+\tilde\varepsilon)] = U(W)$\\
+\hfill \break
+Used in financial applications, "extra" return expected on a riskier assets.\\
+\hfill \break
+The two premia are closely related but not identical. If utility function is smooth and risk is small, they are almost equal.\\
+\end{frame}
+
+\subsection{Measures of Risk Aversion}
+\begin{frame}
+The size of $u''(W)<0$ is not meaningful, $u'(W)>0$ more is preferred to less.\\
+\hfill \break
+Absolute Risk Aversion $\;\;A(W) = -\frac{u''(W)}{u'(W)}$\\
+\hfill \break
+Risk-Tolerance Function $\;\;T(W) = \frac{1}{A(W)}$\\
+\hfill \break
+Relative Risk Aversion $\;\;R(W) = W\cdot A(W)$\\
+\hfill \break
+All of these are independent of positive linear transformations of the utility function.\\
+\[v(W)=a\cdot u(W)+b,\;\;a>0\]
+Allows for comparisons between individuals.
+\end{frame}
+
+\subsection{Useful Utility Functions}
+\begin{frame}
+1. \underline{Constant Absolute Risk Aversion} ($A(W) = a$)\\
+Only utility function $\iff$ exponential (up to two arbitrary constants).
+\hfill \break
+\begin{align*}
+    u(W) =& -\frac{1}{a} e^{aW},\;\;a>0 \;\;\textit{for risk aversion}\\
+    u' =& \;e^{-aW}\\
+    u''=&\;-ae^{-aW}\\
+\end{align*}
+\begin{align*}
+    A(W) = a&,\;\;A'(W) = 0\\
+    R(W) = aW&,\;\;R(W) = a > 0\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+2. \underline{Constant Relative Risk Aversion} $\iff$ power and logarithmic functions.\\
+This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\gamma-1}; u'' = (\gamma-1)W^{\gamma-2}$)\\
+\hfill \break
+\begin{align*}
+    u(W) =& ...\\
+\end{align*}
+\begin{align*}
+    A(W) = a&,\;\;A'(W) = 0\\
+    R(W) = aW&,\;\;R(W) = a > 0\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+3. \underline{Quadratic}: one of the theoretical justifications of the CAPM.\\
+\hfill \break
+\begin{align*}
+    u(W) =& -\frac{1}{a} e^{aW},\;\;a>0 \;\;\textit{for risk aversion}\\
+\end{align*}
+\begin{align*}
+    A(W) = a&,\;\;A'(W) = 0\\
+    R(W) = aW&,\;\;R(W) = a > 0\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+4. \underline{HARA} (Hyperbolic Absolute Risk Aversion) or Linear Risk Tolerance\\
+\hfill \break
+\begin{align*}
+    u(W) =& ...\\
+\end{align*}
+\begin{align*}
+    A(W) = a&,\;\;A'(W) = 0\\
+    R(W) = aW&,\;\;R(W) = a > 0\\
+\end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 4  Portfolio Selection %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Portfolio Selection Problem}
 \begin{frame}
     Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
@@ -707,6 +810,10 @@ We will assume that decision makers maximize expected utility of terminal wealth
 \subsection{Subsection}
 \subsection{Subsection}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 5  Discrete Time Portfolio Selection %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Time Portfolio Selection}
 \begin{frame}
     Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
@@ -714,6 +821,9 @@ We will assume that decision makers maximize expected utility of terminal wealth
 \subsection{Subsection}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 6  Mean-Variance Portfolio Choice and Asset Pricing %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mean-Variance Portfolio Choice and Asset Pricing}
 \begin{frame}
     Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
