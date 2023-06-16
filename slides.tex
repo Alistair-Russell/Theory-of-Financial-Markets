@@ -759,7 +759,7 @@ Only utility function $\iff$ exponential (up to two arbitrary constants).
 \end{align*}
 \begin{align*}
     A(W) = a&,\;\;A'(W) = 0\\
-    R(W) = aW&,\;\;R(W) = a > 0\\
+    R(W) = aW&,\;\;R'(W) = a > 0\\
 \end{align*}
 \end{frame}
 
@@ -768,11 +768,12 @@ Only utility function $\iff$ exponential (up to two arbitrary constants).
 This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\gamma-1}; u'' = (\gamma-1)W^{\gamma-2}$)\\
 \hfill \break
 \begin{align*}
-    u(W) =& ...\\
+    u(W) =& \frac{W^{\gamma}}{\gamma}\;\;\gamma<1,\gamma\neq0\\
+    =& \log(W)\;\;\gamma=0,\Bigg[\lim_{\gamma \to 0} \frac{W^\gamma-1}{\gamma}=\lim\frac{W^\gamma \ln{W}}{1}\Bigg]\\
 \end{align*}
 \begin{align*}
-    A(W) = a&,\;\;A'(W) = 0\\
-    R(W) = aW&,\;\;R(W) = a > 0\\
+    A(W) = \frac{(1-\gamma)}{W}&,\;\;A'(W) = -\frac{(1-\gamma)}{W^2}<0\\
+    R(W) = (1-\gamma)&,\;\;R'(W) = 0\\
 \end{align*}
 \end{frame}
 
@@ -780,11 +781,12 @@ This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\
 3. \underline{Quadratic}: one of the theoretical justifications of the CAPM.\\
 \hfill \break
 \begin{align*}
-    u(W) =& -\frac{1}{a} e^{aW},\;\;a>0 \;\;\textit{for risk aversion}\\
+    u(W) = W-\frac{1}{2}bW^2 &,\;\;0\leq W \leq \frac{1}{b}\\
+    \Bigg(u' = 1-bW&, u''=-b\Bigg)\\
 \end{align*}
 \begin{align*}
-    A(W) = a&,\;\;A'(W) = 0\\
-    R(W) = aW&,\;\;R(W) = a > 0\\
+    A(W) = \frac{b}{1-bW}&,\;\;A'(W) = A^2(W)>0\\
+    R(W) = \frac{bW}{1-bW}&,\;\;R(W) > 0\\
 \end{align*}
 \end{frame}
 
@@ -792,11 +794,11 @@ This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\
 4. \underline{HARA} (Hyperbolic Absolute Risk Aversion) or Linear Risk Tolerance\\
 \hfill \break
 \begin{align*}
-    u(W) =& ...\\
+    u(W) = \frac{1-\gamma}{\gamma}(\frac{\beta W}{1-\gamma}+\eta)^\gamma &,\;\;\beta>0,\gamma\neq1,\frac{\beta W}{1-\gamma}+\eta>0\\
 \end{align*}
 \begin{align*}
-    A(W) = a&,\;\;A'(W) = 0\\
-    R(W) = aW&,\;\;R(W) = a > 0\\
+    A(W) = \Bigg[\frac{W}{1-\gamma}+\frac{\eta}{\beta}\Bigg]^{-1}&,\;\;\implies \frac{1}{A(W)} = a+bW \;\textit{"linear risk tolerance"}\\
+    R(W) = W\cdot A(W) \;\;\;\;\;\; &A'(W)=-(1-\gamma)A^2(W) \;\;\;\;\;\; R'(W)=\frac{\eta}{\beta}A^2(W)\\
 \end{align*}
 \end{frame}
 
