@@ -56,11 +56,11 @@
 %% FRAME Table of Contents
 \begin{frame}[plain,noframenumbering]{Theory of Financial Markets}
     \setcounter{tocdepth}{2}
-        \tableofcontents[sections={1-4}]
+        \tableofcontents[sections={1-3}]
 \end{frame}
 \begin{frame}[plain,noframenumbering]{Theory of Financial Markets (cont.)}
     \setcounter{tocdepth}{2}
-        \tableofcontents[sections={5-9}]
+        \tableofcontents[sections={4-9}]
 \end{frame}
 \begin{frame}[plain,noframenumbering]{Theory of Financial Markets (cont.)}
     \setcounter{tocdepth}{2}
@@ -806,72 +806,94 @@ This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\
 %%%%%%%%%%%%%% TOPIC 4  Portfolio Selection %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Portfolio Selection Problem}
+\subsection{Portfolio Selection Problem (Arrow)}
 \begin{frame}
-    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
+In its simplest form, we have the choice of investing wealth $w_0$ in a riskless asset (cash) and a risky asset with rate of return $\tilde z$. (Amount $0 \leq x \leq w_0$)\\
+\hfill \break
+Final Wealth:
+\begin{align*}
+    \tilde w =& w_0-x + x(\tilde z+1) = w_0 + x\tilde z\\
+    \Bigg[\;\textit{if $r_f$}\;\;\;\; \tilde w =& (w_0-x)(1+r_f)+x(\tilde z+1) = w_0(1+r_f) + x(\tilde z - r_f) \Bigg]\\
+\end{align*}
+\begin{align*}
+    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
+    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
+    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+\end{align*}
 \end{frame}
-\subsection{Subsection}
-\subsection{Subsection}
 
+\begin{frame}
+Kuhn–Tucker conditions:
+TODO: add Kuhn-Tucker
+\hfill \break
+TODO: 3 cases imgs\\
+\end{frame}
+
+\begin{frame}
+\underline{Case 1}\\
+\begin{align*}
+    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
+    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
+    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+\end{align*}
+\hfill \break
+\underline{Case 3}\\
+\begin{align*}
+    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
+    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
+    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{Case 2}\\
+\begin{align*}
+    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
+    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
+    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+\end{align*}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 5  Discrete Time Portfolio Selection %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Time Portfolio Selection}
-\begin{frame}
-    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
-\end{frame}
-\subsection{Subsection}
 \subsection{Subsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 6  Mean-Variance Portfolio Choice and Asset Pricing %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mean-Variance Portfolio Choice and Asset Pricing}
-\begin{frame}
-    Unless the user enters their own custom frame titles and subtitles, Elegant Slides automatically inserts the section title and, if specified, the subsection title as frame titles and frame subtitles.
-    This frame has a custom title and a custom subtitle.\footnote{This is a footnote. See also \textcite{example_2022}. }
-\end{frame}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section{Math of Continuous Time Finance}
 \subsection{Subsection}
-\subsection{Subsection}
 
 \section{Continuous Time Diffusion Process}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section{Continuous Time Portfolio Selection}
 \subsection{Subsection}
-\subsection{Subsection}
 
 \section{Continuous Time Portfolio Selection and Asset Pricing}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section{Extended Model}
 \subsection{Subsection}
-\subsection{Subsection}
 
 \section{Consumption Based CAPM}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section{Introduction to Options}
 \subsection{Subsection}
-\subsection{Subsection}
 
 \section{Continuous Time Option Pricing}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section{The Options Approach to Valuing Risky Debt}
 \subsection{Subsection}
-\subsection{Subsection}
 
 \section{Stochastic Models of the Term Structure}
-\subsection{Subsection}
 \subsection{Subsection}
 
 \section*{References}
