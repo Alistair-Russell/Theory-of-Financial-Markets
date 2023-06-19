@@ -824,35 +824,65 @@ Final Wealth:
 
 \begin{frame}
 Kuhn–Tucker conditions:
-TODO: add Kuhn-Tucker
-\hfill \break
-TODO: 3 cases imgs\\
+\begin{align*}
+    &\frac{df}{dx} \boldsymbol\leq 0,\;\frac{df}{dx}\cdot x=0 \;\;\;\;\;\;\;\;\;\;\;\;\textit{the problem has a lower constraint, $0\leq x$}\\
+    &\frac{df}{dx} \boldsymbol\geq 0,\;\frac{df}{dx}\cdot (w_0-x)=0 \;\;\;\;\textit{the problem has an upper constraint, $x\leq w_0$}\\
+\end{align*}
+\begin{figure}[threecases]
+    \includegraphics[width=0.8\textwidth]{L4-three-cases.png}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
 \underline{Case 1}\\
-\begin{align*}
-    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
-    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
-    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
-\end{align*}
 \hfill \break
-\underline{Case 3}\\
+$\;\;\max\;f(x)$ at $x=0 \iff f'(x) \leq 0$\\
+$\;\;\;\;\implies w=w_0$ and $u'(w) = u'(w_0) = \textit{constant}$\\
 \begin{align*}
-    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
-    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
-    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+    \therefore \;\;\;\;&f'(0) = u'(w_0)E[z]\\
+    &x=0 \iff E[z] \leq 0 \;\;\;\; [or\; E[z] \leq r_f]\\
+    &x>0 \iff E[z] > 0\;\;\;\; \textit{independent of risk aversion}\\
 \end{align*}
+\underline{Case 3}\\
+\[f'(w_0) = E[u'(w_0+w_0z)z] \geq 0\]
 \end{frame}
 
 \begin{frame}
-\underline{Case 2}\\
+\underline{Case 2:} Interior maximum at $f'(x^*)=0$\\
+\[E[u'(w_0+x^*z)z] = 0\]
+\hfill \break
+given $u(\cdot)$ and the distribution of $z$, this can be solved for $x^*$.\\
+\hfill \break
+\begin{itemize}
+    \item How does $x^*$ change with $w_0$? \textit{(see next page: implicit fn. thm.)}\\
+\end{itemize}
+\[\frac{dx^*}{dw_0} = -\frac{\partial f'/\partial w_0}{\partial f'/\partial x^*} = \frac{E[u''(w)z]}{E[u''(w)z^2]}\;\;\;\;\textit{(where $u''(w) < 0$)}\]
+\[\therefore \;\; sign(\frac{dx^*}{dw_0}) = sign(E[u''(w)z])\]
+\end{frame}
+
+\begin{frame}
+\underline{Recall:} Implicit Function Theorem\\
 \begin{align*}
-    \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
-    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
-    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+    &g(x,y) = 0\\
+    &\frac{dx}{dy} = -\frac{\partial g / \partial y}{\partial g / \partial x}\\
 \end{align*}
 \end{frame}
+
+\subsection{Relationships to Risk Aversion}
+\begin{frame}
+We will now show that \underline{decreasing} $A(w)$, that is $A'(w) < 0$, $\implies \frac{dx^*}{dw_0}>0$.\\
+\hfill \break
+Decreasing $A(w)$ implies
+\begin{align*}
+    -\frac{u''(w)}{u'(w)} = A(w_0+xz) &\leq A(w_0)\;\;\;\;\textit{for $z \geq 0$}\\
+    \therefore \;\; u''(w_0+xz) &\geq -A(w_0)\cdot u'(w_0+xz)\\
+\end{align*}
+\end{frame}
+
+\subsection{Unbounded Utility Functions}
+
+\subsection{Multi-period Utility Functions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 5  Discrete Time Portfolio Selection %%%%%%%%%%%%%%%
