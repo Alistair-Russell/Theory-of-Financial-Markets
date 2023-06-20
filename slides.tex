@@ -869,7 +869,7 @@ given $u(\cdot)$ and the distribution of $z$, this can be solved for $x^*$.\\
 \end{align*}
 \end{frame}
 
-\subsection{Relationships to Risk Aversion}
+\subsection{Relationship between Utility Functions and Risk Aversion}
 \begin{frame}
 We will now show that \underline{decreasing} $A(w)$, that is $A'(w) < 0$, $\implies \frac{dx^*}{dw_0}>0$.\\
 \hfill \break
@@ -877,12 +877,103 @@ Decreasing $A(w)$ implies
 \begin{align*}
     -\frac{u''(w)}{u'(w)} = A(w_0+xz) &\leq A(w_0)\;\;\;\;\textit{for $z \geq 0$}\\
     \therefore \;\; u''(w_0+xz) &\geq -A(w_0)\cdot u'(w_0+xz)\\
+    \textit{mult by $z \geq 0$} \;\;\;\; u''(w_0+xz)z &\geq -A(w_0)\cdot u'(w_0+xz)z\\
+\end{align*}
+and the same inequality holds for $z \leq 0$...
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    \therefore \;\; E[u''(w)z] &\geq -A(w_0)\cdot E[u'(w)z]\\
+    \therefore \;\; \textit{decreasing }A(w) &\implies \frac{dx^*}{dw_0}>0 \;\;\;\;\textbf{(power)}\\
+    \textit{constant }A(w) &\implies \frac{dx^*}{dw_0}=0 \;\;\;\;\textbf{(exponential)}\\
+    \textit{increasing }A(w) &\implies \frac{dx^*}{dw_0}<0 \;\;\;\;\textbf{(quadratic)}\\
 \end{align*}
 \end{frame}
 
+\begin{frame}
+By defining $x = \alpha w_0$ as a fraction of wealth,
+\[\tilde w = w_0 + \alpha w_0 \tilde z = w_0(1+\alpha \tilde z)\]
+we could have proven similar results for $R(w)$.
+\begin{align*}
+    \textit{decreasing }R(w) &\implies \frac{d\alpha^*}{dw_0}>0\\
+    \textit{constant }R(w) &\implies \frac{d\alpha^*}{dw_0}=0 \;\;\;\;\textbf{(power, logarithmic)}\\
+    \textit{increasing }R(w) &\implies \frac{d\alpha^*}{dw_0}<0 \;\;\;\;\textbf{(exponential, quadratic)}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{Exponential Utility}
+\[u(w) = -\frac{1}{a}e^{-aW}\]
+\begin{align*}
+    \textit{1st order condition:}\;\;\;\; E[e^{-a(w_0+x^*z)} \cdot z] &= 0\\
+    f'(\cdot) = e^{-aW_0} &= 0\;\;\;\;\textit{where $x^*$ is independent of $w_0$}\\
+\end{align*}
+\begin{itemize}
+    \item How does $x^*$ change with $a$?\\
+\end{itemize}
+\begin{align*}
+    \frac{dx^*}{da} &= -\frac{\partial f'/\partial a}{\partial f'/\partial x^*} = -\frac{E[-z^2 x^*e^{-ax^*z}]}{E[-z^2 ae^{-ax^*z}]}\\
+    \frac{dx^*}{da} &= -\frac{x^*}{a}<0 \;\;\;\; \textit{for $x^*>0$}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{Power Utility}
+\[u(w) = \frac{w^\gamma}{\gamma} = u(w_0(1+\alpha z))\]
+\begin{align*}
+    E[(w_0(1+\alpha^*z))^{\gamma-1}\cdot w_0z] &= 0\\
+    f'(\cdot) = E[(1+\alpha^*z)^{\gamma-1}\cdot z] &= 0\;\;\;\;\textit{where $\alpha^*$ is independent of $w_0$}
+\end{align*}
+\begin{itemize}
+    \item How does $\alpha^*$ change with $\gamma$?\\
+\end{itemize}
+\begin{align*}
+    \frac{d\alpha^*}{d\gamma} &= -\frac{\partial f'/\partial \gamma}{\partial f'/\partial \alpha^*} >0 \;\;\;\; \textit{for $\gamma<1$ and $\alpha^*>0$}\\
+\end{align*}
+the more risk averse the investor, the less proportion they will buy of a risky asset
+\end{frame}
+
+\begin{frame}
+Argument of utility function $\rightarrow$ \underline{wealth}\\
+\hfill \break
+When is it independent of $w_0$ and depends only on the set of risky prospects, $\tilde y$?\\
+\[iff\rightarrow u(w_0+\tilde y) = a u(\tilde y) + b\]
+This is only satisfied by exponential and linear utility functions of wealth.\\
+\hfill \break
+In both cases we can substitute $w = y+w_0$, the order does not change ($A(x) = constant$)
+\end{frame}
+
 \subsection{Unbounded Utility Functions}
+\begin{frame}
+\underline{St. Petersburg Paradox}: "proves" risk aversion since the expected value of the gamble designed to pay $\$2^n$ if the first occurrence of "heads" is on the $n^{th}$ toss is a payout of $\infty$.\\
+\hfill \break
+In the same fashion, for any unbounded (from above) utility function, there exists a solution $w_n$ to $u(w)=2^n$ for all $n$. Thus, if we make the payoffs $u^{-1}(2^n)$, the value of the gamble to our risk averse individual...
+\[\sum_{n=1}^\infty \frac{1}{2^n} \cdot u[u^{-1}(2^n)] = \sum_{n=1}^\infty \frac{1}{2^n} \cdot 2^n = \infty\]
+\begin{itemize}
+    \item Note: not all gambles can be compared (violates Axiom I Completeness). Eg. consider a payoff of $u^{-1}(3^n)$ instead of $u^{-1}(2^n)$\\
+\end{itemize}
+\end{frame}
 
 \subsection{Multi-period Utility Functions}
+\begin{frame}
+Defined over the vector of consumption withdrawals from wealth.\\
+\[u(\underline{c}) = u(c_0, c_1, ..., c_T)\]
+It is often convenient to assume that utility is \underline{additively separable}, ie.\\
+\[u(\underline{c}) = \sum_{t=0}^T u(c,t)\]
+the level of consumption in any period does not affect the amount of utility derived from consumption in any other period.\\
+\end{frame}
+
+\begin{frame}
+Here we can define the concept of \underline{time preference}\\
+\[\rho(c,t) = \frac{\partial u/ \partial c(t)}{\partial u/ \partial c(t+1)} = \frac{U_c(c,t))}{U_c(c,t+1)}\]
+\begin{align*}
+    \textit{if }\;\;\;\; U(c,t) = f(t) U(c) \;\;&\rightarrow\;\; \rho(t) = \frac{f(t)}{f(t+1)}\\
+    \textit{and if }\;\;\;\; \rho(t) = \rho\;\textit{constant } \;\;&\rightarrow\;\; f(t)=\rho^{-t}\\
+\end{align*}
+\[u(\underline{c}) = \sum_{t=0}^T \rho^{-t}U(c)\]
+This is very common in economic problems. In this framework $\rho$ can be viewed as a \underline{personal discount factor for utility over time}. 
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 5  Discrete Time Portfolio Selection %%%%%%%%%%%%%%%
