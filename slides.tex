@@ -87,9 +87,7 @@
 \end{itemize} 
 \end{frame}
 
-
 \subsection{St. Petersburg Paradox}
-
 \begin{frame}
 Coin flipping game: toss a coin, and continue to do so until it lands "heads".
 \begin{table}
@@ -265,11 +263,11 @@ Risk Averse\\
 TODO: risk-aversion image
 \begin{tikzpicture}[scale=0.5]
 \begin{axis}[axis lines=left,xlabel=Wealth (W),ylabel=Utility $u(W)$,xmin=0, xmax=200,ymin=0, ymax=10,xtick={0,50,100,150,200},clip=false,domain=0:200,samples=100,thick,]
-\addplot+[mark=none, dashed] {x/200*10};
-\addplot+[mark=none,smooth] coordinates {(0,0) (20,2) (50,5) (100,7.5) (200,10)};
-\addplot+[only marks, mark=*, mark options={fill=red}] coordinates {(50,5)};
-\addplot+[mark=none, dashed] coordinates {(50,0) (50,5)};
-\node[label={150:{E[u(•)] = u(Wc)}},circle,fill,inner sep=2pt] at (axis cs:50,5) {};
+    \addplot+[mark=none, dashed] {x/200*10};
+    \addplot+[mark=none,smooth] coordinates {(0,0) (20,2) (50,5) (100,7.5) (200,10)};
+    \addplot+[only marks, mark=*, mark options={fill=red}] coordinates {(50,5)};
+    \addplot+[mark=none, dashed] coordinates {(50,0) (50,5)};
+    \node[label={150:{E[u(•)] = u(Wc)}},circle,fill,inner sep=2pt] at (axis cs:50,5) {};
 \end{axis}
 \end{tikzpicture}
 \end{frame}
@@ -817,8 +815,8 @@ Final Wealth:
 \end{align*}
 \begin{align*}
     \max_x \; E[u(\tilde w)] =& E[u(w_0+x\tilde z)] = f(x)\\
-    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z\\
-    f''(x) =& E[u''(\tilde w)z^2 < 0 \;\;\;\;\implies f \textit{ concave}\\
+    \textit{1st order cond. }\;\;\;\; f'(x) =& E[u'(\tilde w)z]\\
+    f''(x) =& E[u''(\tilde w)z^2] < 0 \;\;\;\;\implies f \textit{ concave}\\
 \end{align*}
 \end{frame}
 
@@ -979,43 +977,190 @@ This is very common in economic problems. In this framework $\rho$ can be viewed
 %%%%%%%%%%%%%% TOPIC 5  Discrete Time Portfolio Selection %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Time Portfolio Selection}
-\subsection{Subsection}
+\includepdf[page={1-5}]{pdfs/topic5}
+
+\includepdf[page={7-14}]{pdfs/topic5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 6  Mean-Variance Portfolio Choice and Asset Pricing %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mean-Variance Portfolio Choice and Asset Pricing}
-\subsection{Subsection}
+\includepdf[page={2-}]{pdfs/topic6}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 7  Math of Continuous Time Finance %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Math of Continuous Time Finance}
-\subsection{Subsection}
 
+\begin{frame}
+We saw that the \textbf{intertemportal consumption portfolio} problem could in many cases be restricted as a \underline{single period problem by introducing a derived utility function of wealth} in place of the utility function defined over lifetime consumption.\\
+\hfill\break
+This is solvable in principle, but messy... In a single period framework, mean-variance analysis simplifies things because the portfolio demands are the solution to a set of simultaneous \underline{linear} equations.\\
+\hfill\break
+Mean-variance analysis works only for the quadratic utility function with a separating distribution. However, for certain types of distributions mean-variance analysis may be \underline{approximately} correct ("compact distributions") for broad classes of utility functions.
+\end{frame}
+
+\subsection{Compact Distributions}
+
+\begin{frame}
+\underline{"Compact Distributions"}:\\
+\hfill\break
+Let $\tilde x$ be a random variable with\\
+\begin{align*}
+    \bar x =& 0\\
+    Var(\tilde x) =& 1\\
+    |E[x^k]| \equiv& |mk| < \infty \;\;\;\; \textit{finite central moments}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Compact distribution when $t \to 0$\\
+\[\tilde z \equiv \mu t + f(t)\tilde x \equiv \mu t + t^\delta g(t) \tilde x\]
+where $t^\delta$ is the lowest power in $f(t)$ so...\\
+\[\lim_{t \to 0} g(t) = \sigma \;\;\;\; \textit{a constant}\]
+Then the mean and the central moments are\\
+\begin{align*}
+    \bar z =&\; \mu t\\
+    M_k \equiv E[(\tilde z - \bar z)^k] =&\; E[(t^{k\delta}g^k \tilde x^k]\\
+    =&\; t^{k\delta}g^k m_k\\
+    &\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\textit{(note that: $M_2 = g^2 t^{2\delta}$)}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Now define\\
+\[L \equiv \lim_{t \to 0}\Bigg[\frac{M_2}{\bar z}\Bigg] = \lim_{t \to 0}\Bigg[\frac{g^2 t^{2\delta-1}}{\mu}\Bigg] = \frac{\sigma^2}{\mu}\lim_{t\to0}t^{2\delta-1}\]
+therefore\\
+\begin{align*}
+    \delta>\frac{1}{2} \implies& L=0\\
+    \delta=\frac{1}{2} \implies& L=\frac{\sigma^2}{\mu}\\
+    0<\delta<\frac{1}{2} \implies& L=\infty\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+For the higher moments\\
+\[L_k \equiv \lim_{t \to 0}\Bigg[\frac{M_k}{M_2}\Bigg] = \lim_{t \to 0}\Bigg[t^{(k-2)\delta} g^{k-2}m_k\Bigg] = \sigma^{k-2} m_k \lim_{t \to 0} t^{(k-2)\delta}=0\]
+\textit{...for $k>2, \delta \geq 0$}\\
+\hfill\break
+Thus, in general for small $t$ $(dt)$ if:
+\begin{align*}
+    \delta>\frac{1}{2}& \;\;\;\; \textit{only expectation "matters"}\\
+    0<\delta<\frac{1}{2}& \;\;\;\; \textit{only variance "matters"}\\
+    \delta=\frac{1}{2}& \;\;\;\; \textit{expectation and variance have similar importance}\\
+    \rightarrow \textit{higher moments }\; & \textit{\underline{never} "matter" - also true for \underline{non-central} moments}\\
+\end{align*}
+\end{frame}
+
+\subsection{Implications for Portfolio Selection}
+\begin{frame}
+Set the rate of return on a portfolio,\\
+\[ z = Z-1\]
+Consider a single period problem or a single period problem embedded in a multiperiod problem.
+\[E[u(w_0 Z)] = E[u(w_o(1+z))]\]
+Using a Taylor series expansion:
+\begin{align*}
+    &= E[u(w_0)+u'(w_0)w_0 \tilde z + \frac{1}{2}u''(w_0)w_0^2 \tilde z^2 + u'''(w_0)(1+k\tilde z))\cdot \mathcal{O}(\tilde z^3)]\;\;\;\; \textit{with $0<k<1$}\\
+    &= u(w_0)+b\mu t -c[g^2t^{2\delta}+\mu^2t^2]+E[u'''...]\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    &= u(w_0)+\boldsymbol{b}\mu t -\boldsymbol{c}[g^2t^{2\delta}+\mu^2t^2]+E[u'''...]\\
+\end{align*}
+where
+\begin{align*}
+    b &\equiv u'(w_0)w_0 >0\\
+    c &\equiv -\frac{1}{2}u''(w_0)w_0^2 >0\\
+\end{align*}
+If $u'''(\cdot)$ is bounded, the last term is $\mathcal{O}(M_3)$, therefore:
+\[\lim_{t\to0} \Bigg[\frac{E[u(w_0z)-u(w_0)]}{t}\Bigg] = b\mu-c\sigma^2t^{2\delta-1}\]
+\end{frame}
+
+\begin{frame}
+Recall\\
+\[\tilde z \equiv \mu t + t^\delta g(t) \tilde x\]
+So\\
+\begin{align*}
+    E[\tilde z] =&\; \mu t\\
+    E[\tilde z^2] =&\; \mu^2 t^2 + 2\mu t^{\delta+1} g^2(t) E[\tilde x] + t^{2\delta}g^2 E[\tilde x^2]\\
+    =&\; u^2t^2+t^{2\delta}g^2\\
+\end{align*}
+\[\lim_{t\to0} g(t) = \sigma\]
+\end{frame}
+
+\begin{frame}
+Then as $t$ gets small, all investors will approximately act:\\
+\begin{itemize}
+    \item in a risk neutral fashion if $\delta>\frac{1}{2}$
+    \item in a 'super risk averse' fashion if $\delta<\frac{1}{2}$
+    \item like mean-variance maximizers if $\delta=\frac{1}{2}$
+\end{itemize}
+\hfill\break
+It is the mean and variance of the \underline{rate of return} rather than the gross return that matters.\\
+\end{frame}
+
+\begin{frame}
+One reasonable condition for this probability convergence model would be the limit of portfolio decisions over shorter and shorter time intervals if prices can not change drastically in a short time (continuous path).\\
+\hfill\break
+In such cases, rates of return cannot be "large". Thus, M-V analysis might be salvageable for general utility functions for short time periods.\\
+\hfill\break
+Then for $\delta=\frac{1}{2}$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 8   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Diffusion Process}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 9   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Portfolio Selection}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 10   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Portfolio Selection and Asset Pricing}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 11   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Extended Model}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 12   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Consumption Based CAPM}
 \subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 13  Introduction to Options %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction to Options}
-\subsection{Subsection}
+\includepdf[page={2-}]{pdfs/topic13}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 14   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Option Pricing}
-\subsection{Subsection}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 15  The Options Approach to Valuing Risky Debt %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Options Approach to Valuing Risky Debt}
-\subsection{Subsection}
+\includepdf[page={2-}]{pdfs/topic15}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 16   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Stochastic Models of the Term Structure}
-\subsection{Subsection}
+
 
 \section*{References}
 \begin{frame}[allowframebreaks]{References}

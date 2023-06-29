@@ -11,12 +11,14 @@
 \RequirePackage{palatino}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-
+% Styles
 \usefonttheme{serif}
 \usepackage{xfrac}
 \usepackage{styles/elegantmacros}
 \usefolder{styles}
 \usetheme[style=blue]{elegant}
+% PDF import
+\usepackage{pdfpages}
 
 \newcommand{\makepart}[1]{ % For convenience
 \part{#1} \frame{\partpage}
