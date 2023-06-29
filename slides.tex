@@ -1106,7 +1106,35 @@ One reasonable condition for this probability convergence model would be the lim
 \hfill\break
 In such cases, rates of return cannot be "large". Thus, M-V analysis might be salvageable for general utility functions for short time periods.\\
 \hfill\break
-Then for $\delta=\frac{1}{2}$
+Then for $\delta=\frac{1}{2}$:\\
+\[z \equiv \mu t + g(t)\cdot \sqrt{t} \cdot \tilde x\]
+and when $t \to dt$\\
+\[\frac{dP}{P} = z = \mu dt + \sigma \tilde x \sqrt{dt} \]
+\end{frame}
+
+\begin{frame}
+and if we define a \underline{Wiener process} as $dw = \tilde x \sqrt{dt}$, where $\tilde x$ is usually assumed to be $N(0,1)$, we have
+\[z = \mu dt + \sigma \]
+and when $t \to dt$\\
+\[\bigg(\frac{dP}{P} =\bigg)\;\;\; z = \mu dt + \sigma dw \]
+Note that,
+\[ E[dw] = \sqrt{dt}E[\tilde x] = 0 \]
+\[ Var[dw] = E[dw^2] = dt E[\tilde x^2] = dt \]
+\end{frame}
+
+\subsection{Infinitely divisible stochastic process}
+\begin{frame}
+Before continuing the problem of continuous portfolio revisions, we must define random variables and probability in \underline{continuous time} in a meaningful fashion.\\
+\hfill\break
+A random variable is said to follow a stochastic process over time which is "\underline{infinitely divisible}" if the observation period can be made vanishingly small and the characteristics of the stochastic process remain the same.\\
+\hfill\break
+Suppose we observe a random variable at discrete points in time and measure the change:\\
+\[\Delta \tilde y(t) = \tilde y(t+1)-y(t)\]
+\end{frame}
+
+\begin{frame}
+If we assume that this change is the result of $n$ independent and identically distributed small changes which occur every $\Delta t = \frac{1}{n}$ units of time then:\\
+\[\Delta \tilde y(t) = \sum_{j=1}^n \tilde x(j)\]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
