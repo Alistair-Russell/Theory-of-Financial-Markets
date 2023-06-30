@@ -1133,15 +1133,95 @@ Suppose we observe a random variable at discrete points in time and measure the 
 \end{frame}
 
 \begin{frame}
-If we assume that this change is the result of $n$ independent and identically distributed small changes which occur every $\Delta t = \frac{1}{n}$ units of time then:\\
+If we assume that this change is the result of $n$ independent and identically distributed (iid) small changes which occur every $\Delta t = \frac{1}{n}$ units of time then:\\
 \[\Delta \tilde y(t) = \sum_{j=1}^n \tilde x(j)\]
+When we consider the limit of the above expression as $n\to\infty$, we have an "infinitely divisible" stochastic process $y(t)$.\\
+\hfill\break
+Denote:\\
+\[E[\;\Delta \tilde y(t) \;/\; y(t)\;] = \mu\]
+\[Var[\;\Delta \tilde y(t) \;/\; y(t)\;] = \sigma^2\]
+\end{frame}
+
+\begin{frame}
+Also assume that the $x$'s have a discrete distribution with $m$ possible outcomes and associates probabilities $p_i$.\\
+Then\\
+\begin{align*}
+    E[\tilde x] =& \sum_{i=1}^m p_i x_i = \mu \Delta t\\
+    \tag{$\star$}
+    Var[\tilde x] =& \sum_{i=1}^m p_i (x_i-\mu \Delta t)^2 = \sigma^2 \Delta t\\
+\end{align*}
+In general, $p_i$ and $x_i$ must be functions of $\Delta t = \frac{1}{n}$ to satisfy ($\star$)...
+\end{frame}
+
+\begin{frame}
+A simple example is provided by the binomial process:\\
+\begin{align*}
+    x_1 =& \mu/n + \sigma/\sqrt{n}\\
+    x_2 =& \mu/n - \sigma/\sqrt{n}\\
+    p_1 =& p_2 = \frac{1}{2}\\
+\end{align*}
+\begin{align*}
+    E[\tilde x] =& \sum p_i x_i = \mu / n = \mu \Delta t\\
+    Var[\tilde x] =& \sum p_i (x_i-\frac{\mu}{n})^2 = \sigma^2/n = \sigma^2 \Delta t\\
+\end{align*}
+in conformance with ($\star$). In this case, over a unit interval, $\Delta \tilde y$ is distributed binomially with mean $=n\mu\Delta t = \mu$ and variance $=np_1p_2(x_1-x_2)^2=\sigma^2$\\
+\end{frame}
+
+\begin{frame}
+As $n\to\infty$, this binomial distribution approaches the normal distribution, but over any subperiod (instant) there is a 0 chance of non-infinitesimal change.\\
+\hfill\break
+By choosing $\mu$ and $\sigma$ to be functions of $y$, we can get virtually any distribution for $\Delta y$ over the unit interval that we wish.\\
+\hfill\break
+In general, we derive $\Delta y$ by adding $x$'s - hence the prototypical distribution for $X$ is the normal...\\
+\end{frame}
+
+\begin{frame}
+Let $\tile x$ be the standard normal random variable, then\\
+\[\tilde X = \mu/n + \tilde x \sigma/\sqrt{n} = \mu \Delta t + \sigma\tilde x \sqrt{\Delta t}\]
+satisfies ($\star$) and formally the limiting process distribution for $\Delta y$ is\\
+\begin{align*}
+    dY =& \mu dt = \sigma \tilde x \sqrt{dt}\\
+    =& \mu dt = \sigma dw\\
+\end{align*}
+where $dw=\tilde x \sqrt{dt}$ is a Wiener process.\\
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%% TOPIC 8   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 8  Continuous Time Diffusion Process %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Continuous Time Diffusion Process}
-\subsection{Subsection}
+\section{Continuous Time Diffusion Processes}
+\subsection{Diffusion Processes}
+\begin{frame}
+A \underline{diffusion process} is a continuous time stochastic process which is compact and infinitely divisible.\\
+\hfill\break
+\underline{Continuous Time Diffusion Processes}:\\
+The instantaneous return on assets are then described by the stochastic differential equation:\\
+\[\frac{dP}{P} = \mu dt + \sigma dw\]
+\begin{figure}[diffusion]
+    \includegraphics[width=0.4\textwidth]{images/L8-diffusion.png}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Continuous (no jumps), non-differentiable process\\
+\begin{figure}[diffusion]
+    \includegraphics[width=0.6\textwidth]{images/L8-diffusion.png}
+    \centering
+\end{figure}
+We will see if $\mu$ and $\sigma$ are constants, the distribution of $\tilde P_1$ is log-normal.\\
+\end{frame}
+
+\begin{frame}
+It is generally useful to think of the Wiener process $dv$ as:\\
+\begin{figure}[diffusion]
+    \includegraphics[width=1\textwidth]{images/L8-wiener.png}
+    \centering
+\end{figure}
+Also note that even though $dv$ is stochastic, $dv^2$ is non-stochastic (in probability limit).
+\end{frame}
+
+\subsection{Chebyshev's Inequality}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 9   %%%%%%%%%%%%%%%
