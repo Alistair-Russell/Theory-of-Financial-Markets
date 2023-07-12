@@ -1176,7 +1176,7 @@ In general, we derive $\Delta y$ by adding $x$'s - hence the prototypical distri
 \end{frame}
 
 \begin{frame}
-Let $\tile x$ be the standard normal random variable, then\\
+Let $\tilde x$ be the standard normal random variable, then\\
 \[\tilde X = \mu/n + \tilde x \sigma/\sqrt{n} = \mu \Delta t + \sigma\tilde x \sqrt{\Delta t}\]
 satisfies ($\star$) and formally the limiting process distribution for $\Delta y$ is\\
 \begin{align*}
@@ -1221,7 +1221,31 @@ It is generally useful to think of the Wiener process $dv$ as:\\
 Also note that even though $dv$ is stochastic, $dv^2$ is non-stochastic (in probability limit).
 \end{frame}
 
+
 \subsection{Chebyshev's Inequality}
+\begin{frame}
+If the mean ($\mu$) and variance ($\sigma^2$) of a distribution $\tilde{y}$ exist, then\\
+\[Prob[|\tilde y - \mu| \geq \theta] \leq \frac{\sigma^2}{\theta^2}\]
+For example, if $\tilde{y} = d\tilde{v}^2 = \tilde x^2 dt$,\\
+\begin{align*}
+    \longrightarrow E[d\tilde{v}^2] =&\; E[\tilde{x}^2 dt] = dt\\
+    E[(d\tilde{v}^2 - dt)^2] =&\; E[d\tilde{v}^4] - dt^2 = E[d\tilde{x}^4 dt^2] - dt^2 = (m_4 - 1)dt^2\\
+    \longrightarrow var(d\tilde{v}^2) =&\; 0 (dt^2)\\
+\end{align*}
+\[\therefore Prob[|\tilde y - \mu| \geq \theta] \leq \frac{(m_4-1)}{\theta^2}dt^2 = 0(dt^2)\]
+\[\implies {p\!\!-\!\!\lim} d\tilde{v}^2 = dt\]
+\end{frame}
+
+\begin{frame}
+Also,\\
+\begin{align*}
+    E[d\tilde{v_i}d\tilde{v_j}] =&\; E[\tilde{x_i}\sqrt{dt}\tilde{x_j}\sqrt{dt}] = \rho dt\\
+    E[(d\tilde{v_i}d\tilde{v_j}-\rho dt)^2] =&\; E[\tilde{x_i^2}\tilde{x_j^2}dt^2]-\rho^2 dt^2\\
+    =&\; (E[\tilde{x_i^2}\tilde{x_j^2}]-\rho^2) dt^2 = (m_{2,2}-\rho^2)dt^2\\
+\end{align*}
+\[\therefore Prob[|d\tilde{v_i}d\tilde{v_j} - \rho dt| \geq \theta] \leq \frac{(m_{2,2}-\rho^2)}{\theta^2}dt^2 = 0(dt^2)\]
+\[\implies {p\!\!-\!\!\lim} d\tilde{v_i}d\tilde{v_j} = \rho dt\]
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 9   %%%%%%%%%%%%%%%
