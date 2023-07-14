@@ -1367,7 +1367,83 @@ therefore if $\alpha$ and $\sigma$ are constant, price relatives are log-normall
 %%%%%%%%%%%%%% TOPIC 9   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Portfolio Selection}
-\subsection{Subsection}
+\begin{frame}
+Suppose that security prices are such that their realized rates of return are compact with means and variances of equal importance, ie. the rate of return $\tilde z(t)$ follows:
+\begin{equation}
+    \tilde z_i(t) \equiv \frac{dP_i}{P_i} = \alpha_i dt + \sigma_i dv_i
+\end{equation}
+\begin{align*}
+    \textit{with}\;\;\;\; &E[\frac{dP_i}{P_i}] =\; \alpha_i dt\\
+    &E[(\frac{dP_i}{P_i})^2] =\; Var[\frac{dP_i}{P_i}] = \sigma_i^2 dt\\
+    &E[(\frac{dP_i}{P_i})(\frac{dP_j}{P_j})] =\; \sigma_{ij}^2 dt = \sigma_i \sigma_j \rho_{ij} dt\\
+\end{align*}
+For the moment we assume that these parameters are constant (for normal distribution).\\
+\end{frame}
+
+\begin{frame}
+The continuous-time version of the portfolio problem (assuming again a time-additive and state-independent utility function of consumption) is:\\
+\begin{equation} \tag{2}
+    \max_{C(t),\ubar{w}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
+\end{equation}
+The wealth accumulation equation:\\
+\begin{equation} \tag{3}
+    W(t+dt) = [W(t)+Y(t)dt-C(t)dt] \sum_{i=0}^n w_i(t)(1+z_i(t))
+\end{equation}
+where $C(t)$ and $Y(t)$ are now flows...
+\end{frame}
+
+\begin{frame}
+For simplicity, assume $Y=0$,\\
+\begin{align*}
+    W(t+dt) &= [W(t)-C(t)dt] \Bigg[1 + \sum_{i=0}^n w_i(t)(z_i(t)) \Bigg] = \Bigg[1 + \sum_{i=0}^n w_i(\frac{dP_i}{P_i}) \Bigg]\\
+    &= W(t)-C(t)dt+W(t)\sum_{i=0}^n w_i\frac{dP_i}{P_i}\\
+    \therefore \;\; dW(t) &= -C(t)dt + W(t)\sum_{i=0}^n w_i\frac{dP_i}{P_i}\\
+    &\textit{but} \;\;\;\; \sum_{i=0}^n w_i\frac{dP_i}{P_i} = \sum_{i=1}^n w_i[\alpha_i dt + \sigma_i dv_i] + (1-\sum_{i=1}^n w_i)r dt\\
+    &\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; = \Bigg\{\sum_{i=1}^n w_i(\alpha_i-r) + r \Bigg\}dt + \sum_{i=1}^n w_i \sigma_i dv_i \;\;\;\; \textit{...}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+So,
+\begin{equation} \tag{4}
+    dW(t) = -C(t)dt + W(t)\Bigg[\sum_{i=1}^n w_i(\alpha_i-r) + r\Bigg]dt +W(t)\sum_{i=1}^n w_i \sigma_i dv_i
+\end{equation}
+and,
+\begin{align} \tag{5}
+\begin{split}
+    E_t[dW(t)] &= -Cdt + W\Bigg[\sum w_i(\alpha_i-r) + r\Bigg]dt = \alpha_w dt
+    \\
+    Var_t[dW] &= E_t[dW^2] = W^2 \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} dt = \sigma_w^2 dt 
+\end{split}
+\end{align}
+where the summations can be replaced with their vector equivalents...
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    dW &= \alpha_w dt + \sigma_w dv_w\\
+    \sigma_w dv_w &= W \sum w_i \sigma_i dv_i\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Define again the derive utility function of wealth,
+\begin{equation} \tag{6}
+    J[W(t),t] \equiv \max E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T] \Bigg]
+\end{equation}
+Then,
+\begin{equation} \tag{7}
+    J[W(t),t] = \max E_t \Bigg[ \int_t^{t+dt} U(C,S)dS + J[W(t+dt),t+dt] \Bigg]
+\end{equation}
+\[\textit{but:}\;\;\;\; \int_t^{t+dt} U(C,S)dS = U(C,t)dt\]
+and applying Ito's Lemma,
+\[ J[W(t+dt),t+dt] = J[W,t] + J_tdt + J_WdW + \frac{1}{2} J_{WW}(dW)^2\]
+\end{frame}
+
+\begin{frame}
+\[ J[W(t+dt),t+dt] = J[W,t] + J_tdt + J_WdW + \frac{1}{2} J_{WW}(dW)^2\]
+Substituting in (7), taking $E_t$, substituting (5), eliminating $J$ from both sides of the equation, and finally dividing by $dt$ we obtain:\\
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 10   %%%%%%%%%%%%%%%
