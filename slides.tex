@@ -1233,7 +1233,7 @@ For example, if $\tilde{y} = d\tilde{v}^2 = \tilde x^2 dt$,\\
     \longrightarrow var(d\tilde{v}^2) =&\; 0 (dt^2)\\
 \end{align*}
 \[\therefore Prob[|\tilde y - \mu| \geq \theta] \leq \frac{(m_4-1)}{\theta^2}dt^2 = 0(dt^2)\]
-\[\implies {p\!\!-\!\!\lim} d\tilde{v}^2 = dt\]
+\[\implies {p\!\!-\!\!\lim}\; d\tilde{v}^2 = dt\]
 \end{frame}
 
 \begin{frame}
@@ -1244,7 +1244,123 @@ Also,\\
     =&\; (E[\tilde{x_i^2}\tilde{x_j^2}]-\rho^2) dt^2 = (m_{2,2}-\rho^2)dt^2\\
 \end{align*}
 \[\therefore Prob[|d\tilde{v_i}d\tilde{v_j} - \rho dt| \geq \theta] \leq \frac{(m_{2,2}-\rho^2)}{\theta^2}dt^2 = 0(dt^2)\]
-\[\implies {p\!\!-\!\!\lim} d\tilde{v_i}d\tilde{v_j} = \rho dt\]
+\[\implies {p\!\!-\!\!\lim}\; d\tilde{v_i}d\tilde{v_j} = \rho dt\]
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    E[\frac{dP}{P}] =&\; \mu dt + \sigma E[dv]\\
+    =&\; \mu dt + \sigma \cdot 0\\
+\end{align*}
+\[\therefore \mu = \frac{E[\frac{dP}{P}]}{dt} \;\;\;\; \textit{the instantaneous expected rate of return}\]
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    (\frac{dP}{P})^2 =&\; \mu^2 dt^2 + 2\mu\sigma \; dt \; dv + \sigma^2 dt^2\\
+    =&\; 0 + 0 + \sigma^2 dt^2\\
+\end{align*}
+\[\therefore \sigma^2 = \frac{(\frac{dP}{P})^2}{dt} = \frac{E[\frac{dP}{P}]^2}{dt} \;\;\;\; \textit{the instantaneous variance of return}\]
+\end{frame}
+
+\begin{frame}
+Then,\\
+\[\frac{dP}{P} = \mu dt + \sigma dv\]
+The instantaneous return equals the expected return (of magnitude $dt$) plus the unanticipated return (of magnitude $\sqrt{dt}$).
+\end{frame}
+
+\begin{frame}
+For two assets,\\
+\begin{align*}
+    \frac{dP_i}{P_i} =&\; \mu_i dt + \sigma_i dv_i\\
+    \frac{dP_j}{P_j} =&\; \mu_j dt + \sigma_j dv_j\\
+\end{align*}
+\[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
+\end{frame}
+
+\begin{frame}
+\[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
+the first three terms are order $< dt$, so:
+\[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = 0 + 0 + 0 + \sigma_i\sigma_j\;dv_i\;dv_j\]
+and $dv_i\;dv_j=\rho_{ij}dt$ represents the correlation between $dv_i$ and $dv_j$, so:
+\[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \sigma_i\sigma_j\rho_{ij}dt \equiv \sigma_{ij} dt\]
+\end{frame}
+
+\subsection{Ito's Lemma}
+\begin{frame}
+\textbf{Ito's Lemma}: The rule to compute the total differential in the presence of stochastic variables (diffusion process):
+\[F \equiv F(P;t)\]
+\[dF = F_P dP + F_t dt + \frac{1}{2} F_{PP}(dP)^2\]
+The first two terms are the classical total differential if $P$ and $t$ are deterministic.\\
+\hfill\break
+If $P$ is stochastic, we have to add the next term in the Taylor series expansion because $(dP)^2$ is of order $dt$.
+\end{frame}
+
+\begin{frame}
+Therefore if $\frac{dP}{P} = \mu dt + \sigma dv$,\\
+\begin{align*}
+    dF =&\; F_P(\mu P dt + \sigma P dv)+F_t dt + \frac{1}{2} F_{PP}(\sigma^2 P^2 dt)\\
+    dF =&\; (\frac{1}{2} \mu^2P^2 F_{PP}+\mu P F_P+F_t)dt+P F_P \sigma dv\\
+\end{align*}
+In general, if $F \equiv F(P_1,...,P_n,t)$ then\\
+\[dF = \sum_{i=1}^n F_{P_i}dP_i + F_tdt + \frac{1}{2} \sum_{i=1}^n\sum_{j=1}^n F_{P_iP_j}(dP_i)(dP_j)\]
+where $(dP_i)(dP_j) = P_i P_j \sigma_{ij} dt$\\
+\end{frame}
+
+\begin{frame}
+And more generally,
+\begin{align*}
+    dP =&\; \mu(P,t) dt + \sigma(P,t) dv\\
+    (dP)^2 =&\; \sigma^2(P,t) dt\\
+\end{align*}
+So  Ito's Lemma:
+\[dF = F_P dP + (F_t + \frac{1}{2} \sigma^2(P,t)F_{PP})dt\]
+\end{frame}
+
+\begin{frame}
+\underline{Example}:
+\begin{align*}
+    \frac{dP}{P} =&\; \alpha dt + \sigma dv\\
+    dP =&\; \alpha P dt + \sigma P dv\\
+\end{align*}
+and let $Y = \ln{P}$ such that
+\begin{align*}
+    Y_P =&\; \frac{1}{P} \;\;\;\; Y_t=0\\
+    Y_{PP} =&\; -\frac{1}{P^2}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{Example}: applying Ito's Lemma
+\begin{align*}
+    dY =&\; Y_P dP + \frac{1}{2} Y_{PP} (dP)^2\\
+    dY =&\; \frac{P}{P}(\alpha dt + \sigma dv)-\frac{1}{2} \frac{P^2}{P^2} \sigma^2 dt\\
+    dY =&\; (\alpha - \frac{1}{2}\sigma^2)dt + \sigma dv\\
+\end{align*}
+$Y$ receives i.i.d. random investments with instantaneous mean $\mu = (\alpha - \frac{1}{2}\sigma^2)$ and instantaneous variance $\sigma^2$.
+Therefore, by the Central Limit Theorem, the change in $Y$ over any finite time interval $(0,T)$, $Y_T-Y_0$, is normally distributed with mean $\mu T$ and variance $\sigma^2 T$ (for $\mu$ and $\sigma$ constant).
+\end{frame}
+
+\begin{frame}
+\underline{Example}: 
+\[Y_T - Y_0 = \; \ln{P_T} - \ln{P_0} = \ln{\frac{P_T}{P_0}} = \ln{(1+Z_T)}\]
+\begin{align*}
+    \ln{\frac{P_T}{P_0}} \sim &\; \mathcal{N}(\mu T, \sigma^2 T)\\
+    \frac{P_T}{P_0} \sim &\; \mathcal{LN}(\mu T, \sigma^2 T)\\
+\end{align*}
+it can be shown that:
+\[E[\frac{\tilde P_T}{P_0}]=e^{\mu T +\frac{1}{2}\sigma^2T} = e^{\alpha T}\]
+\end{frame}
+
+\begin{frame}
+\underline{Example}: 
+\[E[\frac{\tilde P_T}{P_0}]=e^{\mu T +\frac{1}{2}\sigma^2T} = e^{\alpha T}\]
+therefore the instantaneous (continuously compounding) expected rate of return is $\alpha$.
+therefore if $\alpha$ and $\sigma$ are constant, price relatives are log-normally distributed.
+\begin{figure}[diffusion]
+    \includegraphics[width=0.9\textwidth]{images/L8-lognormal.png}
+    \centering
+\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
