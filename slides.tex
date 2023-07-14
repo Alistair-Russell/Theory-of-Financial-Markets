@@ -1383,7 +1383,7 @@ For the moment we assume that these parameters are constant (for normal distribu
 \begin{frame}
 The continuous-time version of the portfolio problem (assuming again a time-additive and state-independent utility function of consumption) is:\\
 \begin{equation} \tag{2}
-    \max_{C(t),\ubar{w}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
+    \max_{C(t),\ubar{\bm{w}}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
 \end{equation}
 The wealth accumulation equation:\\
 \begin{equation} \tag{3}
@@ -1443,6 +1443,25 @@ and applying Ito's Lemma,
 \begin{frame}
 \[ J[W(t+dt),t+dt] = J[W,t] + J_tdt + J_WdW + \frac{1}{2} J_{WW}(dW)^2\]
 Substituting in (7), taking $E_t$, substituting (5), eliminating $J$ from both sides of the equation, and finally dividing by $dt$ we obtain:\\
+\begin{align*}
+    \frac{dP_i}{P_i} &= \alpha_i dt + \sigma_i dv_i\\
+    dW &= -C dt + W\sum_{i=0}^n w_i \frac{dP_i}{P_i}\\
+    E_t[dW] &= -C dt + W \sum_{i=0}^n w_i\alpha_i dt = -C dt + W \ubar{\bm{w}}'\ubar{\bm{\alpha}} dt\\
+    E_t[dW^2] &= W^2 \sum_{i=1}^n \sum_{i=1}^n w_i w_j \sigma_{ij} dt = -W^2 \ubar{\bm{w}}'\ubar{\ubar{\bm{\Sigma}}}\ubar{\bm{w}} dt\\
+    J[W(t),t] &\equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T] = \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    \frac{dP_i}{P_i} = \alpha_i dt + \sigma_i dv_i\\
+    dW = -C dt + W\sum_{i=0}^n w_i \frac{dP_i}{P_i}\\
+    E_t[dW] = -C dt + W \sum_{i=0}^n w_i\alpha_i dt = -C dt + W \ubar{\bm{w}}'\ubar{\bm{\alpha}} dt\\
+    E_t[dW^2] = W^2 \sum_{i=1}^n \sum_{i=1}^n w_i w_j \sigma_{ij} dt = -W^2 \ubar{\bm{w}}'\ubar{\ubar{\bm{\Sigma}}}\ubar{\bm{w}} dt\\
+    J[W(t),t] \equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T] = \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
+    0 = \max_{C,\bm{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\sum_{i=1}^n w_i(\alpha_i-r)+r)] + \frac{W^2}{2} J_{WW} \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} \Bigg\}\\
+    0 = \max_{C,\bm{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\ubar{\bm{w}}'(\ubar{\bm{\alpha}}_i-\ubar{\bm{1}}r)+r)] + \frac{W^2}{2} J_{WW} \ubar{\bm{w}}' \ubar{\ubar{\bm{\Sigma}}} \ubar{\bm{w}} \Bigg\}\\
+\end{align*}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
