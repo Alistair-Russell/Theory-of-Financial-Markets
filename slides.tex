@@ -1383,7 +1383,7 @@ For the moment we assume that these parameters are constant (for normal distribu
 \begin{frame}
 The continuous-time version of the portfolio problem (assuming again a time-additive and state-independent utility function of consumption) is:\\
 \begin{equation} \tag{2}
-    \max_{C(t),\ubar{\bm{w}}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
+    \max_{C(t),\vec{w}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
 \end{equation}
 The wealth accumulation equation:\\
 \begin{equation} \tag{3}
@@ -1441,34 +1441,138 @@ and applying Ito's Lemma,
 \end{frame}
 
 \begin{frame}
-\[ J[W(t+dt),t+dt] = J[W,t] + J_tdt + J_WdW + \frac{1}{2} J_{WW}(dW)^2\]
-Substituting in (7), taking $E_t$, substituting (5), eliminating $J$ from both sides of the equation, and finally dividing by $dt$ we obtain:\\
+Substituting in (7), taking $E_t$, substituting (5), eliminating $J$ from both sides of the equation, and finally dividing by $dt$...\\
 \begin{align*}
     \frac{dP_i}{P_i} &= \alpha_i dt + \sigma_i dv_i\\
     dW &= -C dt + W\sum_{i=0}^n w_i \frac{dP_i}{P_i}\\
-    E_t[dW] &= -C dt + W \sum_{i=0}^n w_i\alpha_i dt = -C dt + W \ubar{\bm{w}}'\ubar{\bm{\alpha}} dt\\
-    E_t[dW^2] &= W^2 \sum_{i=1}^n \sum_{i=1}^n w_i w_j \sigma_{ij} dt = -W^2 \ubar{\bm{w}}'\ubar{\ubar{\bm{\Sigma}}}\ubar{\bm{w}} dt\\
-    J[W(t),t] &\equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T] = \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
+    E_t[dW] &= -C dt + W \sum_{i=0}^n w_i\alpha_i dt = -C dt + W \vec{w}'\vec{\alpha} dt\\
+    E_t[dW^2] &= W^2 \sum_{i=1}^n \sum_{i=1}^n w_i w_j \sigma_{ij} dt = -W^2 \vec{w}'\bm{\Sigma}\vec{w} dt\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+We obtain
+\begin{align*}
+    J[W(t),t] &\equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T]\\
+    &= \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
+\end{align*}
+or, \textbf{(8)} Bellman Equation: Stochastic Central Theory\\
+\begin{align*}
+    0 &= \max_{C,\vec{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\sum_{i=1}^n w_i(\alpha_i-r)+r)] + \frac{W^2}{2} J_{WW} \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} \Bigg\}\\
+    0 &= \max_{C,\vec{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\vec{w}'(\vec{\alpha}_i-\vec{1}r)+r)] + \frac{W^2}{2} J_{WW} \vec{w}' \bm{\Sigma} \vec{w} \Bigg\}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{1st order conditions:}\\
+\begin{equation} \tag{9a}
+    U_C = J_W \;\;\;\; \textit{envelope condition}
+\end{equation}
+\begin{equation} \tag{9b}
+    J_W \cdot W(\vec{\alpha}-r\vec{1}) + J_{WW} W^2 \bm{\Sigma} \vec{w} = 0
+\end{equation}
+a set of linear equations, the same we get in mean-variance analysis.\\
+\begin{equation} \tag{10}
+    \vec{w}^* = -\frac{J_W}{W J_{WW}} \bm{\Sigma}^{-1}(\vec{\alpha} - r\vec{1})
+\end{equation}
+therefore $\frac{w_i^*}{w_j^*}$ is independent of utility.\\
+$\longrightarrow$ two fund separation $\longrightarrow$ all investors hold the same risky portfolio $\longrightarrow$ the market.\\
+\[\vec{m} = \frac{\bm{\Sigma}^{-1}(\vec{\alpha}-r\vec{1})}{\vec{1} \bm{\Sigma}^{-1}(\vec{\alpha}-r\vec{1})}\]
+\end{frame}
+
+\begin{frame}
+Equilibrium can be obtained from (9b)
+\[ \Bigg(-\frac{J_W^k}{J_{WW}^k}\Bigg)(\vec{\alpha} - r\vec{1}) = W^k \bm{\Sigma} \vec{w}^k \]
+risk tolerance//
+\hfill\break
+Summing over all investors: $\sigma_k$, in equilibrium demand = supply for each firm.\\
+\[ A (\vec{\alpha} - r\vec{1}) = \bm{\Sigma}\vec{V} \]
+\end{frame}
+
+\begin{frame}
+\[ A (\vec{\alpha} - r\vec{1}) = \bm{\Sigma}\vec{V} \]
+where
+\[ A = \Sigma_k \Bigg(-\frac{J_W^k}{J_{WW}^k}\Bigg) \]
+\[ \vec{V} = \Sigma_k W^k \vec{w}^k = \;\;\textit{value of firms} \]
+\[ \vec{m} = \frac{\vec{V}}{\vec{1}\vec{V}} = \frac{\vec{V}}{M} \;\;\;\;\therefore\;\;\;\; \vec{V} = M\vec{m}\]
+\[ \therefore \;\; A(\vec{\alpha}-r\vec{1}) = M \bm{\Sigma}\vec{m}\]
+\hfill\break
+where $\bm{\Sigma}\vec{m}$ represent covariances with the market...\\
+\end{frame}
+
+\begin{frame}
+Pre-multiplying by $\vec{m}'$\\
+\[ A(\alpha_m-r) = M \sigma_m^2 \]
+\begin{equation} \tag{11}
+    \therefore \;\; \alpha_i-r = \frac{\sigma_{im}}{\sigma_m^2}(\sigma_m-r) = \beta_i (\alpha_m -r)
+\end{equation}
+\hfill\break
+ie. the CAPM holds for continuously compounded rates of return (\textit{Merton's ICAPM}) for a broad class of utility functions, compact distributions.
+\end{frame}
+
+\begin{frame}
+If \underline{all} investors have \underline{log utility functions} (we will show later that if $U$ is log, $J$ is also logarithmic)\\
+\begin{align*}
+    -\frac{J_W^k}{J_{WW}^k W^k} &= 1\;\;\;\;\textit{relative risk aversion}\\
+    -\frac{J_W^k}{J_{WW}^k} &= W^k\\
+\end{align*}
+and
+\begin{align*}
+    A &= \sum_k-\frac{J_W^k}{J_{WW}^k} = W\;\;\;\;\textit{aggregate wealth}\\
+    W &= M + \;\textit{net supply of the riskless asset}\\
 \end{align*}
 \end{frame}
 
 \begin{frame}
 \begin{align*}
-    \frac{dP_i}{P_i} = \alpha_i dt + \sigma_i dv_i\\
-    dW = -C dt + W\sum_{i=0}^n w_i \frac{dP_i}{P_i}\\
-    E_t[dW] = -C dt + W \sum_{i=0}^n w_i\alpha_i dt = -C dt + W \ubar{\bm{w}}'\ubar{\bm{\alpha}} dt\\
-    E_t[dW^2] = W^2 \sum_{i=1}^n \sum_{i=1}^n w_i w_j \sigma_{ij} dt = -W^2 \ubar{\bm{w}}'\ubar{\ubar{\bm{\Sigma}}}\ubar{\bm{w}} dt\\
-    J[W(t),t] \equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T] = \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
-    0 = \max_{C,\bm{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\sum_{i=1}^n w_i(\alpha_i-r)+r)] + \frac{W^2}{2} J_{WW} \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} \Bigg\}\\
-    0 = \max_{C,\bm{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\ubar{\bm{w}}'(\ubar{\bm{\alpha}}_i-\ubar{\bm{1}}r)+r)] + \frac{W^2}{2} J_{WW} \ubar{\bm{w}}' \ubar{\ubar{\bm{\Sigma}}} \ubar{\bm{w}} \Bigg\}\\
+    \therefore \;\; \vec{\alpha}-r\vec{1} &= \frac{M}{W}\; \bm{\Sigma}\vec{m}\\
+    \vec{\alpha}_i-r &= \frac{M}{W}\; \sigma_{im} = \sigma_{iw} \;\;\;\; \textit{covariance with aggregate wealth}\\
 \end{align*}
+valid only for \underline{log utility}.\\
+\hfill\break
+If no riskless asset exists then $r$ in (11) is replaced by the expected return on a zero beta portfolio.\\
+\begin{equation} \tag{11'}
+    \alpha_i-\alpha_0 = \beta_i (\alpha_m-\alpha_0)
+\end{equation}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 10   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Portfolio Selection and Asset Pricing}
-\subsection{Subsection}
+
+\begin{frame}
+\begin{align*}
+    \frac{dP_i}{P_i} =&\; \alpha_i dt + \sigma_i dv_i\\
+    \sigma_{ij} =&\; \bm{\Sigma} \;\;\;\; \textit{Constant opportunity set}\\
+\end{align*}
+Wealth accumulation equation\\
+\begin{align*}
+    dW &= \alpha_w dt + \sigma_w dv_w\\
+    \alpha_w &= -C + W(\vec{w}'(\vec{\alpha}-r\vec{1})+r)\\
+    \sigma_w^2 &= W^2 \vec{w}'\bm{\Sigma}\vec{w}\\
+    \sigma_w dv_w &= W \sum_{i=1}^n w_i \sigma_i dv_i
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Time additive utility function:\\
+\[ \max_{C,\vec{w}} \]
+\begin{align*}
+    \frac{dP_i}{P_i} =&\; \alpha_i dt + \sigma_i dv_i\\
+    \sigma_{ij} =&\; \bm{\Sigma} \;\;\;\; \textit{Constant opportunity set}\\
+\end{align*}
+Wealth accumulation equation\\
+\begin{align*}
+    dW &= \alpha_w dt + \sigma_w dv_w\\
+    \alpha_w &= -C + W(\vec{w}'(\vec{\alpha}-r\vec{1})+r)\\
+    \sigma_w^2 &= W^2 \vec{w}'\bm{\Sigma}\vec{w}\\
+    \sigma_w dv_w &= W \sum_{i=1}^n w_i \sigma_i dv_i
+\end{align*}
+
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 11   %%%%%%%%%%%%%%%
