@@ -1540,7 +1540,7 @@ If no riskless asset exists then $r$ in (11) is replaced by the expected return 
 %%%%%%%%%%%%%% TOPIC 10   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Portfolio Selection and Asset Pricing}
-
+\subsection{Review}
 \begin{frame}
 \begin{align*}
     \frac{dP_i}{P_i} =&\; \alpha_i dt + \sigma_i dv_i\\
@@ -1557,22 +1557,53 @@ Wealth accumulation equation\\
 
 \begin{frame}
 Time additive utility function:\\
-\[ \max_{C,\vec{w}} \]
+\[ \max_{C(t),\vec{w}(t)}\; E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]\]
+Derived utility of wealth:\\
 \begin{align*}
-    \frac{dP_i}{P_i} =&\; \alpha_i dt + \sigma_i dv_i\\
-    \sigma_{ij} =&\; \bm{\Sigma} \;\;\;\; \textit{Constant opportunity set}\\
+    J[W(t),t] &\equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T]\\
+    &= \max\; E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
 \end{align*}
-Wealth accumulation equation\\
-\begin{align*}
-    dW &= \alpha_w dt + \sigma_w dv_w\\
-    \alpha_w &= -C + W(\vec{w}'(\vec{\alpha}-r\vec{1})+r)\\
-    \sigma_w^2 &= W^2 \vec{w}'\bm{\Sigma}\vec{w}\\
-    \sigma_w dv_w &= W \sum_{i=1}^n w_i \sigma_i dv_i
-\end{align*}
-
 \end{frame}
 
+\begin{frame}
+Bellman Equation:
+\[ 0 = \max_{C(t),\vec{w}(t)} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\vec{w}'(\vec{\alpha}_i-\vec{1}r)+r)] + \frac{W^2}{2} J_{WW} \vec{w}' \bm{\Sigma} \vec{w} \Bigg\} \]
+First Order Conditions:
+\begin{align*}
+    U_C &= J_W\\
+    \vec{w}^* &= -\frac{J_W}{W J_{WW}}\;\bm{\Sigma}^{-1}(\vec{\alpha}-r\vec{1})
+\end{align*}
+\underline{Implies}: Two-fund separation, ICAPM (Merton)\\
+If we know $U(\cdot)$ we can solve for $C(\cdot)$ and $\vec{w}(\cdot)$ as a function of $J_W$, $J_{WW}$, etc... and substitute in the Bellman equation $\implies$ PDE for $J$.\\
+\end{frame}
 
+\subsection{Example}
+\begin{frame}
+Power utility $U(C,t) = e^{-\rho t}\frac{C^\gamma}{\gamma}$, no motive for bequest.\\
+\hfill\break
+Since we will always hold the market, we can assume that it is the only risky asset.\\
+\hfill\break
+From (8),
+\begin{equation} \tag{12}
+    0 = \max \Bigg[ e^{-\rho t}\frac{C^\gamma}{\gamma} + J_t + J_W[W(w(\alpha-r)+r)-C] + \frac{w^2W^2}{2}\sigma^2 J_{WW} \Bigg]
+\end{equation}
+\end{frame}
+
+\subsection{Example}
+\begin{frame}
+The optimal $C^*$ and $w^*$ are from (9a) and (10)\\
+\[ e^{-\rho t}{C^*}^{\gamma-1} = J_W \;\;\implies\;\; C^* = (e^{\rho t}J_W)^{\frac{1}{\gamma-1}}\]
+\[ w^* = \Bigg(-\frac{J_W}{W J_{WW}}\Bigg) \frac{\alpha-r}{\sigma^2} \]
+Substituting in (12), we get a PDE for J:
+\begin{align*}
+\begin{split}
+    0 = \frac{e^{-\rho t}}{\gamma} \Bigg(e^{\rho t}J_W\Bigg)^{\frac{\gamma}{\gamma-1}} + J_t &+ J+W\Bigg[ W[-\frac{J_W}{W J_{WW}}\frac{(\alpha-r)^2}{\sigma^2}+r] - (e^{\rho t}J_W)^{\frac{1}{\gamma-1}} \Bigg]
+    \\
+    &+ \frac{1}{2}
+\end{split}
+\end{align*}
+\[ \]
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 11   %%%%%%%%%%%%%%%
@@ -1606,8 +1637,17 @@ Wealth accumulation equation\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 16   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{More about Continuous Time Option Pricing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 17   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Stochastic Models of the Term Structure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TOPIC 18   %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{A Simple Version of CIR}
 
 \section*{References}
 \begin{frame}[allowframebreaks]{References}
