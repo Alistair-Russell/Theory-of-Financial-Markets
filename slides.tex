@@ -235,19 +235,14 @@ If u(x) is a utility function, so is $v(x)=au(x)+b$ with $a>0$ \\
 
 \begin{frame}
 Concave utility function for wealth: $u''<0$\\
+\begin{figure}[l1-concave]
+    \includegraphics[width=0.5\textwidth]{L1-concave}
+    \centering
+\end{figure}
 \hfill \break
 Feel more “pain” to lose \$100 than “pleasure” to win \$100. Decreasing marginal utility of money\\
 \hfill \break
 ($u'>0$ since more is preferred to less!)\\
-\end{frame}
-
-\begin{frame}
-Investor will not trade \$100 for sure for 50/50 chance of getting \$200 or nothing\\
-\hfill \break
-With concave utility:\\
-\begin{center}
-    $u(100) > 0.5 u(200) + 0.5 u(0)$\\
-\end{center}
 \end{frame}
 
 \begin{frame}
@@ -257,19 +252,11 @@ Risk Averse\\
     \item Investor will not trade \$100 for sure for 50/50 chance of getting \$200 or nothing
     \item With concave utility:
 \end{itemize}
-\begin{center}
-    $u(100) > 0.5 u(200) + 0.5 u(0)$\\
-\end{center}
-TODO: risk-aversion image
-\begin{tikzpicture}[scale=0.5]
-\begin{axis}[axis lines=left,xlabel=Wealth (W),ylabel=Utility $u(W)$,xmin=0, xmax=200,ymin=0, ymax=10,xtick={0,50,100,150,200},clip=false,domain=0:200,samples=100,thick,]
-    \addplot+[mark=none, dashed] {x/200*10};
-    \addplot+[mark=none,smooth] coordinates {(0,0) (20,2) (50,5) (100,7.5) (200,10)};
-    \addplot+[only marks, mark=*, mark options={fill=red}] coordinates {(50,5)};
-    \addplot+[mark=none, dashed] coordinates {(50,0) (50,5)};
-    \node[label={150:{E[u(•)] = u(Wc)}},circle,fill,inner sep=2pt] at (axis cs:50,5) {};
-\end{axis}
-\end{tikzpicture}
+\[ u(100) > 0.5 u(200) + 0.5 u(0)\]
+\begin{figure}[l1-ra]
+    \includegraphics[width=0.5\textwidth]{L1-riskaversion}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -278,8 +265,10 @@ Risk Neutral\\
 \begin{itemize}
     \item Linear utility function for wealth: $u''=0$
 \end{itemize}
-TODO: risk-neutral image
-\hfill \break
+\begin{figure}[l1-rn]
+    \includegraphics[width=0.6\textwidth]{L1-riskneutral}
+    \centering
+\end{figure}
 Investor maximizes expected wealth\\
 \end{frame}
 
@@ -289,8 +278,10 @@ Risk Seeking\\
 \begin{itemize}
     \item Convex utility function for wealth: $u''>0$
 \end{itemize}
-TODO: risk-seeking image
-\hfill \break
+\begin{figure}[l1-rs]
+    \includegraphics[width=0.6\textwidth]{L1-riskseeker}
+    \centering
+\end{figure}
 Gambling?\\
 \end{frame}
 
@@ -314,7 +305,14 @@ If $\bar{W}$ is the expected outcome:\\
 
 \begin{frame}
 Risk Averse Certainty Equivalent\\
-TODO: certainty equivalent image
+\begin{figure}[l1-ce]
+    \includegraphics[width=0.5\textwidth]{L1-certaintyequiv}
+    \centering
+\end{figure}
+\begin{figure}[l1-ce2]
+    \includegraphics[width=0.5\textwidth]{L1-certaintyequiv2}
+    \centering
+\end{figure}
 \end{frame}
 
 \subsection{Absolute and Relative Risk Aversion}
@@ -356,9 +354,12 @@ Allows comparisons between individuals.\\
     u(W)&=-\frac{1}{a}e^{-aW} \textit{ with } a>0\\
     u'(W)&=e^{-aW}>0\\
     u''(W)&=-ae^{-aW}<0\\
-    A(W)&=-\frac{u''(W)}{u'(W)} = a\\
+    A(W)&=-\frac{u''(W)}{u'(W)} = a
 \end{align*}
-TODO: exponential ut fn
+\begin{figure}[exponential]
+    \includegraphics[width=0.4\textwidth]{L1-exp}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -367,9 +368,12 @@ TODO: exponential ut fn
     u(W)&=\frac{W^\gamma}{\gamma} \textit{ for } \gamma<1, \gamma\neq0\\
     u'(W)&=W^{\gamma-1}>0\\
     u''(W)&=(\gamma-1)W^{\gamma-2}<0\\
-    R(W)&=-\frac{Wu''(W)}{u'(W)} = 1-\gamma = c > 0, \gamma < 1 \;\; u(W)=\frac{W^{1-c}}{1-c}\\
+    R(W)&=-\frac{Wu''(W)}{u'(W)} = 1-\gamma = c > 0, \gamma < 1 \;\; u(W)=\frac{W^{1-c}}{1-c}
 \end{align*}
-TODO: power ut fn
+\begin{figure}[power]
+    \includegraphics[width=0.5\textwidth]{L1-power}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -378,8 +382,12 @@ TODO: power ut fn
     u(W)&=\ln{W} (\gamma=0)\\
     u'(W)&=\frac{1}{W}>0\\
     u''(W)&=-\frac{1}{W^2}<0\\
-    R(W)&=-\frac{Wu''(W)}{u'(W)}=1\\
+    R(W)&=-\frac{Wu''(W)}{u'(W)}=1
 \end{align*}
+\begin{figure}[logarithmic]
+    \includegraphics[width=0.4\textwidth]{L1-log}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -388,8 +396,12 @@ TODO: power ut fn
     u(W)&=W-\frac{1}{2}bW^2 \textit{\;\;for } 0\leq W\leq \frac{1}{b}\\
     u'(W)&=1-bW>0 \textit{\;\;for } 0\leq W\leq \frac{1}{b}\\
     u''(W)&=-b<0\\
-    A(W)&=-\frac{b}{1-bW} \textit{\;\;increasing with W (not good)}\\
+    A(W)&=-\frac{b}{1-bW} \textit{\;\;increasing with W (not good)}
 \end{align*}
+\begin{figure}[quadratic]
+    \includegraphics[width=0.4\textwidth]{L1-quad}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -413,6 +425,10 @@ Expected utility max. and mean variance analysis are equivalent when...\\
 Indifference Curves (for risk averse)\\
 \hfill \break
 A and B have the same expected utility
+\begin{figure}[exponential]
+    \includegraphics[width=0.6\textwidth]{L1-indiff}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -429,7 +445,7 @@ Expected Utility - Example
 \end{frame}
 
 \begin{frame}
-Expected Utility - Solution
+\underline{Expected Utility - Solution}
 \hfill \break
 \begin{outline}
     \1 Let us assume that you will at the most be willing to pay \$D\break
@@ -439,12 +455,15 @@ Expected Utility - Solution
 \end{frame}
 
 \begin{frame}
-Expected Utility - Solution\\
-TODO: img
+\underline{Expected Utility - Solution}\\
+\begin{figure}[ex-util]
+    \includegraphics[width=0.7\textwidth]{L1-ex-util}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
-Expected Utility - Solution
+\underline{Expected Utility - Solution}
 \hfill \break
 \begin{outline}
     \1 We defined certainty equivalent, $W_c$  as that amount of wealth which makes you indifferent between this wealth and a gamble\break
@@ -547,8 +566,10 @@ Axioms governing investors' behavior\\
 Axioms governing investors' behavior\\
 \hfill \break
 \textbf{A3 (Independence)}: Let $g(x,z;p)$ represent a gamble with probability $p$ of paying $x$ and $(1-p)$ of paying $z$.\\
-TODO: gamble img\\
-\hfill \break
+\begin{figure}[gamble]
+    \includegraphics[width=0.7\textwidth]{L2-gamble}
+    \centering
+\end{figure}
 \begin{align*}
     \textit{If }x &\sim y\\
     \textit{Then }g(x,y;p) &\sim g(y,z;p)\\
@@ -593,18 +614,29 @@ $W_i$ is the certainty equivalent of the gamble.
 
 \begin{frame}
 We can construct the indifference set for $h=(0,1)$, (for a given individual)\\
-TODO: indiff curve image\\
+\begin{figure}[indiff-set]
+    \includegraphics[width=0.6\textwidth]{L2-indiffset}
+    \centering
+\end{figure}
 \[W_i = hM+(1-h)m\]
-\hfill \break
 For this preference function (concave) CE < Expected payoff of the gamble ($W_i<\bar{W_i}$)
 \end{frame}
 
 \begin{frame}
 Consider a (complex) gamble with payoffs $X_i$ with probabilities $p_i$, $i=1,...,n$\\
-TODO: complex gamble\\
-By A4 (Continuity) we can find $h_i$ such that $X_i \sim g(M,m;h_i)$.\\
+\begin{figure}[complex-gamble]
+    \includegraphics[width=0.5\textwidth]{L2-complex-gamble}
+    \centering
+\end{figure}
+By A4 (Continuity) we can find $h_i$ such that $X_i \sim g(M,m;h_i)$...
+\end{frame}
+
+\begin{frame}
 By A3 (Independence)\\
-TODO: equivalence
+\begin{figure}[equivalence]
+    \includegraphics[width=1\textwidth]{L2-equivalence}
+    \centering
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -672,9 +704,31 @@ By Taylor's Theorem:
 \end{frame}
 
 \subsection{Example}
+\begin{frame}
+Risk Averse ($u''<0$)\\
+\begin{figure}[l2-ra]
+    \includegraphics[width=0.7\textwidth]{L2-riskaverse}
+    \centering
+\end{figure}
+Concave (Feel more "pain" to lose \$100 than pleasure to win) \$100.
+\end{frame}
 
 \begin{frame}
-TODO: add illustrated risk-* examples.
+Risk Neutral ($u''=0$)\\
+\begin{figure}[l2-rn]
+    \includegraphics[width=0.7\textwidth]{L1-riskneutral}
+    \centering
+\end{figure}
+Linear\\
+\end{frame}
+
+\begin{frame}
+Risk Seeking ($u''>0$)\\
+\begin{figure}[l2-rs]
+    \includegraphics[width=0.7\textwidth]{L1-riskseeker}
+    \centering
+\end{figure}
+Convex\\
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -708,10 +762,10 @@ Risk Averse\\
 \[ u(W)+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
 \begin{align*}
     u(W) &= u(p(W+\varepsilon_1)+(1-p)(W+\varepsilon_2))\\
-    &> p u(W+\varepsilon_1)+(1-p)u(W+\varepsilon_2)
+    &> p u(W+\varepsilon_1)+(1-p)u(W+\varepsilon_2)\\
 \end{align*}
-TODO: add risk aversion concave function image\\
 $\therefore$ risk averse $\implies$ concave utility function.\\
+\hfill\break
 A reversal of these steps demonstrates that concave utility function $\implies$ risk averse.\\
 \end{frame}
 
@@ -1593,16 +1647,77 @@ From (8),
 \begin{frame}
 The optimal $C^*$ and $w^*$ are from (9a) and (10)\\
 \[ e^{-\rho t}{C^*}^{\gamma-1} = J_W \;\;\implies\;\; C^* = (e^{\rho t}J_W)^{\frac{1}{\gamma-1}}\]
-\[ w^* = \Bigg(-\frac{J_W}{W J_{WW}}\Bigg) \frac{\alpha-r}{\sigma^2} \]
+\[ w^* = \bigg(-\frac{J_W}{W J_{WW}}\bigg) \frac{\alpha-r}{\sigma^2} \]
 Substituting in (12), we get a PDE for J:
 \begin{align*}
 \begin{split}
-    0 = \frac{e^{-\rho t}}{\gamma} \Bigg(e^{\rho t}J_W\Bigg)^{\frac{\gamma}{\gamma-1}} + J_t &+ J+W\Bigg[ W[-\frac{J_W}{W J_{WW}}\frac{(\alpha-r)^2}{\sigma^2}+r] - (e^{\rho t}J_W)^{\frac{1}{\gamma-1}} \Bigg]
+    0 = \frac{e^{-\rho t}}{\gamma} \bigg(e^{\rho t}J_W\bigg)^{\frac{\gamma}{\gamma-1}} + J_t + J_W\Bigg[ W\bigg[-\frac{J_W}{W J_{WW}}\frac{(\alpha-r)^2}{\sigma^2}+r\bigg] - (e^{\rho t}J_W)^{\frac{1}{\gamma-1}} \Bigg]&
     \\
-    &+ \frac{1}{2}
+    + \frac{1}{2}\frac{J_W^2}{J_{WW}} \frac{(\alpha-r)^2}{\sigma^2}&
 \end{split}
 \end{align*}
-\[ \]
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{13}
+    0 = e^{-\rho t} \bigg(\frac{1}{\gamma}-1\bigg)\bigg(e^{\rho t}J_W\bigg)^{\frac{\gamma}{\gamma-1}} + J_t + rWJ_W-\frac{1}{2}\frac{(\alpha-r)^2}{\sigma^2}\frac{J_W^2}{J_{WW}}
+\end{equation}
+with boundary condition: $J(W(T),T)=0$.\\
+\hfill\break
+Difficult PDE. Consider the $\infty$ horizon problem and for this problem try:\\
+\[ J(W,t) = e^{-\rho t}I(W)\]
+Then $J_t = -\rho I e^{-\rho t}$, $J_W = e^{-\rho t} I'$, $J_{WW} = e^{-\rho t} I''$...
+\end{frame}
+
+\begin{frame}
+By substitution in (13) we obtain the PDE (dividing by $e^{-\rho t}$):
+\[ 0 = \bigg(\frac{1}{\gamma}\bigg)(I')^{\frac{\gamma}{\gamma-1}} - \rho I + rW I' - \frac{1}{2}\frac{(\alpha-r)^2}{\sigma^2}\frac{(I')^2}{I''}\]
+Guess a solution of the form $I(W) = \frac{AW^\gamma}{\gamma}$. Substitution leaves\\
+\[ 0 = AW^\gamma \bigg[ \frac{1-\gamma}{\gamma}A^{\frac{1}{\gamma-1}} - \frac{\rho}{\gamma}+r-\frac{1}{2}\bigg(\frac{(\alpha-r}{\sigma}\bigg)^2\frac{1}{\gamma-1}\bigg]\]
+verifying this solution form for the constant:\\
+\[ A = \Bigg[ \frac{\gamma}{1-\gamma} \bigg[ \frac{\rho}{\gamma} -r - \frac{1}{2}\bigg(\frac{\alpha-r}{\sigma}\bigg)^2\frac{1}{1-\gamma}\bigg]\Bigg]^{\gamma-1} \equiv a^{\gamma-1} \]
+\end{frame}
+
+\begin{frame}
+\[ A = \Bigg[ \frac{\gamma}{1-\gamma} \bigg[ \frac{\rho}{\gamma} -r - \frac{1}{2}\bigg(\frac{\alpha-r}{\sigma}\bigg)^2\frac{1}{1-\gamma}\bigg]\Bigg]^{\gamma-1} \equiv a^{\gamma-1} \]
+\[ \therefore \;\;\;\; J = e^{-\rho t} a^{\gamma-1} \frac{W^\gamma}{\gamma}\]
+and the optimal choices
+\begin{align*}
+    C^* &= a\;W\\
+    w^* &= \frac{\alpha-r}{(1-\gamma)\sigma^2}
+\end{align*}
+are independent of calendar time.
+\end{frame}
+
+\begin{frame}
+For the finite horizon case, guess the solution:\\
+\[ J(W,t) = e^{-\rho t} B(t) \cdot A \frac{W^\gamma}{\gamma}\]
+Substitution into (13) verifies the guess where $B(t)$ is the solution to the 1st order ODE:\\
+\[ B'(t) = (1-\gamma)a \bigg[ B-B^{\frac{-\gamma}{1-\gamma}}\bigg]\]
+with boundary condition $B(T)=0$.\\
+\end{frame}
+
+\begin{frame}
+Solution,\\
+\[ B(t) = \bigg[ 1-e^{a(t-T)}\bigg]^{1-\gamma}\]
+with optimal choices:\\
+\begin{align*}
+    C^* &= \frac{a}{1-e^{a(t-T)}}W(t)\;\;\;\; \textit{dep. on return characteristics (except in log case)}\\
+    w^* &= \frac{\alpha-r}{(1-\gamma)\sigma^2}\;\;\;\;\;\;\;\;\;\;\;\textit{indep. of W, C, and $\rho$}
+\end{align*}
+\end{frame}
+
+\subsection{Solution Procedure}
+\begin{frame}
+\underline{Solution steps} for equation (13)\\
+\begin{enumerate}
+    \item Consider first the $\infty$ forizon problem.
+    \item Try separation of variables (eg. $J(W,t) = e^{-\rho t} I(W)$) such that we obtain a second order ODE for $I(W)$.
+    \item Try solution $I(W) = A \frac{W^\gamma}{\gamma}$. It works and we compute $A$.
+    \item Solution to $\infty$ horizon case (eg. $J = e^{-\rho t} A \frac{W^\gamma}{\gamma}$).
+    \item For finite horizon, guess solution $J = A \frac{W^\gamma}{\gamma}\cdot B(t) \cdot A\frac{W^\gamma}{\gamma}$.
+    \item Substitute into original equation, this gives an ODE for $B(t)$.
+\end{enumerate}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
