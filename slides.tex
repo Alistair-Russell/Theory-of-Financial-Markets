@@ -1750,8 +1750,121 @@ Taking expectations and multiplying as before...
 \end{frame}
 
 \begin{frame}
-...we end up with:\\
+...we end up with\\
 \[ \frac{dP_i}{P_i} = \alpha_i dt + \sigma_i dv_i \]
+\[ (\sigma_{ij}) = \bm{\Sigma} \]
+\[ dx = \mu\;dt + s\;dy \]
+\[ (\sigma_{ix}) = \vec{\sigma} \]
+\[ dW = \alpha_w dt + \sigma_w dv_w\]
+\[ \alpha_w = -C+W(\vec{w}'(\vec{\alpha}-r\vec{1})+r)\]
+\[ \sigma_w^2 = W^2\vec{w}' \bm{\Sigma} \vec{w} \]
+\[ \sigma_w dv_w = W \sum_i w_i \sigma_i dv_i \]
+\[ (dW)(dx) = W\vec{w}'\vec{\sigma} dt \;\; \textit{...}\]
+\end{frame}
+
+\begin{frame}
+...and\\
+\[ J \equiv J(W,x,t) \]
+\[ J(W,x,t) = \max_{C(t),\vec{w}(t)}\; E_t \bigg[ U(C,t)dt+J(W+dW,x+dx,t+dt)\bigg]\]
+so...
+\end{frame}
+
+\begin{frame}
+\begin{align} \tag{14}
+\begin{split}
+    0 = \max_{C,\vec{w}}\; \bigg[ U(C,t)+J_t+&J_W(-C+W\sum_0^n w_i\sigma_i) + \frac{W^2}{2}\;J_{WW}\;\sum_{i=1}^n\sum_{j=1}^n\;w_iw_j\sigma_{ij}
+    \\
+    &+ J_x\;\mu + \frac{1}{2}\;J_{xx}\;s^2 +J_{xW}\;W\;\sum_1^n\;w_i\sigma_{ix}\bigg]
+\end{split}
+\end{align}
+As before $U_C=J_W$, but now the portfolio weights satisfy
+\begin{equation} \tag{15}
+    J_W\;W\;(\alpha_i-r)+J_{WW}\;W^2\;\sum_{j=1}^n w_j^* \sigma_{ij} + J_{Wx}\;W\;\sigma_{ix} = 0 \;\; \textit{i=1,...,n}
+\end{equation}
+Or, in matrix form...
+\begin{equation} \tag{15'}
+    J_W\;(\vec\alpha-r\vec1)+J_{WW}\;W\;\bm{\Sigma}\vec{w}^* + J_{Wx}\;\vec\sigma = 0
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Or, in matrix form...
+\begin{equation} \tag{15'}
+    J_W\;(\vec\alpha-r\vec1)+J_{WW}\;W\;\bm{\Sigma}\vec{w}^* + J_{Wx}\;\vec\sigma = 0
+\end{equation}
+Where $\bm{\Sigma}$ is the covariance matrix of returns and $\vec{\sigma}' = (\sigma_{1x},...,\sigma_{nx})$. Then,
+\begin{align} \tag{16}
+\begin{split}
+    \vec{w}^* &= -\frac{J_W}{W J_{WW}} \bm{\Sigma}^{-1}(\vec\alpha-r\vec1) -\frac{J_{xW}}{W J_{WW}} \bm{\Sigma}^{-1}\vec\sigma
+    \\
+    w_i^* &= -\frac{J_W}{W J_{WW}} \sum_{j=1}^n v_{ij}(\alpha_j-r) -\frac{J_{xW}}{W J_{WW}} \sum_{j=1}^n v_{ij} \sigma_{jx}
+\end{split}
+\end{align}
+If $x$ changes in a deterministic fashion or is uncorrelated with the returns on all assets, then as before $\frac{w_i^*}{w_j^*}$ is independent of preferences and all investors hold the market.\\
+\end{frame}
+
+\begin{frame}
+In general, $\frac{w_i^*}{w_j^*}$ is not independent of preferences;\\
+however, if we define\\
+\[ D \equiv -\frac{J_W}{W J_{WW}} \vec{1}' \bm{\Sigma}^{-1} (\vec\alpha-r\vec1) \;\;,\;\;
+    H \equiv -\frac{J_{xW}}{W J_{WW}} \vec{1}' \bm{\Sigma}^{-1} \vec\sigma
+\]
+then we may write (16) as
+\[ w_i^* = D\; \frac{\sum_{j=1}^n v_{ij}(\alpha_j-r)}{\vec1' \bm{\Sigma}^{-1}(\vec\alpha-r\vec1)} + H\; \frac{\sum_{j=1}^n v_{ij} \sigma_{jx}}{\vec1' \bm{\Sigma}^{-1}\vec\sigma}\]
+or
+\begin{align} \tag{17}
+\begin{split}
+    w_i^* &= D\;d_i + H\;h_i
+    \\
+    \vec{w}^* &=  D\;\vec{d} + H\;\vec{h}   
+\end{split}
+\end{align}
+\end{frame}
+
+\begin{frame}
+\begin{align} \tag{17}
+\begin{split}
+    w_i^* &= D\;d_i + H\;h_i
+    \\
+    \vec{w}^* &=  D\;\vec{d} + H\;\vec{h}   
+\end{split}
+\end{align}
+where $\vec{d} = \bigg( \bm{\Sigma}^{-1}(\vec\alpha-r\vec1)\;/\;\vec1' \bm{\Sigma}^{-1}(\vec\alpha-r\vec1) \bigg)$\;\;,\;\; $\vec{h} = \bigg( \bm{\Sigma}^{-1}\vec\sigma \;/\; \vec1'\bm{\Sigma}^{-1}\vec\sigma \bigg)$\\
+\hfill\break
+for $\alpha_i$, $h_i$ independent of individual preferences and $\sum d_i = \sum h_i = 1$\\
+\hfill\break
+$\therefore$ All individuals form their portfolios by buying "shares" in two "mutual funds" $\vec{d}$ and $\vec{h}$. Note that these two portfolios \underline{do not} include the riskless asset.
+\end{frame}
+
+\begin{frame}
+Portfolio $\vec{d}$ is similar to the single portfolio in the previous problem and, as before, is used to diversify. The second portfolio, $\vec{h}$, is a "hedge" portfolio.\\
+\hfill\break
+The correlation of portfolio $\vec{h}$ with the state variable $x$ can be obtained from\\
+\begin{align*}
+    \frac{dY_h}{Y_h} &= \sum h_i \sigma_i\;dt + \sum h_i\sigma_i\;dv_i\\
+    dx &= \mu\;dt + s\;dy
+\end{align*}
+\hfill\break
+covariance between return on $\vec{h}$ and change in state variable $x$:
+\[ \bigg( \frac{dY_h}{Y_h} \bigg) (dx) = \vec{h}'\vec\sigma\;dt \]
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{18}
+    \therefore \;\; \rho_{xh} \equiv \frac{\vec{h}'\vec\sigma}{(\vec{h}'\bm{\Sigma}\vec{h})^{1/2}\cdot s} \;\;\;\; \textit{correlation}
+\end{equation}
+This is the maximum correlation possible with this set of assets. To see this, take any portfolio $\vec{w}$:\\
+\begin{align*}
+    \rho_{xw} &= \frac{\vec{w}'\vec\sigma}{(\vec{w}'\bm{\Sigma}\vec{w})^{1/2}\cdot s}\\
+    \frac{\partial \rho_{xw}}{\partial \vec{w}} &= \frac{s(\vec{w}'\bm{\Sigma}\vec{w})^{1/2}\vec\sigma-s(\vec{w}'\vec\sigma)\bm{\Sigma}\vec{w}(\vec{w}'\bm{\Sigma}\vec{w})^{-1/2}}{s^2(\vec{w}'\bm{\Sigma}\vec{w})}
+\end{align*}
+and choose $\vec{w} = \bm{\Sigma}^{-1}\vec\sigma = \vec{h}(\vec1'\bm{\Sigma}^{-1}\vec \sigma)$
+\end{frame}
+
+\subsection{Interpretation of portfolios $\vec{d}$ and $\vec{h}$}
+\begin{frame}
+We will show that $\vec{d}$ above minimizes the variance of changes in \underline{wealth} whereas $\vec{d}$ and $\vec{h}$ together minimize the variance of changes in \underline{consumption}.\\
+\hfill\break
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
