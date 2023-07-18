@@ -1714,7 +1714,45 @@ with optimal choices:\\
 %%%%%%%%%%%%%% TOPIC 11   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Extended Model}
-\subsection{Subsection}
+
+\subsection{Introduction to the Extended Model}
+
+\begin{frame}
+In equilibrium, weights of the market portfolio,\\
+\[ \vec{m} = \frac{\bm{\Sigma}^{-1}(\vec{\alpha}-r\vec{1})}{\vec{1}'\bm{\Sigma}^{-1}(\vec{\alpha}-r\vec{1})} \]
+and all investors hold this portfolio (and the riskless asset).\\
+\hfill\break
+But, if the investment opportunity set remains constant, then $\vec{m}$ is constant, which implies that the realized returns on all assets are constant! (apart from supply adjustments)\\
+\hfill\break
+This problem exists only in the ICAPM, since in the single period CAPM we only had one return.
+\end{frame}
+
+\begin{frame}
+\underline{Extension of the Model}\\
+\hfill\break
+Strong Result $\longrightarrow$ CAPM holds for continuously compounded rates of return if prices have continuous sample paths.\\
+\hfill\break
+However, we assume that an investor can measure their well-being at any point in time by knowing only their wealth - ie. in (6) we assumed that $J(\cdot)$ is independent of the "state of the world".\\
+\hfill\break
+If relative commodity prices change, then utilities of consumption will be state dependent and so will $J$. Even if utility is state independent, there may be individual dependencies in the $J$ function if $\alpha$, $\sigma$, and $r$ vary randomly over time.
+\end{frame}
+
+\begin{frame}
+Suppose there is a simple state variable which describes changes in these variables, $\alpha_i(x)$, $\sigma_{ij}(x)$, $r(x)$, and that changes in this state variable follows:\\
+\[ dx = \mu dt + s dy \]
+\[\textit{with}\;\; (dx)\bigg(\frac{dP_i}{P_i}\bigg) = cov_t\bigg(dx,\frac{dP_i}{P_i}\bigg) = \rho_{ix} s \sigma_i dt = \sigma_{ix} dt\]
+As before, applying Ito's Lemma:\\
+\begin{align*}
+    J[W+dW, x+dx, t+dt] = J(W,x,t)+J_t\;dt &+ J_W\;dW + J_x\;dx + \frac{1}{2}\;J_{WW}\;(dW)^2\\
+    &+ \frac{1}{2}\;J_{xx}\;dx^2+J_{xW}\;dx\;dW
+\end{align*}
+Taking expectations and multiplying as before...
+\end{frame}
+
+\begin{frame}
+...we end up with:\\
+\[ \frac{dP_i}{P_i} = \alpha_i dt + \sigma_i dv_i \]
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 12   %%%%%%%%%%%%%%%
