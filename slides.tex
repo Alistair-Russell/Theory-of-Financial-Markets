@@ -1865,6 +1865,46 @@ and choose $\vec{w} = \bm{\Sigma}^{-1}\vec\sigma = \vec{h}(\vec1'\bm{\Sigma}^{-1
 \begin{frame}
 We will show that $\vec{d}$ above minimizes the variance of changes in \underline{wealth} whereas $\vec{d}$ and $\vec{h}$ together minimize the variance of changes in \underline{consumption}.\\
 \hfill\break
+Consider the following problems: (1) minimizing the variance of the growth in wealth and consumption subject to consuming $C^*$, (2) earning an expected rate of return on the portfolio equal to that on the portfolio optimally chosen.\\
+\[ \eta^* = \vec{w'}^{*} (\vec{\alpha}-r\vec{1})+r \]
+For the first problem.\\
+\[ \min \;\sigma_W^2 \;\;\textit{s.t.}\;\; \eta=\eta^* \]
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    L &= \sigma_W^2 + \lambda(\eta^* - \eta)\\
+    \frac{\partial L}{\partial \vec{w}} &= 2W^2\bm{\Sigma}\vec{w} - \lambda(\vec\alpha-r\vec1) = 0
+\end{align*}
+\[ \vec{w}^{**} = \frac{\lambda}{2W^2}\;\bm{\Sigma}^{-1}(\vec\alpha-r\vec1 )\]
+Normalizing the sum of these weights to units gives:\\
+\[ \vec{w}^{**} = \vec{d} \]
+Thus $\vec{d}$ alone would represent the best risk-return trade-off if wealth were the proper criterion for judging...
+\end{frame}
+
+\begin{frame}
+But utility comes only indirectly from wealth:\\
+\hfill\break
+Optimal consumption depends upon wealth, age, and state of the world.
+\[ C \equiv C(W,x,t) \;\;\;\; \textit{optimal $C^*$}\]
+\begin{align*}
+    dC &= C_W\;dW + C_x\;dx+C_t\;dt + \frac{1}{2}\;C_{WW}\;(dW)^2 + C_{Wx}\;dx\;dW + \frac{1}{2}\;C_{xx}\;(dx)^2
+\end{align*}
+or
+\begin{align*}
+    dC &= \mu_C\;dt + C_W\sigma_W\;dv_W+C_xs\;dy\\
+    \sigma_C^2 &= C_W^2\sigma_W^2 + 2 C_W C_xx \sigma_{xW} + C_x^2s^2\\
+    \sigma_x^2 &= C_W^2 W^2 \vec{w}'\bm{\Sigma} \vec{w} + 2 C_W C_x W \vec{w}' \vec\sigma + C_x^2 s^2
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\[ L \equiv \sigma_C^2 + \lambda(\eta^* - \eta)\]
+\begin{align*}
+    \frac{\partial L}{\partial \vec{w}} &= 2 C_W^2 W^2 \bm{\Sigma} \vec{w} + 2 C_W C_x W \vec\sigma - \lambda(\vec\alpha-r\vec1)=0\\
+    \vec{w}^{**} &= \frac{\lambda}{2 C_W^2 W^2}\;\bm{\Sigma}^{-1}(\vec\alpha-r\vec1) - \frac{C_x}{W C_W}\;\bm{\Sigma}^{-1}\vec\sigma
+\end{align*}
+therefore the set of consumption variance minimizing portfolio is a linear combination of $\vec{d}$ and $\vec{h}$.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
