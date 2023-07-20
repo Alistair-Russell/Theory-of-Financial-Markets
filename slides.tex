@@ -1701,7 +1701,7 @@ with optimal choices:\\
 \begin{frame}
 \underline{Solution steps} for equation (13)\\
 \begin{enumerate}
-    \item Consider first the $\infty$ forizon problem.
+    \item Consider first the $\infty$ horizon problem.
     \item Try separation of variables (eg. $J(W,t) = e^{-\rho t} I(W)$) such that we obtain a second order ODE for $I(W)$.
     \item Try solution $I(W) = A \frac{W^\gamma}{\gamma}$. It works and we compute $A$.
     \item Solution to $\infty$ horizon case (eg. $J = e^{-\rho t} A \frac{W^\gamma}{\gamma}$).
@@ -1911,7 +1911,86 @@ therefore the set of consumption variance minimizing portfolio is a linear combi
 %%%%%%%%%%%%%% TOPIC 12   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Consumption Based CAPM}
-\subsection{Subsection}
+
+\subsection{Consumption-Based Intertemporal Model}
+
+\begin{frame}
+First order conditions in the extended model:\\
+\begin{equation} \tag{1}
+    J_W\;(\vec\alpha-r\vec1)+J_{WW}\;W\bm{\Sigma}\vec{w}^*+J_{Wx}\;\vec\sigma = 0
+\end{equation}
+\begin{equation} \tag{2}
+    U_C = J_W
+\end{equation}
+\[ \textit{from (2)} \;\;\;\; J_{WW} = U_{CC}\;C_W^* \;\;,\;\;\; J_{Wx} = U_{CC}\;C_x^*\]
+Substituting into (1)...\\
+\begin{equation} \tag{3}
+\begin{split}
+    \bigg( -\frac{U_C}{U_{CC}} \bigg)(\vec\alpha-r\vec1) = \bm{\Sigma}\vec{w}^* W C_W^* + \vec\sigma C_x^*
+    \\
+    \bigg( -\frac{U_C}{U_{CC}} \bigg)(\alpha_i-r) = C_W^* W \sum_j w_j \sigma_{ij} + C_x^* \sigma_{ix}
+\end{split}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Recall that,\\
+\[ C^* \equiv C^*(W,x,t)\]
+\begin{align*}
+    dC^* &= C_W\;dW +C_x\;dx+C_t\;dt+\frac{1}{2}C_{WW}\;(dW)^2+\frac{1}{2}C_{xx}\;(dx)^2+C_{Wx}\;(dx)(dW)\\
+    dC^* &= \mu\;dt + W C_W \sum_{i=1}^n w_i \sigma_i\; dv_i + C_x s\;dy
+\end{align*}
+therefore the covariance of the investor's consumption with the returns on asset $i$ is:
+\[ \sigma_{iC} = \frac{(dC^*)(\frac{dP_i}{P_i})}{dt} = W C_W \sum_{j=1}^n w_j \sigma_{ij} + C_x \sigma_{ix}\]
+\end{frame}
+
+\begin{frame}
+and the vector of covariances of consumption with asset return is:\\
+\begin{equation} \tag{4}
+    \vec{\eta^k} = W C_W^* \bm{\Sigma}\vec{w}^* + C_x^* \vec\sigma
+\end{equation}
+From (3) and (4),\\
+\[ \bigg( -\frac{U_C^k}{U_{CC}^k} \bigg)(\vec\alpha-r\vec1) = \vec{\eta^k}\]
+Summing over all investors:
+\begin{equation} \tag{5}
+    A(\vec\alpha-r\vec1) = \vec{\eta}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Summing over all investors:
+\begin{equation} \tag{5}
+    A(\vec\alpha-r\vec1) = \vec\eta
+\end{equation}
+where,
+\begin{align*}
+    A &= \sum_k \bigg( -\frac{U_C^k}{U_{CC}^k}\bigg) \;\;\;\; \textit{a measure of aggregate risk aversion}\\
+    \vec{\eta} &= \sum_k \vec{\eta^k} \;\;\;\; \textit{covariance of aggregate consumption with asset returns}
+\end{align*}
+If we premultiply (5) by $\vec{w}_m'$, the vector of market weights:\\
+\begin{equation} \tag{6}
+    \vec{w}_m' \vec{\eta} \equiv \sigma_{mC} = A \vec{w}_m' (\vec\alpha-r\vec1) = A(\alpha_m-r)
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Solving for $A = \frac{\sigma_{mC}}{\alpha_m-r}$ and substituting in (5) we get,\\
+\begin{equation} \tag{7}
+    \alpha_i-r = \frac{\sigma_{iC}}{\sigma_{mC}}\;(\alpha_m-r)
+\end{equation}
+where $\sigma_{iC}$ is the covariance of change in aggregate consumption with returns on security $i$, and $\sigma_{mC}$ is the same measure with returns on the market portfolio.\\
+\hfill\break
+Note that $\frac{\sigma_{iC}}{\sigma_{mC}}$ replaces $\beta_i$ in the one-factor CAPM. It may be interpreted as the regression coefficient of security $i$ on the market using aggregate consumption as an instrument...\\
+\end{frame}
+
+\begin{frame}
+Furthermore, any portfolio weights could have used in (6), so $m$ can denote any portfolio.\\
+\hfill\break
+"Consumption betas"
+\[ \beta_{iC} = \frac{\sigma_{iC}}{\sigma_C^2} \;\;,\;\;\; \beta_{mC} = \frac{\sigma_{mC}}{\sigma_C^2}\]
+therefore,
+\[ \alpha_i-r = \frac{\beta_{iC}}{\beta_{mC}}\;(\alpha_m-r)\]
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 13  Introduction to Options %%%%%%%%%%%%%%%
@@ -1923,6 +2002,55 @@ therefore the set of consumption variance minimizing portfolio is a linear combi
 %%%%%%%%%%%%%% TOPIC 14   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Continuous Time Option Pricing}
+
+\subsection{The Pricing of Options}
+
+\begin{frame}
+\underline{Terminology}:
+\begin{align*}
+    F(S,\tau;E) &\;\;\;\; \text{price of american call option}\\
+    f(S,\tau;E) &\;\;\;\; \text{price of european call option}\\
+    S\;: &\;\;\;\; \text{current stock price}\\
+    \tau\;: &\;\;\;\; \text{time to expiration (or maturity)}\\
+    E\;: &\;\;\;\; \text{exercise price}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{0}
+    \item $F(S,\tau_1;E) \geq F(S,\tau_2;E) \;\;for\;\; \tau_1>\tau_2$\\
+    the right to exercise during ($\tau_2,\tau_1$) must have non-negative value\\
+    \hfill
+    \item $F(S,\tau_1;E) \geq f(S,\tau_2;E)$\\
+    the right of early exercise must have non-negative value.\\
+    \hfill
+    \item $F(S,\tau;E_1) \leq F(S,\tau;E_2)$ for $E_1 > E_2$\\
+    $f(S,\tau;E_1) \leq f(S,\tau;E_2)$ for $E_1 > E_2$\\
+    by dominance\\
+    \hfill
+    \item $S = F(S,\infty;0) \geq F(S,\tau;E) \geq f(S,\tau;E)$\\
+    trivially from (1-3)\\
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item $f(0,\tau;E) = F(0,\tau;E) = 0$\\
+    from (4)\\
+    \hfill
+    \item $P(\tau)$: present (riskless) value of \$1 at time $\tau$.\\
+    $F(S,\tau;E) \geq \max\;\bigg[0,S-E[P(\tau)]\bigg]$\\
+    (if the stock pays no dividends)\\
+\end{enumerate}
+\hfill\break
+\underline{Proof (6)}: Consider the portfolio with one call option and E unit discount bonds with maturity $\tau$, and the alternate investment in one share of common stocks.\\
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 15  The Options Approach to Valuing Risky Debt %%%%%%%%%%%%%%%
