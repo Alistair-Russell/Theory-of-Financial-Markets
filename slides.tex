@@ -2049,7 +2049,84 @@ therefore,
     (if the stock pays no dividends)\\
 \end{enumerate}
 \hfill\break
+\end{frame}
+
+\begin{frame}
 \underline{Proof (6)}: Consider the portfolio with one call option and E unit discount bonds with maturity $\tau$, and the alternate investment in one share of common stocks.\\
+\hfill\break
+\underline{Initial Investment}
+\[\text{Portfolio: } E[P(\tau)]+f(S_0,\tau;E) \;\;\;\; \text{Stock: } S_0\]
+\begin{align*} \tag*{\Bigg\} Final Value}
+\begin{split}
+    S_\tau &< E \;\;\;\; \text{Portfolio: } E+0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;>\;\; \text{Stock: } S_\tau
+    \\
+    S_\tau &\geq E \;\;\;\; \text{Portfolio: } E+S_\tau-E=S_\tau \;\;=\;\; \text{Stock: } S_\tau
+\end{split}
+\end{align*}
+\[\therefore \;\; E[P(\tau)]+f(S,\tau;E) \geq S\]
+but also $f(\cdot) \geq 0$, \hfill$\qed$\\
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{6}
+    \item An "American" call with constant $E$ on a non-dividend paying stock will never be exercised prior to maturity.\\
+    \hfill
+    $F(S,\tau;E) \geq f(S,\tau;E) \geq S - E[P(\tau)] > S-E$ (exercise value)\\
+    \hfill
+    so the option is worth more "alive" than "dead" whenever $P(\tau) < 1$\\
+    \hfill
+    $\therefore \;\; F(S,\tau;E) = f(S,\tau;E)$ for non-dividend paying stocks\\
+    \hfill
+    \item $F(S,\infty;E) = f(S,\infty;E) = S$ for non-dividend paying stocks\\
+    \hfill
+    \item An option is a convex function of $E$\\
+    \[E_2 = \lambda E_1 + (1-\lambda)E_3\;,\;\;0 \leq \lambda \leq 1\]
+    \[f(E_2) = \lambda f(E_1) + (1-\lambda)f(E_3)\]
+\end{enumerate}
+\hfill\break
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item An option is a convex function of $E$\\
+    \[E_2 = \lambda E_1 + (1-\lambda)E_3\;,\;\;0 \leq \lambda \leq 1\]
+    \[f(E_2) = \lambda f(E_1) + (1-\lambda)f(E_3)\]
+    to prove this, compare the outcome with portfolios for different $S$.\\
+    \hfill
+    Holds also for American.\\
+    \hfill
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{9}
+    \item $f(S,\tau;E_1)-f(S,\tau;E_2) \leq P(\tau)(E_2-E_1)\;,$ for $E_2>E_1$\\
+    \hfill\break
+    \underline{Proof}: Compare a portfolio long the $E_1$ option and short the $E_2$ option to an investment of the present value of $E_2-E_1$ dollars.\\
+    \hfill
+\end{enumerate}
+\underline{Initial Investment}
+\[\text{Portfolio: } f(S,\tau;E_1)-f(S,\tau;E_2) \;\;\;\; \text{Dollars: } P(\tau)(E_2-E_1)\]
+\begin{align*} \tag*{\Bigg\} Final Value}
+\begin{split}
+    S &\leq E_1 \;\;\;\; \text{Portfolio: } 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;< \text{Dollars: } E_2-E_1
+    \\
+    E_1 < S &< E_2 \;\;\;\; \text{Portfolio: } S-E_1 \;\;\;\;\;\;< \text{Dollars: } E_2-E_1
+    \\
+    S &\geq E_2 \;\;\;\; \text{Portfolio: } E_2-E_1 \;\;\;\;= \text{Dollars: } E_2-E_1
+    \\
+\end{split}
+\end{align*}
+\hfill$\qed$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
