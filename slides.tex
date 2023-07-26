@@ -91,7 +91,7 @@ Coin flipping game: toss a coin, and continue to do so until it lands "heads".
       \$2 if “heads” the second time (TH) & $\sfrac{1}{4}$\\
       \$4 if “heads” the third time (TTH) & $\sfrac{1}{8}$\\
       ...\\
-      \$2 if “heads” the $i^{th}$ time (TT...TH) & $(\sfrac{1}{2})^i$\\
+      \$$2^{i-1}$ if “heads” the $i^{th}$ time (TT...TH) & $(\sfrac{1}{2})^i$\\
       \bottomrule
     \end{tabular}
 \end{table}
@@ -190,8 +190,8 @@ Axioms of Rational Behaviour\\
     then $p_1 > p_2 \implies y \succ t$\\
     and $p_1 = p_2 \implies y \sim t$\\
 \end{center}
-\begin{figure}[ut4]
-    \includegraphics[width=0.5\textwidth]{L1UT4}
+\begin{figure}[ut5]
+    \includegraphics[width=0.6\textwidth]{L1UT5}
     \centering
 \end{figure}
 \end{frame}
@@ -495,17 +495,17 @@ Even though these axioms have been challenged there is no theory competing with 
       \2 "Preferences over gambles"
 \end{outline}
 \hfill \break
-Let $S$ be the set of all risky prospects  payoff distributions).\\
+Let $S$ be the set of all risky prospects (or payoff distributions).\\
 \end{frame}
 
 \subsection{Expected Utility Theorem}
 
 \begin{frame}
-Let $S$ be the set of all risky prospects  payoff distributions).\\
+Let $S$ be the set of all risky prospects (or payoff distributions).\\
 \hfill \break
-\underline{\textbf{Expected Utility Theorem}}: A preference ordering on $S$ which satisfies certain rationality requirements (A1-A5) can be represented by a utility function $u$ defined on the set of outcomes in the sense that:\\
-\hfill \break
-\textit{Existence}
+\underline{\textbf{Expected Utility Theorem}}:\\
+\hfill\break
+(Existence) A preference ordering on $S$ which satisfies certain rationality requirements (A1-A5) can be represented by a utility function $u$ defined on the set of outcomes in the sense that:\\
 \begin{align*}
     E[u(x)] \geq& E[u(y)]\\
     x, y \; \epsilon& \; S\\
@@ -514,9 +514,9 @@ Let $S$ be the set of all risky prospects  payoff distributions).\\
 \end{frame}
 
 \begin{frame}
-If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, $u(x)$ is unique up to a positive linear transformation. \\
-\hfill \break
-\textit{Uniqueness}
+\underline{\textbf{Expected Utility Theorem}}:\\
+\hfill\break
+(Uniqueness) If $u(x)$ is a utility function, so is $au(x)+b\textit{, }a>0$. That is, $u(x)$ is unique up to a positive linear transformation. \\
 \begin{align*}
     E[u(x)] =& \sum_i u(x)_i p(x_i)\\
     =& \int_{-\infty}^\infty u(x)f(x)dx\\
@@ -609,8 +609,8 @@ We can construct the indifference set for $h=(0,1)$, (for a given individual)\\
     \includegraphics[width=0.6\textwidth]{L2-indiffset}
     \centering
 \end{figure}
-\[W_i = hM+(1-h)m\]
-For this preference function (concave) CE < Expected payoff of the gamble ($W_i<\bar{W_i}$)
+\[\bar{W}_i = hM+(1-h)m\]
+For this preference function (concave) CE < expected value of the gamble ($W_i<\bar{W_i}$)
 \end{frame}
 
 \begin{frame}
@@ -683,14 +683,14 @@ It is easy to show this by Taylor's Theorem...
 \begin{align*}
     \textit{risk-averse if } W_c &< \bar{W} \impliedby u''<0\\
     \textit{risk-neutral if } W_c &= \bar{W} \impliedby u''=0\\
-    \textit{risk-seeking if } W_c &> \bar{W} \impliedby u''>0\\
+    \textit{risk-seeking if } W_c &> \bar{W} \impliedby u''>0
 \end{align*}
 By Taylor's Theorem:
 \begin{align*}
     E[u(W)] &= E[u(\bar{W}+(W-\bar{W}))]\\
-    &= E[u(\bar{W})]+u'(\bar{W})(W-\bar{W})\\
-    &\;\;\;+\frac{1}{2}u''(\bar{W}(1-\theta)+\theta W)(W-\bar{W})^2\;\;\textit{for some }\theta, 0 \leq \theta \leq 1\\
-    \therefore \;\; E[u(W)]-E[u(\bar{W})] &= u(W_c)-u(\bar{W}) = \frac{1}{2}E[u''(\cdot)(W-\bar{W})^2\\
+    &= E\bigg[u(\bar{W})+u'(\bar{W})(W-\bar{W})\\
+    &\;\;\;+\frac{1}{2}u''(\bar{W}(1-\theta)+\theta W)(W-\bar{W})^2\bigg]\;\;\textit{for some }\theta, 0 \leq \theta \leq 1\\
+    \therefore \;\; E[u(W)]-E[u(\bar{W})] &= u(W_c)-u(\bar{W}) = \frac{1}{2}E[u''(\cdot)(W-\bar{W})^2
 \end{align*}
 \end{frame}
 
@@ -739,7 +739,7 @@ We will assume that decision makers maximize expected utility of terminal wealth
 \begin{frame}
 Theorem: A necessary and sufficient condition for (global) risk aversion is a utility function of wealth that is strictly concave.\\
 \hfill \break
-Proof: if $u(\cdot)$ is strictly concave at W by Jensen's inequality\\
+Proof: if $u(\cdot)$ is strictly concave at W by Jensen's inequality (if $E[\varepsilon]=0$ actuarially fair)\\
 \[ E[U(W+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
 \hfill \break
 Actuarially Fair Gamble:\\
@@ -749,15 +749,29 @@ Actuarially Fair Gamble:\\
 
 \begin{frame}
 Risk Averse\\
-\hfill \break
-\[ u(W)+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
+\[ E[u(W)+\tilde\varepsilon)] < U(E[W+\tilde\varepsilon]) = U(W)\]
 \begin{align*}
     u(W) &= u(p(W+\varepsilon_1)+(1-p)(W+\varepsilon_2))\\
-    &> p u(W+\varepsilon_1)+(1-p)u(W+\varepsilon_2)\\
+    &> p u(W+\varepsilon_1)+(1-p)u(W+\varepsilon_2)
 \end{align*}
+\begin{figure}[L3-riskaverse]
+    \includegraphics[width=0.5\textwidth]{L3-riskaverse}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
 $\therefore$ risk averse $\implies$ concave utility function.\\
 \hfill\break
 A reversal of these steps demonstrates that concave utility function $\implies$ risk averse.\\
+\begin{figure}[L3-riskaverse2]
+    \includegraphics[width=0.5\textwidth]{L3-riskaverse2}
+    \centering
+\end{figure}
+\begin{center}
+    [to prove necessity, see Ingersoll]\\
+    Concave $\iff$ $u''(W)<0$\\
+\end{center}
 \end{frame}
 
 \begin{frame}
@@ -808,12 +822,12 @@ Only utility function $\iff$ exponential (up to two arbitrary constants).
 
 \begin{frame}
 2. \underline{Constant Relative Risk Aversion} $\iff$ power and logarithmic functions.\\
-This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\gamma-1}; u'' = (\gamma-1)W^{\gamma-2}$)\\
-\hfill \break
+This family is also known as \underline{isoelastic} utility functions.\\
 \begin{align*}
     u(W) =& \frac{W^{\gamma}}{\gamma}\;\;\gamma<1,\gamma\neq0\\
     =& \log(W)\;\;\gamma=0,\Bigg[\lim_{\gamma \to 0} \frac{W^\gamma-1}{\gamma}=\lim\frac{W^\gamma \ln{W}}{1}\Bigg]\\
 \end{align*}
+($u'=W^{\gamma-1}; u'' = (\gamma-1)W^{\gamma-2}$)\\
 \begin{align*}
     A(W) = \frac{(1-\gamma)}{W}&,\;\;A'(W) = -\frac{(1-\gamma)}{W^2}<0\\
     R(W) = (1-\gamma)&,\;\;R'(W) = 0\\
@@ -842,6 +856,25 @@ This family is also known as \underline{isoelastic} utility functions. ($u'=W^{\
 \begin{align*}
     A(W) = \Bigg[\frac{W}{1-\gamma}+\frac{\eta}{\beta}\Bigg]^{-1}&,\;\;\implies \frac{1}{A(W)} = a+bW \;\textit{"linear risk tolerance"}\\
     R(W) = W\cdot A(W) \;\;\;\;\;\; &A'(W)=-(1-\gamma)A^2(W) \;\;\;\;\;\; R'(W)=\frac{\eta}{\beta}A^2(W)\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Useful property: gives demand curves for the risky assets which are linear in wealth.\\
+\begin{center}
+\begin{tabular}{ l l l }
+ Exponential & $\eta = 1$ & $\gamma= -\infty$ \\ 
+ Quadratic & & $\gamma = 2$ \\  
+ Isoelastic & $\eta = 0$ & $\gamma < 1$ \\
+ Generalized Logarithmic &  & $\gamma = 0$ \\
+ Linear(risk neutral) &  & $\gamma = 1$
+\end{tabular}
+\end{center}
+and,
+\begin{align*}
+    u'(W) &= \beta \bigg[\frac{\beta W}{a-\gamma}+\eta\bigg]^{\gamma-1}\\
+    u''(W) &= \beta^2 \bigg[\frac{\beta W}{1-\gamma} + \eta\bigg]^{\gamma-2}\\
+    -\frac{u''}{u'} &= \bigg[ \frac{W}{1-\gamma}+\frac{\eta}{\beta}\bigg]^{-1}\\
 \end{align*}
 \end{frame}
 
