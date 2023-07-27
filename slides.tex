@@ -947,7 +947,7 @@ given $u(\cdot)$ and the distribution of $z$, this can be solved for $x^*$.\\
 
 \subsection{Relationship between Utility Functions and Risk Aversion}
 \begin{frame}
-We will now show that \underline{decreasing} $A(w)$, that is $A'(w) < 0$, $\implies \frac{dx^*}{dw_0}>0$.\\
+We will now show that \underline{decreasing} $A(w)$, that is $A'(w) < 0$, $\implies \frac{dx^*}{dw_0}>0$ (risky investment is a normal good).\\
 \hfill \break
 Decreasing $A(w)$ implies
 \begin{align*}
@@ -960,7 +960,7 @@ and the same inequality holds for $z \leq 0$...
 
 \begin{frame}
 \begin{align*}
-    \therefore \;\; E[u''(w)z] &\geq -A(w_0)\cdot E[u'(w)z]\\
+    \therefore \;\; E[u''(w)z] &\geq -A(w_0)\cdot E[u'(w)z] >= 0\\
     \therefore \;\; \textit{decreasing }A(w) &\implies \frac{dx^*}{dw_0}>0 \;\;\;\;\textbf{(power)}\\
     \textit{constant }A(w) &\implies \frac{dx^*}{dw_0}=0 \;\;\;\;\textbf{(exponential)}\\
     \textit{increasing }A(w) &\implies \frac{dx^*}{dw_0}<0 \;\;\;\;\textbf{(quadratic)}\\
@@ -983,15 +983,16 @@ we could have proven similar results for $R(w)$.
 \[u(w) = -\frac{1}{a}e^{-aW}\]
 \begin{align*}
     \textit{1st order condition:}\;\;\;\; E[e^{-a(w_0+x^*z)} \cdot z] &= 0\\
-    f'(\cdot) = e^{-aW_0} &= 0\;\;\;\;\textit{where $x^*$ is independent of $w_0$}\\
+    f'(\cdot) = e^{-aW_0} &= 0\;\;\;\;\textit{where $x^*$ is independent of $w_0$}
 \end{align*}
 \begin{itemize}
     \item How does $x^*$ change with $a$?\\
 \end{itemize}
 \begin{align*}
     \frac{dx^*}{da} &= -\frac{\partial f'/\partial a}{\partial f'/\partial x^*} = -\frac{E[-z^2 x^*e^{-ax^*z}]}{E[-z^2 ae^{-ax^*z}]}\\
-    \frac{dx^*}{da} &= -\frac{x^*}{a}<0 \;\;\;\; \textit{for $x^*>0$}\\
+    \frac{dx^*}{da} &= -\frac{x^*}{a}<0 \;\;\;\; \textit{for $x^*>0$}
 \end{align*}
+The more risk averse (greater a) the investor, the less they will invest in a risky asset.
 \end{frame}
 
 \begin{frame}
@@ -1027,7 +1028,7 @@ In both cases we can substitute $w = y+w_0$, the order does not change ($A(x) = 
 In the same fashion, for any unbounded (from above) utility function, there exists a solution $w_n$ to $u(w)=2^n$ for all $n$. Thus, if we make the payoffs $u^{-1}(2^n)$, the value of the gamble to our risk averse individual...
 \[\sum_{n=1}^\infty \frac{1}{2^n} \cdot u[u^{-1}(2^n)] = \sum_{n=1}^\infty \frac{1}{2^n} \cdot 2^n = \infty\]
 \begin{itemize}
-    \item Note: not all gambles can be compared (violates Axiom I Completeness). Eg. consider a payoff of $u^{-1}(3^n)$ instead of $u^{-1}(2^n)$\\
+    \item Note: not all gambles can be compared (violates Axiom I Completeness). Eg. consider a payoff of $u^{-1}(3^n)$ instead of $u^{-1}(2^n)$\break$E[u]=\infty$ still, but clearly the former is better.
 \end{itemize}
 \end{frame}
 
@@ -1075,7 +1076,9 @@ We saw that the \textbf{intertemportal consumption portfolio} problem could in m
 \hfill\break
 This is solvable in principle, but messy... In a single period framework, mean-variance analysis simplifies things because the portfolio demands are the solution to a set of simultaneous \underline{linear} equations.\\
 \hfill\break
-Mean-variance analysis works only for the quadratic utility function with a separating distribution. However, for certain types of distributions mean-variance analysis may be \underline{approximately} correct ("compact distributions") for broad classes of utility functions.
+Mean-variance analysis works only for the quadratic utility function and in the case of separating distributions. However, for certain types of distributions mean-variance analysis may be \underline{approximately} correct ("compact distributions") for broad classes of utility functions.\\
+\hfill\break
+This is intimately connected with continuous time problems.
 \end{frame}
 
 \subsection{Compact Distributions}
@@ -1087,12 +1090,12 @@ Let $\tilde x$ be a random variable with\\
 \begin{align*}
     \bar x =& 0\\
     Var(\tilde x) =& 1\\
-    |E[x^k]| \equiv& |mk| < \infty \;\;\;\; \textit{finite central moments}\\
+    |E[x^k]| \equiv& |m_k| < \infty \;\;\;\; \textit{finite central moments}\\
 \end{align*}
 \end{frame}
 
 \begin{frame}
-Compact distribution when $t \to 0$\\
+Define a new variable $z$. (compact distribution when $t \to 0$)\\
 \[\tilde z \equiv \mu t + f(t)\tilde x \equiv \mu t + t^\delta g(t) \tilde x\]
 where $t^\delta$ is the lowest power in $f(t)$ so...\\
 \[\lim_{t \to 0} g(t) = \sigma \;\;\;\; \textit{a constant}\]
@@ -1202,7 +1205,7 @@ Note that,
 
 \subsection{Infinitely divisible stochastic process}
 \begin{frame}
-Before continuing the problem of continuous portfolio revisions, we must define random variables and probability in \underline{continuous time} in a meaningful fashion.\\
+Before examining the problem of continuous portfolio revisions, we must define random variables and probability in \underline{continuous time} in a meaningful fashion.\\
 \hfill\break
 A random variable is said to follow a stochastic process over time which is "\underline{infinitely divisible}" if the observation period can be made vanishingly small and the characteristics of the stochastic process remain the same.\\
 \hfill\break
@@ -1258,8 +1261,8 @@ Let $\tilde x$ be the standard normal random variable, then\\
 \[\tilde X = \mu/n + \tilde x \sigma/\sqrt{n} = \mu \Delta t + \sigma\tilde x \sqrt{\Delta t}\]
 satisfies ($\star$) and formally the limiting process distribution for $\Delta y$ is\\
 \begin{align*}
-    dY =& \mu dt = \sigma \tilde x \sqrt{dt}\\
-    =& \mu dt = \sigma dw\\
+    dY =& \mu dt + \sigma \tilde x \sqrt{dt}\\
+    =& \mu dt + \sigma dw\\
 \end{align*}
 where $dw=\tilde x \sqrt{dt}$ is a Wiener process.\\
 \end{frame}
@@ -1297,8 +1300,11 @@ It is generally useful to think of the Wiener process $dv$ as:\\
     \centering
 \end{figure}
 Also note that even though $dv$ is stochastic, $dv^2$ is non-stochastic (in probability limit).
+\begin{figure}[diffusion]
+    \includegraphics[width=0.8\textwidth]{images/L8-wiener2.png}
+    \centering
+\end{figure}
 \end{frame}
-
 
 \subsection{Chebyshev's Inequality}
 \begin{frame}
@@ -1325,44 +1331,44 @@ Also,\\
 \[\implies {p\!\!-\!\!\lim}\; d\tilde{v_i}d\tilde{v_j} = \rho dt\]
 \end{frame}
 
-\begin{frame}
-\begin{align*}
-    E[\frac{dP}{P}] =&\; \mu dt + \sigma E[dv]\\
-    =&\; \mu dt + \sigma \cdot 0\\
-\end{align*}
-\[\therefore \mu = \frac{E[\frac{dP}{P}]}{dt} \;\;\;\; \textit{the instantaneous expected rate of return}\]
-\end{frame}
+% \begin{frame}
+% \begin{align*}
+%     E[\frac{dP}{P}] =&\; \mu dt + \sigma E[dv]\\
+%     =&\; \mu dt + \sigma \cdot 0\\
+% \end{align*}
+% \[\therefore \mu = \frac{E[\frac{dP}{P}]}{dt} \;\;\;\; \textit{the instantaneous expected rate of return}\]
+% \end{frame}
 
-\begin{frame}
-\begin{align*}
-    (\frac{dP}{P})^2 =&\; \mu^2 dt^2 + 2\mu\sigma \; dt \; dv + \sigma^2 dt^2\\
-    =&\; 0 + 0 + \sigma^2 dt^2\\
-\end{align*}
-\[\therefore \sigma^2 = \frac{(\frac{dP}{P})^2}{dt} = \frac{E[\frac{dP}{P}]^2}{dt} \;\;\;\; \textit{the instantaneous variance of return}\]
-\end{frame}
+% \begin{frame}
+% \begin{align*}
+%     (\frac{dP}{P})^2 =&\; \mu^2 dt^2 + 2\mu\sigma \; dt \; dv + \sigma^2 dt^2\\
+%     =&\; 0 + 0 + \sigma^2 dt^2\\
+% \end{align*}
+% \[\therefore \sigma^2 = \frac{(\frac{dP}{P})^2}{dt} = \frac{E[\frac{dP}{P}]^2}{dt} \;\;\;\; \textit{the instantaneous variance of return}\]
+% \end{frame}
 
-\begin{frame}
-Then,\\
-\[\frac{dP}{P} = \mu dt + \sigma dv\]
-The instantaneous return equals the expected return (of magnitude $dt$) plus the unanticipated return (of magnitude $\sqrt{dt}$).
-\end{frame}
+% \begin{frame}
+% Then,\\
+% \[\frac{dP}{P} = \mu dt + \sigma dv\]
+% The instantaneous return equals the expected return (of magnitude $dt$) plus the unanticipated return (of magnitude $\sqrt{dt}$).
+% \end{frame}
 
-\begin{frame}
-For two assets,\\
-\begin{align*}
-    \frac{dP_i}{P_i} =&\; \mu_i dt + \sigma_i dv_i\\
-    \frac{dP_j}{P_j} =&\; \mu_j dt + \sigma_j dv_j\\
-\end{align*}
-\[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
-\end{frame}
+% \begin{frame}
+% For two assets,\\
+% \begin{align*}
+%     \frac{dP_i}{P_i} =&\; \mu_i dt + \sigma_i dv_i\\
+%     \frac{dP_j}{P_j} =&\; \mu_j dt + \sigma_j dv_j\\
+% \end{align*}
+% \[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
+% \end{frame}
 
-\begin{frame}
-\[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
-the first three terms are order $< dt$, so:
-\[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = 0 + 0 + 0 + \sigma_i\sigma_j\;dv_i\;dv_j\]
-and $dv_i\;dv_j=\rho_{ij}dt$ represents the correlation between $dv_i$ and $dv_j$, so:
-\[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \sigma_i\sigma_j\rho_{ij}dt \equiv \sigma_{ij} dt\]
-\end{frame}
+% \begin{frame}
+% \[\therefore \frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \mu_i\mu_j dt^2 + \mu_i\sigma_j\;dt\;dv_j + \mu_j\sigma_i\;dt\;dv_i + \sigma_i\sigma_j\;dv_i\;dv_j\]
+% the first three terms are order $< dt$, so:
+% \[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = 0 + 0 + 0 + \sigma_i\sigma_j\;dv_i\;dv_j\]
+% and $dv_i\;dv_j=\rho_{ij}dt$ represents the correlation between $dv_i$ and $dv_j$, so:
+% \[\frac{dP_i}{P_i}\cdot\frac{dP_j}{P_j} = \sigma_i\sigma_j\rho_{ij}dt \equiv \sigma_{ij} dt\]
+% \end{frame}
 
 \subsection{Ito's Lemma}
 \begin{frame}
@@ -1421,7 +1427,7 @@ Therefore, by the Central Limit Theorem, the change in $Y$ over any finite time 
 
 \begin{frame}
 \underline{Example}: 
-\[Y_T - Y_0 = \; \ln{P_T} - \ln{P_0} = \ln{\frac{P_T}{P_0}} = \ln{(1+Z_T)}\]
+\[Y_T - Y_0 = \; \ln{P_T} - \ln{P_0} = \ln{\frac{P_T}{P_0}} = \ln{(1+z_T)}\]
 \begin{align*}
     \ln{\frac{P_T}{P_0}} \sim &\; \mathcal{N}(\mu T, \sigma^2 T)\\
     \frac{P_T}{P_0} \sim &\; \mathcal{LN}(\mu T, \sigma^2 T)\\
@@ -1455,13 +1461,13 @@ Suppose that security prices are such that their realized rates of return are co
     &E[(\frac{dP_i}{P_i})^2] =\; Var[\frac{dP_i}{P_i}] = \sigma_i^2 dt\\
     &E[(\frac{dP_i}{P_i})(\frac{dP_j}{P_j})] =\; \sigma_{ij}^2 dt = \sigma_i \sigma_j \rho_{ij} dt\\
 \end{align*}
-For the moment we assume that these parameters are constant (for normal distribution).\\
+For the moment we assume that these parameters are constant (for log-normal distribution).\\
 \end{frame}
 
 \begin{frame}
 The continuous-time version of the portfolio problem (assuming again a time-additive and state-independent utility function of consumption) is:\\
 \begin{equation} \tag{2}
-    \max_{C(t),\vec{w}(t)} E_0\Bigg[\int_0^T U(C,t)dt + B[W(T),T]\Bigg]
+    \max_{C(t),\vec{w}(t)} E_0\bigg[\int_0^T U(C,t)dt + B[W(T),T]\bigg]
 \end{equation}
 The wealth accumulation equation:\\
 \begin{equation} \tag{3}
@@ -1471,13 +1477,13 @@ where $C(t)$ and $Y(t)$ are now flows...
 \end{frame}
 
 \begin{frame}
-For simplicity, assume $Y=0$,\\
+For simplicity, assume $Y=0$,
 \begin{align*}
-    W(t+dt) &= [W(t)-C(t)dt] \Bigg[1 + \sum_{i=0}^n w_i(t)(z_i(t)) \Bigg] = \Bigg[1 + \sum_{i=0}^n w_i(\frac{dP_i}{P_i}) \Bigg]\\
+    W(t+dt) &= [W(t)-C(t)dt] \bigg[1 + \sum_{i=0}^n w_i(t)(z_i(t)) \bigg] \;\;\Bigg\} \bigg[1 + \sum_{i=0}^n w_i(\frac{dP_i}{P_i}) \bigg]\\
     &= W(t)-C(t)dt+W(t)\sum_{i=0}^n w_i\frac{dP_i}{P_i}\\
     \therefore \;\; dW(t) &= -C(t)dt + W(t)\sum_{i=0}^n w_i\frac{dP_i}{P_i}\\
-    &\textit{but} \;\;\;\; \sum_{i=0}^n w_i\frac{dP_i}{P_i} = \sum_{i=1}^n w_i[\alpha_i dt + \sigma_i dv_i] + (1-\sum_{i=1}^n w_i)r dt\\
-    &\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; = \Bigg\{\sum_{i=1}^n w_i(\alpha_i-r) + r \Bigg\}dt + \sum_{i=1}^n w_i \sigma_i dv_i \;\;\;\; \textit{...}\\
+    &\textit{but} \;\;\;\; \sum_{i=0}^n w_i\frac{dP_i}{P_i} = \sum_{i=1}^n w_i[\alpha_i dt + \sigma_i dv_i] + \bigg(1-\sum_{i=1}^n w_i\bigg)r dt\\
+    &\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; = \bigg\{\sum_{i=1}^n w_i(\alpha_i-r) + r \bigg\}dt + \sum_{i=1}^n w_i \sigma_i dv_i \;\;\;\; \textit{...}\\
 \end{align*}
 \end{frame}
 
@@ -1498,6 +1504,15 @@ where the summations can be replaced with their vector equivalents...
 \end{frame}
 
 \begin{frame}
+where the summations can be replaced with their vector equivalents...
+\begin{align} \tag{5'}
+\begin{split}
+    E_t[dW(t)] &= -Cdt + W\bigg[\vec{w}'(\vec\alpha-r\vec1)+r\bigg]dt = \alpha_w dt
+    \\
+    Var_t[dW] &= E_t[dW^2] = W^2 \bigg[ \vec{w}'\bm{\Sigma}\vec{w}\bigg] dt = \sigma_w^2 dt 
+\end{split}
+\end{align}
+and,
 \begin{align*}
     dW &= \alpha_w dt + \sigma_w dv_w\\
     \sigma_w dv_w &= W \sum w_i \sigma_i dv_i\\
@@ -1534,7 +1549,7 @@ We obtain
     J[W(t),t] &\equiv \max\;E_t \Bigg[ \int_t^T U(C,S)dS + B[W(T),T]\\
     &= \max E_t \Bigg[U(C,t)dt + J[W(t+dt),t+dt)]\Bigg]\\
 \end{align*}
-or, \textbf{(8)} Bellman Equation: Stochastic Central Theory\\
+or, \textbf{(8)} Bellman Equation: Stochastic Control Theory\\
 \begin{align*}
     0 &= \max_{C,\vec{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\sum_{i=1}^n w_i(\alpha_i-r)+r)] + \frac{W^2}{2} J_{WW} \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} \Bigg\}\\
     0 &= \max_{C,\vec{w}} \Bigg\{ U(C,t)+J_t+J_W[-C+W(\vec{w}'(\vec{\alpha}_i-\vec{1}r)+r)] + \frac{W^2}{2} J_{WW} \vec{w}' \bm{\Sigma} \vec{w} \Bigg\}\\
@@ -1694,7 +1709,7 @@ Then $J_t = -\rho I e^{-\rho t}$, $J_W = e^{-\rho t} I'$, $J_{WW} = e^{-\rho t} 
 
 \begin{frame}
 By substitution in (13) we obtain the PDE (dividing by $e^{-\rho t}$):
-\[ 0 = \bigg(\frac{1}{\gamma}\bigg)(I')^{\frac{\gamma}{\gamma-1}} - \rho I + rW I' - \frac{1}{2}\frac{(\alpha-r)^2}{\sigma^2}\frac{(I')^2}{I''}\]
+\[ 0 = \bigg(\frac{1-\gamma}{\gamma}\bigg)(I')^{\frac{\gamma}{\gamma-1}} - \rho I + rW I' - \frac{1}{2}\frac{(\alpha-r)^2}{\sigma^2}\frac{(I')^2}{I''}\]
 Guess a solution of the form $I(W) = \frac{AW^\gamma}{\gamma}$. Substitution leaves\\
 \[ 0 = AW^\gamma \bigg[ \frac{1-\gamma}{\gamma}A^{\frac{1}{\gamma-1}} - \frac{\rho}{\gamma}+r-\frac{1}{2}\bigg(\frac{(\alpha-r}{\sigma}\bigg)^2\frac{1}{\gamma-1}\bigg]\]
 verifying this solution form for the constant:\\
@@ -1716,7 +1731,7 @@ are independent of calendar time.
 For the finite horizon case, guess the solution:\\
 \[ J(W,t) = e^{-\rho t} B(t) \cdot A \frac{W^\gamma}{\gamma}\]
 Substitution into (13) verifies the guess where $B(t)$ is the solution to the 1st order ODE:\\
-\[ B'(t) = (1-\gamma)a \bigg[ B-B^{\frac{-\gamma}{1-\gamma}}\bigg]\]
+\[ B'(t) = (1-\gamma) \bigg[ aB-B^{\frac{-\gamma}{1-\gamma}}\bigg]\]
 with boundary condition $B(T)=0$.\\
 \end{frame}
 
@@ -2160,6 +2175,32 @@ but also $f(\cdot) \geq 0$, \hfill$\qed$\\
 \end{split}
 \end{align*}
 \hfill$\qed$
+\end{frame}
+
+\begin{frame}
+\underline{General facts}: independent of stochastic processes for $S$ and $r$.\\
+\hfill
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item An option is a non-decreasing function of the Rothschild-Stiglitz riskiness of the underlying stock.\\
+    \hfill\break
+    [In a B-S world, it will be easy to prove that the option is an increasing function of $\sigma^2$ of the underlying stock (See NOTE in later slides)]\\
+    \hfill\break
+    \item $g(S,\tau;E)$: price of a European put option.\\
+    \hfill\break
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+For non-dividend paying stocks.\\
+$g(S,\tau;E) = f(S,\tau;E)-S+E\;P(\tau)$\\
+\begin{center}
+\begin{tabular}{ l l l }
+    At expiration & $\max(0,E-S_\tau)$ & $\max(0,E-S_\tau)-S_\tau+E$ \\
+    $S_\tau < E$ & $E-S_\tau$ & $0\;\;+\;\;E-S_\tau=E-S_\tau$ \\
+    $S_\tau \geq E$ & $0$ & $S_\tau-E\;\;-\;\;S_\tau+E=0$ \\
+\end{tabular}
+\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
