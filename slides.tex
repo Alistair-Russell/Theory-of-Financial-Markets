@@ -2184,7 +2184,7 @@ but also $f(\cdot) \geq 0$, \hfill$\qed$\\
     \setcounter{enumi}{10}
     \item An option is a non-decreasing function of the Rothschild-Stiglitz riskiness of the underlying stock.\\
     \hfill\break
-    [In a B-S world, it will be easy to prove that the option is an increasing function of $\sigma^2$ of the underlying stock (See NOTE in later slides)]\\
+    [In a B-S world, it will be easy to prove that the option is an increasing function of $\sigma^2$ of the underlying stock (See Note($\star$) in later slides)]\\
     \hfill\break
     \item $g(S,\tau;E)$: price of a European put option.\\
     \hfill\break
@@ -2194,6 +2194,7 @@ but also $f(\cdot) \geq 0$, \hfill$\qed$\\
 \begin{frame}
 For non-dividend paying stocks.\\
 $g(S,\tau;E) = f(S,\tau;E)-S+E\;P(\tau)$\\
+\hfill\break
 \begin{center}
 \begin{tabular}{ l l l }
     At expiration & $\max(0,E-S_\tau)$ & $\max(0,E-S_\tau)-S_\tau+E$ \\
@@ -2201,6 +2202,125 @@ $g(S,\tau;E) = f(S,\tau;E)-S+E\;P(\tau)$\\
     $S_\tau \geq E$ & $0$ & $S_\tau-E\;\;-\;\;S_\tau+E=0$ \\
 \end{tabular}
 \end{center}
+\end{frame}
+
+\subsection{Black-Scholes}
+\begin{frame}
+\underline{Option pricing by the Black-Scholes Methodology}\\
+\hfill\break
+Assumptions
+\begin{itemize}
+    \item no transation costs or taxes
+    \item trading takes place continuously
+    \item short selling is allowed
+    \item the borrowing and lending rates are equal and constant
+    \item the stock pays no dividends and its price dynamics follows a diffusion process
+\end{itemize}
+\[\frac{dS}{S} = \alpha \;dt + \sigma \;dz\]
+\begin{align*}
+    \alpha:& \text{ can be stochastic or depend upon other state variables (but bounded)}\\
+    \sigma:& \text{ constant [we can derive the PDE exactly in the same way if $\sigma = \sigma(S,t)$]}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\[ F \equiv F(S,\tau)\]
+a generic option (american, european, put, call))\\
+\hfill\break
+also on constants $E, r, \sigma$.\\
+\begin{align*} \tag*{\bigg\} \;\;\;\; $dt = -d\tau$}
+\begin{split}
+    \tau:& \text{ time to maturity}
+    \\
+    \text{t}:& \text{ chronological time}
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Ito's Lemma:\\
+\hfill\break
+\begin{align*}
+    dF &= F_S\;dS+F_\tau\;d\tau+\frac{1}{2}F_{SS}\;dS^2\\
+    &= F_S(\alpha S\;dt+\sigma S\;dz)-F_\tau \;dt + \frac{1}{2}F_{SS}(\sigma^2 S^2\;dt)\\
+    dF &= (\frac{1}{2}\sigma^2 S^2 F_{SS}_\alpha S F_S - F_\tau)\;dt + \sigma S F_S \;dz\\
+\end{align*}
+In return form we can write this as,\\
+\[\frac{dF}{F} = \alpha_F\;dt+\sigma_F\;dz \;\;\text{...}\]
+\end{frame}
+
+\begin{frame}
+In return form we can write this as,\\
+\[\frac{dF}{F} = \alpha_F\;dt+\sigma_F\;dz\]
+where\\
+\begin{align*}
+    \alpha_F &= (\frac{1}{2} \sigma^2 S^2 F_{SS} + \alpha S F_S - F_\tau) / F\\
+    \sigma_F &= \sigma S F_S / F\\
+\end{align*}
+Eg. instantaneous rate of return on the option ($\alpha_F$), and instantaneous standard deviation on the option ($\sigma_F$). \underline{Note} that instantaneous return on F and S are perfectly correlated (same $dz$).\\
+\end{frame}
+
+\begin{frame}
+Now consider forming the portfolio (instantaneous):
+\begin{align*}
+    X_1 &= \text{\$ invested in the stock}\\
+    X_2 &= \text{\$ invested in the option}\\
+\end{align*}
+Total instantaneous dollar return to the portfolio is [total investment in $Y$ is $X_1+X_2$]\\
+\begin{align*}
+    dY &= X_1\;\frac{dS}{S}+X_2\;\frac{dF}{F}\\
+    &= X_1(\alpha\;dt + \sigma\;dz)+X_2(\alpha_F\;dt + \sigma_F\;dz)\\
+    dY &= (\alpha X_1 + \alpha_F X_2)\;dt+(\sigma X_1 + \sigma_F X_2)\;dz\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+We can choose $X_1$ and $X_2$ (instantaneously) in proportions such that the portfolio becomes riskless. That is, the coefficient of $dz=0$.
+\[\sigma X_1 + \sigma_F X_2 = 0 \;\; or \;\; \frac{X_1}{X_2} = - \frac{\sigma_F}{\sigma} \;\; \textit{(no risk condition)}\]
+\underline{Black-Scholes}: Then, to avoid arbitrage profits, the instantaneous return on the portfolio has to be equal to the risk free rate ($r$ - continuously compounded rate).\\
+\[dY = (\alpha X_1 + \alpha_F X_2)\;dt = (X_1 + X_2)r\;dt\]
+or,
+\[(\alpha-r)X_1+(\alpha_F-r)X_2 = 0 \;\; \textit{(no arbitrage condition)}\]
+\begin{center}
+$\therefore$ \boxed{\frac{\alpha-r}{\sigma} = \frac{\alpha_F -r}{\sigma_F}}    
+\end{center}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\boxed{\frac{\alpha-r}{\sigma} = \frac{\alpha_F -r}{\sigma_F}} the risk premium (excess return over $r$) per unit of risk ($\sigma$) is the same for the stock and for \underline{any} option written on it.\\
+\end{center}
+\hfill\break
+\underline{Note}: the no risk condition implies that if we write one option ($X_2 = -F$) the number of dollars invested in the stock will be\\
+\[ X_1 = -X_2 \frac{\sigma_F}{\sigma} = F \frac{S\;F_S}{F} = S\;F_S\]
+\end{frame}
+
+\begin{frame}
+so the number of shares of the stock will be,
+\[ \text{\underline{Neutral Hedge} : } \;\; \frac{X_1}{S} = F_S\]
+and the slope of the option curve gives us the neutral hedge\\
+\begin{figure}[neutral-hedge]
+    \includegraphics[width=0.7\textwidth]{images/L14-neutralhedge.png}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+To derive the PDE for the option we substitute $\alpha_F$ and $\sigma_F$ in the equation relationship:\\
+\begin{align*}
+    (\alpha-r)\sigma_F &= \sigma(\alpha_F-r)\\
+    (\alpha-r)\frac{\sigma\;SF_S}{F} &= \sigma\bigg(\frac{\frac{1}{2}\sigma^2 S^2 F_{SS}+\alpha S F_S - F_\tau}{F}-r\bigg)\\
+    \alpha S F_S - r S F_S &= \frac{1}{2} \sigma^2 S^2 F_{SS} + \alpha S F_S - F_\tau -rF...
+\end{align*}
+\begin{center}
+    \boxed{\frac{1}{2}\sigma^2 S^2 F_{SS} + r S F_S - rF - F_\tau = 0}
+\end{center}
+Fundamental PDE that governs the value of \underline{any} option on S.
+\end{frame}
+
+\subsection{Note($\star$)}
+\begin{frame}
+    
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
