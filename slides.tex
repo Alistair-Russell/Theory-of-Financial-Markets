@@ -2224,11 +2224,11 @@ Assumptions
 \end{frame}
 
 \begin{frame}
+A generic option (american, european, put, call):
 \[ F \equiv F(S,\tau)\]
-a generic option (american, european, put, call))\\
 \hfill\break
 also on constants $E, r, \sigma$.\\
-\begin{align*} \tag*{\bigg\} \;\;\;\; $dt = -d\tau$}
+\begin{align*} \tag*{\bigg\} \;\;\;\; $dt = -d\tau \;\;\;\;\;\;\;\;$}
 \begin{split}
     \tau:& \text{ time to maturity}
     \\
@@ -2320,7 +2320,93 @@ Fundamental PDE that governs the value of \underline{any} option on S.
 
 \subsection{Note($\star$)}
 \begin{frame}
-    
+Note: $\alpha$ drops out of the equation.
+\begin{itemize}
+    \item F is independent of $\alpha$ (expected rate of return on stock)\\
+    \item F is independent of preferences.\\
+\end{itemize}
+\hfill\break
+A particular option is characterized by its boundary conditions...\\
+\hfill\break
+Eg. European (= american) call option on a non dividend paying stock:\\
+\[\text{at maturity...} \;\; C(S,0) = \max\;[0,S-E]\]
+\[\text{at any time...} \;\; C(0,\tau) = 0\]
+(for this stochastic process, 0 is an inaccessible and absorbing boundary)
+\end{frame}
+
+\begin{frame}
+With these boundary conditions, the PDE can be transformed (by change of variables) into the hear transfer equation in physics which has known solution:\\
+\[\rightarrow C(S,\tau) = S\;N(h)-E e^{-r\tau}\;N(h-\sigma\sqrt{\tau})\]
+\[h=\frac{\ln{\frac{S}{E}}+(r+\frac{1}{2}\sigma^2)\tau}{\sigma\sqrt{\tau}} = \frac{\ln{\frac{S}{E e^{-r\tau}}}}{\sigma\sqrt{\tau}}+\frac{1}{2}\sigma\sqrt{\tau}\]
+\end{frame}
+
+\begin{frame}
+\underline{Neutral hedge}:
+\[C_S = N(h) \;\;\;\; N(h) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^h e^{-\frac{x^2}{2}}\;dx\]
+\begin{figure}[neutral-hedge1]
+    \includegraphics[width=0.3\textwidth]{images/L14-nh1.png}
+    \centering
+\end{figure}
+Cumulative standard normal $0 \leq N(h) \leq 1$
+\begin{figure}[neutral-hedge2]
+    \includegraphics[width=0.3\textwidth]{images/L14-nh2.png}
+    \centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\underline{European Put (non dividend paying stock)}:\\
+\[P(S,0) = \max\;[0,E-S]\]
+\begin{align*}
+    P &= C-S\;+\;E e^{-r\tau}\\
+    P &= S\;N(h)-E e^{-r\tau}\;N(h-\sigma\sqrt{\tau})-S+E e^{-r\tau}\\
+    P &= E e^{-r\tau} [1-N(h-\sigma\sqrt{\tau}]-S[1-N(h)]
+\end{align*}
+The symmetry property of the standard normal distribution implies that\\
+\[1-N(z) = N(-z)\]
+\[\therefore \;\; P = E e^{-r\tau}\;N(-h+\sigma\sqrt{\tau})-S\;N(-h)\]
+\end{frame}
+
+\subsection{Dividend Model}
+\begin{frame}
+Assume the stock pays a continuous dividend rate $D(S,t)$.\\
+\[ \frac{dS}{S} = (\alpha - \frac{D}{S})\;dt+\sigma\;dz\]
+where $\frac{dS}{S}$ is the price appreciation, $\alpha$ is the total expected return, and $\frac{D}{S}$ is the dividend yield.\\
+\[ \frac{dS+D\;dt}{S} = \alpha\;dt+\sigma\;dz\]
+\end{frame}
+
+\begin{frame}
+Again, $F = F(S,\tau)$\\
+\[\frac{dF}{F} = \alpha_F\;dt+\sigma_F\;dz\]
+\[\alpha_F = (\frac{1}{2} \sigma^2 S^2 F_{SS} + (\alpha S-D) F_S - F_\tau) / F\]
+\[\sigma_F = \sigma S F_S / F\]
+\[dY = X_1\;\frac{dS+D\;dt}{S}+X_2\;\frac{dF}{F}\]
+\[\implies\;\; \frac{1}{2} \sigma^2 S^2 F_{SS} + (rS-D)F_S - F_\tau -rF = 0\]
+In general, this equation does not have a closed form solution...
+\end{frame}
+
+\begin{frame}
+But for:
+\begin{itemize}
+    \item european call option\\
+    \item proportional dividends $D=\delta S$\\
+\end{itemize}
+\[C(S,0) = \max\;[0,S-E]\]
+\[\frac{1}{2} \sigma^2 S^2 C_{SS} + (r-\delta)S C_S - C_\tau -rC = 0\]
+then
+\begin{align*}
+    C &= e^{-\delta \tau} S\;N(k) - e^{-r \tau} E\;N(k-\sigma\sqrt{\tau})\\
+    k &= \frac{\ln{\frac{S}{E}}+[r-\delta+\frac{1}{2}\sigma^2]\tau}{\sigma\sqrt{\tau}} = \frac{\ln{\frac{S e^{-\delta\tau}}{E e^{-r\tau}}}}{\sigma\sqrt{\tau}}+\frac{1}{2}\sigma\sqrt{\tau}\\
+\end{align*}
+...same solution as before but $S \longrightarrow S e^{\delta\tau}$
+\end{frame}
+
+\begin{frame}
+For high dividends (stock prices) the option is worth less than the exercise value ($S-E$)
+\begin{figure}[div-model]
+    \includegraphics[width=1\textwidth]{images/L14-divmodel.png}
+    \centering
+\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2333,6 +2419,142 @@ Fundamental PDE that governs the value of \underline{any} option on S.
 %%%%%%%%%%%%%% TOPIC 16   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{More about Continuous Time Option Pricing}
+
+\begin{frame}
+\underline{Recall}:
+\[ \text{Stock return: } \;\; \frac{dS}{S} = \alpha\;dt + \sigma\;dz\]
+\[ \text{Option return: } \;\; \frac{dF}{F} = \alpha_F\;dt + \sigma_F\;dz\]
+where,
+\begin{align*}
+    \alpha_F &= \frac{\frac{1}{2}\sigma^2 S^2 F_{SS} + \alpha S F_S - F_\tau}{F}\\
+    \sigma_F &= \frac{\sigma S F_S}{F}\\
+\end{align*}
+with hedging arguments, we derived the Black-Scholes PDE.
+\end{frame}
+
+\begin{frame}
+\underline{Recall}: Normal Distribution\\
+\[ x \sim \mathcal{N}(\mu t, \sigma^2 t)\]
+\[ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\frac{(x-\mu t)^2}{\sigma^2 t}}\]
+\hfill\break
+Log-normal Distribution\\
+\[ y \sim \mathcal{LN}(\mu t, \sigma^2 t)\]
+\[ x = \ln y \sim \mathcal{N}(\mu t, \sigma^2 t)\]
+\[ f(\ln y) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\frac{(\n y-\mu t)^2}{\sigma^2 t}}\]
+\end{frame}
+
+\subsection{Preference-Free Pricing}
+\begin{frame}
+(Cox-Ross technique)\\
+\hfill\break
+Given that the price of an option relative to the stock is independent of preferences, we can pretend that all investors are risk neutral, in which case
+\[ \alpha = \alpha_F = r\]
+and we get the same PDE
+\[\bm{r} = \alpha_F = \frac{\frac{1}{2}\sigma^2 S^2 F_{SS} + \alpha S F_S - F_\tau}{F} = \frac{\frac{1}{2}\sigma^2 S^2 F_{SS} + \bm{r}S F_S - F_\tau}{F}\]
+This is just a fiction, but a useful one to value many options.\\
+\end{frame}
+
+\begin{frame}
+We can value an option \underline{assuming} that $\alpha=r$, and then compute the present value of the option discounting at $\alpha_F=r$.\\
+\hfill\break
+This is known as the "equivalent martingale measure".\\
+\hfill\break
+This is valid only to compute the present value of the call.\\
+\end{frame}
+
+\begin{frame}
+\underline{Derivation of the B-S formula using the risk neutrality argument}\\
+(no dividends)\\
+\hfill\break
+Under risk neutrality, $\alpha=r$\\
+\[ \frac{dS}{S} = \alpha\;dt + \sigma\;dz = r\;dt+\sigma\;dz\]
+We saw that (applying Ito's Lemma)\\
+\begin{align*}
+    \ln{\frac{S_t}{S}} &\sim \mathcal{N}\bigg((r-\frac{1}{2}\sigma^2)t, \sigma^2 t \bigg)\\
+    \ln{S_t} &\sim \mathcal{N}\bigg((r-\frac{1}{2}\sigma^2)t+\ln{S}, \sigma^2 t \bigg)\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+if $x \sim \mathcal{N}(\mu, \sigma^2)$,
+\[f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}} \;\; \textit{normal density}\]
+therefore,
+\[f(\ln{S_t}) = \frac{1}{\sigma \sqrt{t} \sqrt{2\pi}} e^{-\frac{1}{2}\frac{[\ln{\frac{S_t}{S}}-(r-\frac{1}{2}\sigma^2)t]^2}{\sigma^2 t}}\]
+but under risk neutrality (equivalent martingale measure)\\
+\begin{align*}
+    C &= e^{-rt}\;\hat{E}[C_t]\\
+    C &= e^{-rt} \int_E^\infty (S_t-E) \frac{1}{\sqrt{2\pi} \sigma \sqrt{t}} e^{-\frac{1}{2}\frac{[\ln{\frac{S_t}{S}}-(r-\frac{1}{2}\sigma^2)t]^2}{\sigma^2 t}} \;d\ln{S_t} = e^{-rt} \int_E^\infty (S_t-E) f(\ln{S_t})\;d\ln{S_t}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+and through a change of variables,
+\begin{align*}
+    x &= \frac{\ln{S_t}-\ln{S}-(r-\frac{1}{2}\sigma^2)t}{\sigma\sqrt{t}}\\
+    S_t &= e^{x\sigma\sqrt{t}+(r-\frac{1}{2}\sigma^2 t)+\ln S}=S e^{rt} e^{x\sigma\sqrt{t}-\frac{1}{2}\sigma^2 t}\\
+    dS_t &= S_t \sigma\sqrt{t}\;dx \implies d\ln{S_t} = \frac{dS_t}{S_t} = \sigma \sqrt{t}\;dx\\
+\end{align*}
+\[ C = e^{-rt} \int^\infty S_t \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}\;dx - E e^{-rt} \int^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}\;dx\]
+letting,
+\[ A = e^{-rt} \int^\infty S_t \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}\;dx\;,\;\; B = E e^{-rt} \int^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}\;dx\]
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    A &= e^{-rt} \int^\infty S e^{rt} \frac{1}{\sqrt{2\pi}} e^{x\sigma\sqrt{t}-\frac{1}{2}\sigma^2 t}\cdot e^{-\frac{1}{2}x^2}\;dx\\
+    &= S \int^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x-\sigma\sqrt{t}]^2}\;dx
+\end{align*}    
+changing variables again such that, $y = x-\sigma\sqrt{t}$, $dy =dx$\\
+\begin{align*}
+    A &= S \int_{-h}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[y^2]}\;dy\\
+    -h &= \frac{\ln E - \ln S - (r-\frac{1}{2}\sigma^2)t}{\sigma\sqrt{t}}-\sigma\sqrt{t}\\
+    &= - \frac{\ln{\frac{S}{E}}+(r+\frac{1}{2}\sigma^2)t}{\sigma\sqrt{t}}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\[\text{but } \;\; \int_{-h}^\infty = \int_{-\infty}^h = \mathcal{N}(h)\]
+\begin{figure}[normal]
+    \includegraphics[width=0.4\textwidth]{images/L16-normal.png}
+    \centering
+\end{figure}
+\[ \therefore \;\; A = S\;\mathcal{N}(h) \]
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    B &= E e^{-rt} \int_{-k}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}\;dx = E e^{-rt}\;\mathcal{N}(k)\\
+    -k &= \frac{\ln E - \ln S - (r-\frac{1}{2}\sigma^2)t}{\sigma\sqrt{t}} = - \frac{\ln{\frac{S}{E}}+(r-\frac{1}{2}\sigma^2)t}{\sigma\sqrt{t}} 
+\end{align*}
+\[ \therefore \;\; k = h-\sigma\sqrt{t} \] 
+\[ \implies \;\; C = S\;\mathcal{N}(h) -E e^{-rt}\;\mathcal{N}(h-\sigma\sqrt{t})\]
+\end{frame}
+
+\begin{frame}
+\underline{Log-normal Distribution}\\
+\begin{align*}
+    \ln{\frac{S_t}{S_0}} \sim \mathcal{N}(\mu t, \sigma^2 t)\\
+    \frac{S_t}{S_0} \sim \mathcal{LN}(\mu t, \sigma^2 t)
+\end{align*}
+\begin{figure}[lognormal]
+    \includegraphics[width=0.4\textwidth]{images/L16-lognormal.png}
+    \centering
+\end{figure}
+\[ E \bigg[ \frac{S_t}{S_0} \bigg] = e^{(\mu +\frac{1}{2} \sigma^2)t} = e^{\alpha t}\]
+\end{frame}
+
+\begin{frame}
+\[ E \bigg[ \frac{S_t}{S_0} \bigg] = e^{(\mu +\frac{1}{2} \sigma^2)t} = e^{\alpha t}\]
+Define: $\alpha \equiv \mu + \frac{1}{2}\sigma^2$,
+$\therefore \;\;$ $\alpha$ is the continuously compounded expected rate of return.\\
+\hfill\break
+and $\mu = \alpha - \frac{1}{2}\sigma^2$, but under risk neutrality we have $\alpha=r$ and \underline{not} $\mu$ such that,
+\[ \implies \;\; \mu = r-\frac{1}{2}\sigma^2 \]
+\end{frame}
+
+\begin{frame}
+\underline{Proof}:\\
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 17   %%%%%%%%%%%%%%%
