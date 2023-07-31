@@ -2554,6 +2554,27 @@ and $\mu = \alpha - \frac{1}{2}\sigma^2$, but under risk neutrality we have $\al
 
 \begin{frame}
 \underline{Proof}:\\
+\hfill\break
+Let $y = \frac{S_t}{S_0}$,\\
+The distribution of $\ln{y}$ is normal with mean $\mu t$ and variance $\sigma^2t$.\\
+\[ \therefore \;\; E[y] = \int_0^\infty y \frac{1}{\sqrt{2\pi}\sigma\sqrt{t}} e^{-\frac{1}{2}\frac{(\ln y - \mu t)^2}{\sigma^2 t}} d\ln{y} = \int_0^\infty \bm{y} \frac{1}{\sqrt{2\pi}\sigma\sqrt{t}} e^{-\frac{1}{2}\frac{(\ln y - \mu t)^2}{\sigma^2 t}} \frac{dy}{\bm{y}} \]
+change of variables,
+\begin{align*}
+    x &= \frac{\ln y - \mu t}{\sigma \sqrt{t}} \;\;\;\; \textit{(standard normal)}\\
+    y &= e^{x\sigma\sqrt{t}+\mu t}\\
+    dy &= y\sigma\sqrt{t}\;dx\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+So,
+\begin{align*}
+    E[y] &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{x\sigma \sqrt{t} + \mu t} e^{-\frac{1}{2} x^2} \; dx\\
+    &= e^{\mu t} \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x^2-2x\sigma \sqrt{t} + \sigma^2 t] + \frac{1}{2}\sigma^2 t}\;dx\\
+    &= e^{(\mu+\frac{1}{2}\sigma^2)t} \cdot \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x-\frac{1}{2}\sigma\sqrt{t}]^2}\;dx \bigg\} = 1\\
+    &\\
+    E[y] &= e^{(\mu+\frac{1}{2}\sigma^2)t}\\
+\end{align*}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
