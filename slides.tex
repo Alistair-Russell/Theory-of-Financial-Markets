@@ -2243,7 +2243,7 @@ Ito's Lemma:\\
 \begin{align*}
     dF &= F_S\;dS+F_\tau\;d\tau+\frac{1}{2}F_{SS}\;dS^2\\
     &= F_S(\alpha S\;dt+\sigma S\;dz)-F_\tau \;dt + \frac{1}{2}F_{SS}(\sigma^2 S^2\;dt)\\
-    dF &= (\frac{1}{2}\sigma^2 S^2 F_{SS}_\alpha S F_S - F_\tau)\;dt + \sigma S F_S \;dz\\
+    dF &= (\frac{1}{2}\sigma^2 S^2 F_{SS}\alpha S F_S - F_\tau)\;dt + \sigma S F_S \;dz\\
 \end{align*}
 In return form we can write this as,\\
 \[\frac{dF}{F} = \alpha_F\;dt+\sigma_F\;dz \;\;\text{...}\]
@@ -2581,6 +2581,139 @@ So,
 %%%%%%%%%%%%%% TOPIC 17   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Stochastic Models of the Term Structure}
+
+\subsection{Equilibrium and Arbitrage Models of Bond Pricing \& the Term Structure}
+\begin{frame}
+Recent (equilibrium and arbitrage) theories of the term structure and the pricing of bonds start from assumptions about the stochastic evolution of one or more interest rates in a continuous time model.\\
+\hfill\break
+To start, let's consider only one interest rate - assume that the instantaneously riskless interest rate follows the stochastic different equation (diffusion process or Ito's process):\\
+\begin{equation} \tag{1}
+    dr = \alpha(r)\;dt + \sigma(r)\;dz
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{1}
+    dr = \alpha(r)\;dt + \sigma(r)\;dz
+\end{equation}
+where,
+\begin{align*}
+    dz: & \;\; \text{Gauss-Wiener process}\\
+    \alpha: & \;\; \text{instantaneous mean (drift)}\\
+    \sigma^2: & \;\; \text{instantaneous variance}\\
+    \alpha\;dt: & \;\; \text{expected change in $r$}\\
+    \sigma\;dz: & \;\; \text{unanticipated change in $r$}\\
+    dz\sim\mathcal{N}(0,dt): & \;\; \text{normally distributed random variable with zero mean and variance $dt$}\\
+    dz=\sqrt{dt}\tilde\varepsilon: & \;\; \text{where $\tilde\varepsilon \sim \mathcal{N}(0,1)$}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+For almost all practical purposes we can think of $dz$ as,\\
+\begin{figure}[dz]
+    \includegraphics[width=0.6\textwidth]{images/L17-dz.png}
+    \centering
+\end{figure}
+\[ E[\tilde{dz}] = \frac{1}{2}\sqrt{dt} - \frac{1}{2}\sqrt{dt} = 0 \]
+\end{frame}
+
+\begin{frame}
+and note that,\\
+\begin{figure}[dz2]
+    \includegraphics[width=0.8\textwidth]{images/L17-dz2.png}
+    \centering
+\end{figure}
+\[ E[\tilde{dz}^2] = Var(\tilde{dz}) = \frac{1}{2}dt+\frac{1}{2}dt = dt \]
+$\implies$ even though $dz$ is stochastic, $\tilde{dz}^2$ is non-stochastic (in probability limit)\\
+$\therefore \;\; (dr)^2 \sim \sigma^2\;dt$ (we will use this in Ito's Lemma)\\
+\hfill\break
+In discrete time, $dt = 1\;$unit
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    r_t-r_{t-1} &= \tilde{\Delta r} = \alpha(r_{t-1}) + \tilde\varepsilon_t\\
+    \alpha(r_{t-1})&: \;\; \textit{expected change in $r$}\\
+    \tilde\varepsilon_t&: \;\; \textit{unanticipated change in $r$}\\
+\end{align*}
+\begin{align*}
+    E[\tilde{\Delta r}] &= \alpha(r_{t-1})\\
+    Var[\tilde{\Delta r}] &= Var[\tilde\varepsilon] = \sigma^2\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+A diffusion is a continuous (no jumps) non-differentiable process.\\
+\hfill\break
+Example:
+\begin{align*}
+    dr &= m(\mu-r)\;dt + \sqrt{r}\eta\;dz\\
+    \alpha(r) &= m(\mu-r)\\
+    \sigma(r) &= \sqrt{r}\eta\\
+\end{align*}
+Mean reverting process to the long-term average rate $\mu$.\\
+\[ m: \;\; \textit{spread of adjustment coefficient} \]
+\end{frame}
+
+\begin{frame}
+Mean reverting process to the long-term average rate $\mu$.
+\[ m: \;\; \textit{spread of adjustment coefficient} \]
+\begin{figure}[diffusion]
+    \includegraphics[width=0.5\textwidth]{images/L17-diffusion.png}
+    \centering
+\end{figure}
+\begin{align*}
+\begin{split}
+    r < \mu &: \;\; \textit{upward drift}\\
+    r > \mu &: \;\; \textit{downward drift}\\
+    r = \mu &: \;\; \textit{no drift}\\
+\end{split}
+\begin{split}
+    E[dr] &= m(\mu-r)\;dt\\
+    Var[dr] &= r \eta^2dt\\
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{multicols}{2}
+    If we assume:
+\columnbreak
+\begin{figure}[r]
+    \includegraphics[width=0.2\textwidth]{images/L17-r.png}
+\end{figure}
+\end{multicols}
+\textbf{A1}: All information about the term structure of interest rates at any point in time is summarized in the current value of the instantaneously riskless rate $r$ (one state variable models).\\
+\hfill\break
+\textbf{A2}: Changes in $r$ follow a diffusion process (1).\\
+\hfill\break
+$\implies$ The value of any default-free bond can be expressed as a function of $r$ and $\tau$ (time to maturity):
+\[ B \equiv B(r,\tau)\]
+\end{frame}
+
+\begin{frame}
+\underline{Ito's Lemma}:\\
+\[ dB = \bigg(\frac{\partial B}{\partial r}\;dr + \frac{\partial B}{\partial \tau}\;d\tau\bigg) + \bigg(\frac{1}{2} \frac{\partial^2 B}{\partial r^2}\;(dr)^2\bigg)\]
+\begin{align*}
+    \frac{\partial B}{\partial r}\;dr + \frac{\partial B}{\partial \tau}\;d\tau \;&:\;\; \text{classical total diff. if $r$ and $\tau$ deterministic}\\
+    \frac{1}{2} \frac{\partial^2 B}{\partial r^2}\;(dr)^2 \;&:\;\; \text{if $\tilde{dr}$ diffusion process, we have to add the next term}\\
+    &\;\;\;\;\; \text{in the Taylor series expansion because $dr^2$ is of order $dt$}\\
+\end{align*}
+\begin{align*}
+    dr^2 &= \alpha^2\;dt^2 + 2\alpha\sigma\;dtdz + \sigma^2dt\\
+    \therefore \;\; dr^2 &= \sigma^2dt \;\;\;\; \textit{ (order $dt$)}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\textbf{Note}: for simplicity, let's start assuming that $B$ is a discount bond ($C=0$).\\
+\hfill\break
+\underline{Applying Ito's Lemma}:\\
+\hfill\break
+\begin{equation} \tag{2}
+    dB = B_r\;dr + B-\tau\;d\tau + \frac{1}{2} B_{rr}\;(dr)^2
+\end{equation}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 18   %%%%%%%%%%%%%%%
