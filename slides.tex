@@ -2709,10 +2709,91 @@ $\implies$ The value of any default-free bond can be expressed as a function of 
 \textbf{Note}: for simplicity, let's start assuming that $B$ is a discount bond ($C=0$).\\
 \hfill\break
 \underline{Applying Ito's Lemma}:\\
-\hfill\break
 \begin{equation} \tag{2}
     dB = B_r\;dr + B-\tau\;d\tau + \frac{1}{2} B_{rr}\;(dr)^2
 \end{equation}
+Noting that $dr^2 = \sigma^2dt$, $d\tau=-dt$, and from (4)
+\begin{align*}
+    dB &= B_r(\alpha\;dt+\sigma\;dz) - B_\tau\;dt + \frac{1}{2}\sigma^2 B_{rr}\;dt
+\end{align*}
+\begin{align*} \tag{3}
+\begin{split}
+    \therefore \;\; \frac{dB}{B} &= \frac{(\frac{1}{2}\sigma^2 B_{rr} + \alpha B_r - B_\tau)}{B}\;dt + \frac{\sigma B_r}{B}\;dz
+    \\
+    \frac{dB}{B} &= \mu_B\;dt + \sigma_B\;dz
+\end{split}
+\end{align*}
+(the instantaneous rate of return on bond B) 
+\end{frame}
+
+\begin{frame}
+By investing amounts $X_1$ and $X_2$ in bonds of maturity $\tau_1$ and $\tau_2$, we can form a portfolio $P$ with instantaneous return:
+\begin{align*}
+    dP &= X_1[\mu_B(\tau_1)\;dt+\sigma_B(\tau_1)\;dz]+X_2[\mu_B(\tau_2)\;dt+\sigma_B(\tau_2)\;dz]\\
+    &= [\mu_B(\tau_1)+\mu_B(\tau_2)]\;dt+[\sigma_B(\tau_1)+\sigma_B(\tau_2)]\;dz
+\end{align*}
+if we choose $X_1$ and $X_2$ such that
+\begin{equation} \tag{4}
+    \textit{(no risk)} \;\;\;\; X_1\sigma_B(\tau_1)+X_2\sigma_B(\tau_2) = 0 \;\;\;\;\;\;
+\end{equation}
+then $P$ is riskless $\longrightarrow$ to avoid arbitrage profits...
+\end{frame}
+
+\begin{frame}
+then $P$ is riskless $\longrightarrow$ to avoid arbitrage profits,
+\[ dP = [X_1 \mu_B(\tau_1)+X_2 \mu_B(\tau_2)]\;dt = [X_1+X_2]r\;dt \]
+or
+\begin{equation} \tag{5}
+    \textit{(no arbitrage)} \;\;\;\; X_1[\mu_B(\tau_1)-r]+X_2[\mu_B(\tau_2)-r] = 0 \;\;\;\;\;\;
+\end{equation}
+\hfill\break
+Eliminating $X_1$ and $X_2$ from (4) and (5):
+\[ \frac{\mu_B(\tau_1)-r}{\sigma_B(\tau_1)} = \frac{\mu_B(\tau_2)-r}{\sigma_B(\tau_2)}\]
+and this applies to bonds of all maturities
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{6}
+    \textit{(independent of the maturity)} \;\; \frac{\mu_b - r}{\sigma_B} = \lambda(r) \;\;\;\;\;\;
+\end{equation}
+the risk premium ($\mu_B - r$) per unit of risk ($\sigma_B$) is constant for all maturities.\\
+\hfill\break
+$\bm{\lambda}(r)$: is a utility-dependent function and is independent of $\tau$. It might be a function of $t$: $\lambda(r,t)$. If all investors have log utility functions over consumption, it can be shown [Dothan] that the risk premium / standard deviation ratio, $\lambda$, is a constant.\\
+\hfill\break
+Pure expectations hypothesis: the expected instantaneous return on bonds of all maturities is equal to $r$: even here the yield curve is not flat.\\
+\end{frame}
+
+\begin{frame}
+Substituting from (3) into (6) we obtain the PDE:\\
+\begin{equation} \tag{7}
+    \frac{1}{2}\sigma^2 B_{rr} + (\alpha-\lambda\sigma) B_r - B_\tau - rB = 0
+\end{equation}
+where $(\alpha-\lambda\sigma)$ is the risk-adjusted drift.\\
+\hfill\break
+Notice that now the drift of the stochastic process ($\alpha$) and utility function ($\lambda$) enter the PDE $\implies$ bond values depend on both.
+\end{frame}
+
+\begin{frame}
+Boundary condition at maturity (face value of 1)
+\begin{equation} \tag{8}
+    B(r,0) = 1
+\end{equation}
+Given $\lambda$ (and $\alpha$ and $\sigma$) the equation can be solved for bonds of all maturities $B(r,\tau)$ and the term structure derived.
+\begin{align*} \tag{9}
+\begin{split}
+    B(r,\tau) = e^{-R(r,\tau)\cdot\tau}
+    \\
+    R(r,\tau) = -\frac{1}{\tau} \ln{B(r,\tau)}
+\end{split}
+\end{align*}
+\begin{multicols}{2}
+    \hfill\break
+    The shape of the curve depends on the functional form and paramaters in $\alpha$, $\sigma$, and $\lambda$.
+\columnbreak
+\begin{figure}[term-structure]
+    \includegraphics[width=0.2\textwidth]{images/L17-termstructure.png}
+\end{figure}
+\end{multicols}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
