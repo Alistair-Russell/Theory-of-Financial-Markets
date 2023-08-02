@@ -2796,6 +2796,98 @@ Given $\lambda$ (and $\alpha$ and $\sigma$) the equation can be solved for bonds
 \end{multicols}
 \end{frame}
 
+\begin{frame}
+The appropriate functional form of $\alpha$, $\sigma$ is an empirical question $\implies$ mean reverting process looks good.\\
+\hfill\break
+If the bonds pay a \underline{continuous coupon C}, (3) gives only  the instantaneous price appreciation: the total expected return could be,\\
+\[ \bigg(\mu_B + \frac{C}{B}\bigg)\;dt\]
+where $\mu_B$ is the expected price appreciation and $\frac{C}{B}$ is the coupon yield.\\
+\hfill\break
+so now the return on $P$ is,
+\[ dP = X_1\bigg[\bigg\{\mu_B(\tau_1)+\frac{C(\tau_1)}{B(\tau_1)}\bigg\}dt + \sigma_B(\tau_1)dz\bigg]+X_2\bigg[\bigg\{\mu_B(\tau_2)+\frac{C(\tau_2)}{B(\tau_2)}\bigg\}dt + \sigma_B(\tau_2)dz\bigg]\]
+\end{frame}
+
+\begin{frame}
+\[ dP = X_1\bigg[\bigg\{\mu_B(\tau_1)+\frac{C(\tau_1)}{B(\tau_1)}\bigg\}dt + \sigma_B(\tau_1)dz\bigg]+X_2\bigg[\bigg\{\mu_B(\tau_2)+\frac{C(\tau_2)}{B(\tau_2)}\bigg\}dt + \sigma_B(\tau_2)dz\bigg]\]
+\hfill\break
+which will lead to,
+\[ \frac{\mu_B+\frac{C}{B}-r}{\sigma_B} = \lambda \]
+and
+\[ \frac{1}{2}\sigma^2 B_{rr} + (\alpha - \lambda\sigma)B_r - B_\tau -rB + C = 0\]
+\end{frame}
+
+\begin{frame}
+The equation (PDE) has closed form solutions in some very special cases...\\
+\hfill\break
+\underline{Discount Bonds} closed form solutions:
+\begin{align*}
+    \text{Vasicek (1977) }\;\;&\\
+    dr &= m(\mu-r)\;dt+\gamma\;dz\\
+    \lambda &= \textit{constant}
+    &\\
+    \text{CIR (1985) }\;\;&\\
+    dr &= m(\mu-r)\;dt+\sqrt{r}\sigma\;dz\\
+    \lambda &= k\sqrt{r}\\
+\end{align*}
+...and, in general, this PDE can be solved by numerical methods.
+\end{frame}
+
+\begin{frame}
+It can be shown that any \underline{default free bond} $\implies$ option bonds $\rightarrow$ follow the same partial differential equation, subject to the appropriate boundary conditions.\\
+\hfill\break
+\underline{Savings bonds}: fixed income security with a given maturity which can be cashed at par at the discretion of the holder (coupon or discount). Frequently used by governments.\\
+Formally equivalent to an otherwise identical straight bond + an american \underline{put} option (to sell the bond) on the straight bond with an exercise price of par.\\
+\hfill\break
+Eg. coupon savings bond
+\[ B(r,0) = 1 \]
+\[ B(r,\tau) \geq 1 \]
+\end{frame}
+
+\begin{frame}
+\underline{Retractable bond}: long term bond which, at the holder's option, may be redeemed at par on a specified date prior to expiration.\\
+\hfill\break
+Eg. straight bond + european put
+\[ B(r,0) = 1 \]
+\[ B(r,\tau_r) \geq 1 \]
+$\longrightarrow \tau_r$ being the retraction date.\\
+\hfill\break
+\underline{Extendable bond}: short term bond which, at the option of the holder, can be extended to a later maturity.\\
+Equivalent to: short a straight bond + call option to buy a new bond.\\
+\hfill\break
+Conceptually equivalent to a retractable bond.
+\end{frame}
+
+\begin{frame}
+\underline{Callable bond}: the option to call is now of the issuer to call the bond for redemption at any time.\\
+\[ B(r,0) = 1 \]
+\[ B(r,\tau) \leq CP(\tau) \]
+$\longrightarrow CP$ the call price.\\
+\hfill\break
+In all these cases we have two interrelated problems:\\
+\begin{enumerate}
+    \item \textbf{Valuation}: yield that should be given at issue with respect to a straight bond.
+    \item \textbf{Optimal redemption (or call) strategy}: when to exercise the option.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+In our paper, we assumed (as an example):\\
+\hfill\break
+\textbf{A1}) $\frac{dr}{r} = \sigma dz$\\
+$\longrightarrow$ geometric Brownian motion without drift.\\
+\hfill\break
+\textbf{A2}) $\lambda = 0$\\
+$\longrightarrow$ pure expectations hypothesis.\\
+\hfill\break
+and solved numerically for the values of:
+\begin{itemize}
+    \item straight bond [5 years] [8\% coupon]
+    \item savings bond [5 years] [8\% coupon]
+    \item callable bond [5 years] [8\% coupon]
+    \item retractable bond [20 years, retractable at 5 years] [8\% coupon]
+\end{itemize}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 18   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
