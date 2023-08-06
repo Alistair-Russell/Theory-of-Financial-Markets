@@ -2888,14 +2888,219 @@ and solved numerically for the values of:
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\underline{1 factor arbitrage model}\\
+\hfill\break
+(A1): one factor $\longrightarrow$ r, \hfill (A2): $dr = \alpha dt + \sigma dz$ \hfill $\implies B \equiv B(r,\tau)\;\;\;\;\;\;\;\;$\\
+\[ \frac{dB}{B} = \mu_B\;dt + \sigma_B\;dz \]
+discount bond
+\begin{align*}
+    \mu_B &= (\frac{1}{2}\sigma^2B_{rr} + \alpha B_r - B_\tau) / B\\
+    \sigma_B &= \frac{\sigma B_r}{B}
+\end{align*}
+forming a riskless portfolio of 2 discount bonds\\
+\[ \frac{\mu_B-r}{\sigma_B} = \lambda \;\;, \;\;\;\; \lambda\equiv\lambda(r,t)\]
+\end{frame}
+
+\begin{frame}
+\underline{Deficiency} with this approach: assumes that all that is known about future interest rates is implicit in the current instantaneous rate $\implies$ the whole term structure can be inferred from the current instantaneous returns $\implies$ the instantaneous returns on bonds of \underline{all} maturities are perfectly correlated. Long rate is constant.We extended the approach by assuming:\\
+\hfill\break
+(\textbf{A1}) that the  whole term structure can be summarized with two rates:
+\begin{itemize}
+    \item the instantaneous riskless rate $r$
+    \item the consol rate $l$
+\end{itemize}
+(\textbf{A2}) the two interest rates follow a joint stochastic process of the general type:
+\begin{align*}
+    dr &= \beta_1(r,l)dt + \eta_1(r,l)dz_1\\
+    dl &= \beta_2(r,l)dt + \eta_1(r,l)dz_2
+\end{align*}
+with $dz_1\;dz_2 = \rho\;dt$\\
+$l$ carries information about future spot rates (inflation) $\rightarrow \beta_1$  
+\end{frame}
+
+\subsection{Longstaff-Schwartz}
+\begin{frame}
+Dynamics of Exogenous state variables:
+\begin{align*}
+    dx &= (\gamma-\delta x)\;dt +\sqrt{x}\;dz_2\\
+    dx &= (\eta-\zeta y)\;dt +\sqrt{y}\;dz_3
+\end{align*}
+...with $dz_2\cdot dz_3$ = 0\\
+\hfill\break
+Equilibrium Interest Rate:
+\[ r = \alpha x + \beta y \]
+Interest Rate Dynamics:
+\begin{align*}
+    dr &= \alpha dx + \beta dy\\
+    \therefore (dr)^2 &= V dt = \alpha^2 x\;dt + \beta^2 y\;dt
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Variance of Changes in Interest Rates
+\[ V = \alpha^2 x + \beta^2 y \]
+\begin{align*}
+    \text{Then}\;\;\;\; x &= \frac{\beta r - V}{\alpha(\beta - \alpha)}\\
+    y &= \frac{V - \alpha r}{\beta(\beta - \alpha)}\\
+    \therefore \;\; &\alpha r < V < \beta r
+\end{align*}
+\begin{align*}
+    \text{Then} \;\;\;\; dr = \bigg(\alpha \gamma + \beta \eta - \frac{\beta\delta - \alpha\zeta}{\beta-\alpha}r - \frac{\zeta-\delta}{\beta-\alpha}V\bigg)\;dt&\\
+    + \alpha \sqrt{\frac{\beta r - V}{\alpha(\beta-\alpha)}}dz_2 + \beta\sqrt{\frac{V-\alpha r}{\beta(\beta - \alpha)}}dz_3&
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    dV = \bigg(\alpha^2 \gamma + \beta^2 \eta - \frac{\alpha\beta(\delta - \zeta)}{\beta-\alpha}r - \frac{\beta\zeta-\alpha\delta}{\beta-\alpha}V\bigg)\;dt&\\
+    + \alpha^2 \sqrt{\frac{\beta r - V}{\alpha(\beta-\alpha)}}dz_2 + \beta^2\sqrt{\frac{V-\alpha r}{\beta(\beta - \alpha)}}dz_3&\\
+    \implies \text{GARCH process}&\\
+    \text{with long run stationary (unconditional) distribution}&
+\end{align*}
+\begin{align*}
+\begin{split}
+    E[r] = \frac{\alpha\gamma}{\delta}+\frac{\beta\eta}{\zeta}\\
+    E[V] = \frac{\alpha^2\gamma}{\delta}+\frac{\beta^2\eta}{\zeta}\\
+\end{split}
+\begin{split}
+    Var[r] &= \frac{\alpha^2\gamma}{2\delta^2}+\frac{\beta^2\eta}{2\zeta^2}\\
+    Var[V] &= \frac{\alpha^4\gamma}{2\delta^2}+\frac{\beta^4\eta}{2\zeta^2}\\
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+Fundamental PDE for all Interest Contigent Claims:
+\[ H \equiv H(x,y,\tau)\]
+\begin{align*}
+    &\frac{x}{2}H_{xx}+\frac{y}{2}H_{yy}+(\gamma-\delta x)H_x + (\eta-V y)H_y - H\tau - (\alpha x + \beta y)H + C(x,y,\tau) = 0\\
+    &\\
+    & \textit{where } V = \zeta+\lambda\\
+    & \;\;\;\; \lambda: \textit{ market price of risk (endogenous)}\\
+    & \;\;\;\; C(x,y,\tau): \textit{ rate of cash flow to the claim}
+\end{align*}
+...has closed form solution for discount bond:
+\[ F(r,V,\tau) = G(\tau)\exp{[C(\tau)r+D(\tau)V]}\]
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 18   %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A Simple Version of CIR}
 
-\section*{References}
-\begin{frame}[allowframebreaks]{References}
-    \printbibliography
+\subsection{An Intertemporal General Equilibrium Model of Asset Prices}
+\begin{frame}
+One production possibility
+\begin{equation} \tag{1}
+    \frac{dQ}{Q} = \alpha(y)\;dt + g(y)\;dw
+\end{equation}
+\hfill\break
+State variable $y$
+\begin{equation} \tag{2}
+    dy = \mu(y)\;dt + \sigma(y)\;dz
+\end{equation}
 \end{frame}
+
+\begin{frame}
+Any contigent claim
+\begin{equation} \tag{3}
+    dF = (\beta F - \delta)\;dt + F h\;dw + F k\;dz
+\end{equation}
+$\;\;\;\; \beta$: \textit{total expected return}, $\delta$: \textit{"dividends"}\\
+\hfill\break
+Objective of representative investor
+\begin{equation} \tag{4}
+    \max\;E_t \int_t U[C(S),y(S),S]dS
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Let,
+\begin{align*}
+    W&: \textit{wealth}\\
+    aW&: \textit{amount invested in the prod. process}\\
+    bW&: \textit{amount invested in the contingent claim}\\
+    C&: \textit{consumption}\\
+    W-aW-bW&: \textit{amount invested in riskless asset (r)}\\
+\end{align*}
+Budget constraint
+\begin{equation} \tag{5}
+    dW = aW[\alpha\;dt+q\;dw]+bW[\beta\;dt+h\;dw+k\;dz]+W[1-a-b]r\;dt-C\;dt
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Indirect utility function
+\begin{equation} \tag{6}
+    J(W,y,t) = \max_{c,a,b}\;E_t \int_t U[C(S),y(S),S]\;dS
+\end{equation}
+\[ J(W,y,t) = \max_{c,a,b}\;E_t [U(C,y,t)dt+J(W(t+dt),y(t+dt),t+dt)]\]
+where,
+\[ J(W,y,t)+J_W dW+J_y dy +J_t dt + \frac{1}{2} J_{WW} dW^2 + \frac{1}{2} J_{yy} dy^2 + J_{Wy} dW dy \]
+\end{frame}
+
+\begin{frame}
+\begin{align*} \tag{7}
+    0 = \max_{c,a,b} \bigg[ U+J_W \{aW(\alpha-r)+bW(\beta-r)+rW-C\} + J_y \mu + J_t&\\
+    +\frac{1}{2} J_{WW} W^2 \{ (ag+bh)^2 + b^2k^2 +2\rho bk(ag+bh)\}&\\
+    + \frac{1}{2} J_{yy}\sigma^2 + J_{Wy} W {\sigma \rho  (ag+bh) + \sigma b k} \bigg] &\\
+\end{align*}
+First order conditions:
+\begin{equation} \tag{8}
+    U_C-J_W=0
+\end{equation}
+\end{frame}
+
+\begin{frame}
+First order conditions:
+\begin{equation} \tag{9}
+    J_W W (\alpha-r) + J_{WW}W^2(g(ag+bh)+\rho bkg) + J_{Wy}W(\sigma\rho g) = 0
+\end{equation}
+\begin{align*} \tag{10}
+    J_W W (\beta-r) + J_{WW}W^2\{h(ag+bh)+\rho bkg) + bk^2 + \rho kag&\\
+     + \delta \rho bkh \} + J_{Wy}W(\sigma\rho h + \sigma k)& = 0\\
+\end{align*}
+In equilibrium,
+\begin{align*}
+    a &= 1\\
+    b &= 0
+\end{align*}
+\end{frame}
+
+\begin{frame}
+The problem is solved in three stages:\\
+\hfill\break
+(\textbf{i}) Planning problem with same physical production opportunities but with no borrowing and lending, and no contingent claims:\\
+\begin{equation} \tag{9'}
+    \alpha W \;J_W + g^2W^2 \;J_{WW} + g\sigma \rho W \;J_{Wy} - \lambda^* = 0
+\end{equation}
+where $\lambda^*$ is the Legrangian multiplier corresponding to the constraint $a-1=0$.\\
+\hfill\break
+(\textbf{ii}) Planning problem with borrowing and lending but no contingent claims (since in equilibrium no one borrows or lends, this equilibrium is the same as the previous):\\
+\begin{equation} \tag{9''}
+    \alpha W \;J_W - r W\;J_W + ^2W^2\;J_{WW} + g\sigma \rho W \;J_{Wy} = 0
+\end{equation}
+\end{frame}
+
+\begin{frame}
+From $(9')$ and $(9'')$:
+\[ r = \frac{\lambda^*}{W\;J_W} \]
+From $(9')$
+\[ \lambda^* = \alpha W\;J_W + g^2W^2\;J_{WW} + g\sigma\rho W\;J_{Wy}\]
+\hfill
+Then the equilibrium riskless rate is:\\
+\begin{equation} \tag{11}
+    r = \alpha + g^2 \frac{W\;J_{WW}}{J_W} + g\sigma\rho \frac{J_{Wy}}{J_W}
+\end{equation}
+Note that in equilibrium,
+\[ \frac{dW}{W} = \alpha_W\;dt + \sigma_W\;dw \]
+with $\sigma_W = g$ and $\alpha_W = (\alpha-\frac{C}{W})$
+\end{frame}
+
+% \section*{References}
+% \begin{frame}[allowframebreaks]{References}
+%     \printbibliography
+% \end{frame}
 
 \end{document}
