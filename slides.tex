@@ -3075,7 +3075,7 @@ The problem is solved in three stages:\\
 \begin{equation} \tag{9'}
     \alpha W \;J_W + g^2W^2 \;J_{WW} + g\sigma \rho W \;J_{Wy} - \lambda^* = 0
 \end{equation}
-where $\lambda^*$ is the Legrangian multiplier corresponding to the constraint $a-1=0$.\\
+where $\lambda^*$ is the Lagrangian multiplier corresponding to the constraint $a-1=0$.\\
 \hfill\break
 (\textbf{ii}) Planning problem with borrowing and lending but no contingent claims (since in equilibrium no one borrows or lends, this equilibrium is the same as the previous):\\
 \begin{equation} \tag{9''}
@@ -3095,7 +3095,129 @@ Then the equilibrium riskless rate is:\\
 \end{equation}
 Note that in equilibrium,
 \[ \frac{dW}{W} = \alpha_W\;dt + \sigma_W\;dw \]
-with $\sigma_W = g$ and $\alpha_W = (\alpha-\frac{C}{W})$
+with $\sigma_W = g$, $\alpha_W = (\alpha-\frac{C}{W})$, and $(\frac{dW}{W})dy = \sigma_{Wy} = g\sigma\rho$
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{11'}
+    r = \alpha + \sigma_W^2 \frac{W\;J_{WW}}{J_W} + \sigma_{Wy} \frac{J_{Wy}}{J_W}
+\end{equation}
+Note that for logarithmic utility function:
+\[ \frac{W\;J_{WW}}{J_W} = -1 \;,\;\; J_{Wy}=0\]
+and,
+\begin{equation} \tag{11''}
+    r = \alpha + g^2 = \alpha - \sigma_W^2
+\end{equation}
+\end{frame}
+
+\begin{frame}
+(\textbf{iii}) Planning problem with borrowing, lending and contingent claims.\\
+\hfill\break
+From $(10)$
+\begin{equation} \tag{12}
+    \beta = r - \frac{W\;J_{WW}}{J_W}(hg+\rho kg) - \frac{J_{Wy}}{J_W}(\sigma\rho h + \sigma k)
+\end{equation}
+In general,
+\[ F \equiv F(W,y,t) \]
+By Ito's Lemma:
+\[ dF = F_W\;dW + F_y\;dy + F_t\;dt + \frac{1}{2}F_{WW}\;dW^2 + \frac{1}{2}F_{yy}\;dy^2 + F_{Wy}\;dWdy \]
+\end{frame}
+
+\begin{frame}
+\begin{align*} \tag{13}
+    dF = \bigg[ F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2&\\
+     + F_{Wy} \sigma g \rho W \bigg]\;dt + F_W W g dw + F_y\sigma\;dz &\\
+\end{align*}
+Comparing $(3)$ and $(13)$ we get,
+\begin{align*} \tag{14}
+    \beta F - \delta = F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W\\
+\end{align*}
+\begin{equation} \tag{15}
+    h F = F_W\cdot W g
+\end{equation}
+\begin{equation} \tag{16}
+    k F = F_y\cdot \sigma
+\end{equation}
+\end{frame}
+
+\begin{frame}
+Substituting $(14)$, $(15)$, $(16)$ into $(12)$ gives CIR fundamental PDE,
+\begin{align*}
+    F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W + \delta&\\
+    = rF - \frac{W\;J_{WW}}{J_W}\bigg\{ F_W W g^2 + F_y \sigma g \rho\bigg\} - \frac{J_{Wy}}{J_W}\bigg\{ F_W W g \sigma\rho + F_y \sigma^2 \bigg\}&\\
+\end{align*}
+Simplifying and substituting in $(11)$ gives:
+\begin{align*} \tag{17}
+    \frac{1}{2}\sigma_W^2 W^2 F_{WW} + \sigma_{Wy} W F_W + \frac{1}{2}\sigma^2F_{yy} + (r W - C) F_W &\\
+    + \bigg[\mu + \frac{W\;J_{WW}}{J_W}\sigma_{Wy} + \frac{J_{Wy}}{J_W}\sigma^2 \bigg]\;F_y + F_t -rF + \delta = 0 &\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+If boundary conditions for the value of the contingent claim \underline{do not depend on wealth} and for log utility function, the PDE becomes:\\
+\hfill\break
+\begin{equation} \tag{18}
+    \frac{1}{2}\sigma^2F_{yy} + [\mu - \sigma_{Wy}]\;F_y + F_t -rF + \delta = 0
+\end{equation}
+\end{frame}
+
+\subsection{CIR single factor model}
+\begin{frame}
+\underline{"A Theory of the Term Structure of Interest Rates"}\\
+\hfill\break
+Assumptions:\\
+\begin{itemize}
+    \item (i) Log utility
+    \item (ii) one state variable $y$
+    \item (iii) mean and variance of rates of return on production possibility are proportional to $y$
+    \begin{align*}
+        \alpha(y) &= \alpha_y \cdot y\\
+        g^2(y) &= g_y^2 \cdot y \;\;\longrightarrow\;\; g(y) = g_y\cdot\sqrt{y}
+    \end{align*}
+    \item (iv) State variable follows mean-reverting square root process:
+    \begin{align*}
+        \mu(y) &= (\mu_0 y + \mu_1)\\
+        \sigma(y) &= \sigma_y \sqrt{y}\\
+    \end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Then,
+\[\sigma_{Wy} = \rho g_y \sqrt{y}\cdot\sigma_y\sqrt{y} = \rho g_y \cdot \sigma_y y \]
+The equilibrium interest rate,
+\[ r = \sigma_y \cdot y - g_y^2\cdot y = (\alpha_y - g_y^2)y \]
+since $r$ is proportional to $y$ we can use it as the state variable:
+\[ dr = K(\theta-r)\;dt + \sigma_r\sqrt{r}\;dz \]
+and the price of a discount bond (contingent claim on $r$) is given by the PDE (from eqn. 18):
+\[ \frac{1}{2} r \sigma_r^2F_{rr} + [K(\theta-r) - \lambda r]\;P_r + P_t -rP = 0 \]
+with boundary condition $F(r,T) = 1$
+\end{frame}
+
+\subsection{Notes (CIR)}
+\begin{frame}
+From equation $(6)$,
+\[ 0 = \max_{c,a,b}\;E_t \bigg[U\;dt+J_W\;dW + J_y\;dy + J_t\;dt + \frac{1}{2}J_{WW}\;dW^2 + \frac{1}{2}J_{yy}\;dy^2 + J_{Wy}\;dWdy\bigg] \]
+From equation $(5)$,
+\[ E[dW] = [aW(\alpha-r) + bW(\beta-r) + rW-C]\;dt \]
+\[ E[dW^2] = [W^2(ag+bh)^2 + W^2 b^2 k^2 + 2W^2 C + \rho(ag+bh) b^2 k]\;dt \]
+\end{frame}
+
+\begin{frame}
+\begin{equation} \tag{11}
+    r = \alpha + g^2 \frac{W\;J_{WW}}{J_W} + g\sigma\rho \frac{J_{Wy}}{J_W}
+\end{equation}
+where $g^2 \rightarrow \sigma_W^2$ and $g\sigma\rho \rightarrow \sigma_{Wg}$.
+\begin{align} \tag{$16^*$}
+\begin{split}
+    \textcolor{blue}{F_W(\alpha W} - C) + \mu F_y + F_t \frac{1}{2}F_{WW}\sigma_W^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{yW}\sigma_{Wy}W + \delta &
+    \\
+    = rF -\textcolor{red}{\frac{W J_{WW}}{J_W}\bigg\{F_W \sigma_W^2 W} + F_y \sigma_{Wy}\bigg\} -\textcolor{orange}{\frac{J_{Wy}}{J_{W}}\bigg\{F_W W \sigma_{Wy}} + F_y \sigma^2\bigg\}&
+\end{split}
+\end{align}
+But from $(11)$,
+\[ F_W\cdot W r = \textcolor{blue}{F_W W\alpha} + \textcolor{red}{\sigma_W^2 \frac{W^2 J_{WW}}{J_W} F_W} + \textcolor{orange}{\sigma_{Wy} \frac{W J_{Wy}}{J_W}F_W} \]
+Substituting in $(16^*)$ gives the Fundamental PDE $(17)$
 \end{frame}
 
 % \section*{References}
