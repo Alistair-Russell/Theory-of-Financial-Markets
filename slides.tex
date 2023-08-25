@@ -214,7 +214,7 @@ Rational Preferences Under Uncertainty\\
 \hfill \break
 If u(x) is a utility function, so is $v(x)=au(x)+b$ with $a>0$ \\
 \begin{center}
-    $E[v(x)] \geq E[u(y)]$\\
+    $E[v(x)] \geq E[v(y)]$\\
     $E[au(x)+b] \geq E[au(y)+b]$\\
     $aE[u(x)]+b \geq aE[u(y)]+b$\\
     $E[u(x)] \geq E[u(y)]$\\
@@ -279,7 +279,7 @@ Gambling?\\
 \begin{frame}
 \textbf{Certainty Equivalent for Complex Gambles ($W_c$)}\\
 \begin{center}
-    $u(W_c) > E[u(complex\;gamble)]$\\
+    $u(W_c) = E[u(complex\;gamble)]$\\
 \end{center}
 \begin{center}
     Amount you would accept for certain instead of the gamble.
@@ -728,6 +728,8 @@ Convex\\
 \section{Risk Aversion}
 \begin{frame}
 We will assume that decision makers maximize expected utility of terminal wealth (one period model). Expected Utility Theorem: Von Neumann-Morgenstern utility function existence and uniqueness (if axioms of rational behaviour hold).\\
+\hfill\break
+\textit{(Utility of Wealth vs. Utility of Consumption)}\\
 \hfill \break
 \underline{risk averse}: if unwilling to accept every actuarially fair and immediately resolved gamble.\\
 \[\textit{ie. } u(W) > E[u(W+\hat{\varepsilon})]\]
@@ -933,7 +935,7 @@ given $u(\cdot)$ and the distribution of $z$, this can be solved for $x^*$.\\
 \begin{itemize}
     \item How does $x^*$ change with $w_0$? \textit{(see next page: implicit fn. thm.)}\\
 \end{itemize}
-\[\frac{dx^*}{dw_0} = -\frac{\partial f'/\partial w_0}{\partial f'/\partial x^*} = \frac{E[u''(w)z]}{E[u''(w)z^2]}\;\;\;\;\textit{(where $u''(w) < 0$)}\]
+\[\frac{dx^*}{dw_0} = -\frac{\partial f'/\partial w_0}{\partial f'/\partial x^*} = -\frac{E[u''(w)z]}{E[u''(w)z^2]}\;\;\;\;\textit{(where $u''(w) < 0$)}\]
 \[\therefore \;\; sign(\frac{dx^*}{dw_0}) = sign(E[u''(w)z])\]
 \end{frame}
 
@@ -1059,12 +1061,14 @@ This is very common in economic problems. In this framework $\rho$ can be viewed
 \includepdf[page={1-5}]{pdfs/topic5}
 
 \includepdf[page={7-14}]{pdfs/topic5}
+\addtocounter{framenumber}{13}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 6  Mean-Variance Portfolio Choice and Asset Pricing %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mean-Variance Portfolio Choice and Asset Pricing}
 \includepdf[page={2-}]{pdfs/topic6}
+\addtocounter{framenumber}{132}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 7  Math of Continuous Time Finance %%%%%%%%%%%%%%%
@@ -1399,6 +1403,7 @@ And more generally,
 \end{align*}
 So  Ito's Lemma:
 \[dF = F_P dP + (F_t + \frac{1}{2} \sigma^2(P,t)F_{PP})dt\]
+\[dF = \bigg(\frac{1}{2} \mu^2(P,t)\;P^2 F_{PP}+\mu(P,t)\;P F_P+F_t\bigg)dt+P F_P \sigma(P,t)\;dv\]
 \end{frame}
 
 \begin{frame}
@@ -1782,11 +1787,11 @@ Strong Result $\longrightarrow$ CAPM holds for continuously compounded rates of 
 \hfill\break
 However, we assume that an investor can measure their well-being at any point in time by knowing only their wealth - ie. in (6) we assumed that $J(\cdot)$ is independent of the "state of the world".\\
 \hfill\break
-If relative commodity prices change, then utilities of consumption will be state dependent and so will $J$. Even if utility is state independent, there may be individual dependencies in the $J$ function if $\alpha$, $\sigma$, and $r$ vary randomly over time.
+If relative commodity prices change, then utilities of consumption will be state dependent and so will $J$. Even if utility is state independent, there may be induced dependencies in the $J$ function if $\alpha$, $\sigma$, and $r$ vary randomly over time.
 \end{frame}
 
 \begin{frame}
-Suppose there is a simple state variable which describes changes in these variables, $\alpha_i(x)$, $\sigma_{ij}(x)$, $r(x)$, and that changes in this state variable follows:\\
+Suppose there is a single state variable, $x$, which describes changes in these variables, $\alpha_i(x)$, $\sigma_{ij}(x)$, $r(x)$, and that changes in this state variable follows:\\
 \[ dx = \mu dt + s dy \]
 \[\textit{with}\;\; (dx)\bigg(\frac{dP_i}{P_i}\bigg) = cov_t\bigg(dx,\frac{dP_i}{P_i}\bigg) = \rho_{ix} s \sigma_i dt = \sigma_{ix} dt\]
 As before, applying Ito's Lemma:\\
@@ -1942,7 +1947,7 @@ or
 \begin{align*}
     dC &= \mu_C\;dt + C_W\sigma_W\;dv_W+C_xs\;dy\\
     \sigma_C^2 &= C_W^2\sigma_W^2 + 2 C_W C_xx \sigma_{xW} + C_x^2s^2\\
-    \sigma_x^2 &= C_W^2 W^2 \vec{w}'\bm{\Sigma} \vec{w} + 2 C_W C_x W \vec{w}' \vec\sigma + C_x^2 s^2
+    \sigma_C^2 &= C_W^2 W^2 \vec{w}'\bm{\Sigma} \vec{w} + 2 C_W C_x W \vec{w}' \vec\sigma + C_x^2 s^2
 \end{align*}
 \end{frame}
 
@@ -2045,6 +2050,7 @@ therefore,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction to Options}
 \includepdf[page={2-}]{pdfs/topic13}
+\addtocounter{framenumber}{49}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 14   %%%%%%%%%%%%%%%
@@ -2072,7 +2078,7 @@ therefore,
     \item $F(S,\tau_1;E) \geq F(S,\tau_2;E) \;\;for\;\; \tau_1>\tau_2$\\
     the right to exercise during ($\tau_2,\tau_1$) must have non-negative value\\
     \hfill
-    \item $F(S,\tau_1;E) \geq f(S,\tau_2;E)$\\
+    \item $F(S,\tau;E) \geq f(S,\tau;E)$\\
     the right of early exercise must have non-negative value.\\
     \hfill
     \item $F(S,\tau;E_1) \leq F(S,\tau;E_2)$ for $E_1 > E_2$\\
@@ -2093,7 +2099,7 @@ therefore,
     from (4)\\
     \hfill
     \item $P(\tau)$: present (riskless) value of \$1 at time $\tau$.\\
-    $F(S,\tau;E) \geq \max\;\bigg[0,S-E[P(\tau)]\bigg]$\\
+    $f(S,\tau;E) \geq \max\;\bigg[0,S-E[P(\tau)]\bigg]$\\
     (if the stock pays no dividends)\\
 \end{enumerate}
 \hfill\break
@@ -2197,7 +2203,7 @@ $g(S,\tau;E) = f(S,\tau;E)-S+E\;P(\tau)$\\
 \hfill\break
 \begin{center}
 \begin{tabular}{ l l l }
-    At expiration & $\max(0,E-S_\tau)$ & $\max(0,E-S_\tau)-S_\tau+E$ \\
+    At expiration & $\max(0,E-S_\tau)$ & $\max(0,S_\tau-E)-S_\tau+E$ \\
     $S_\tau < E$ & $E-S_\tau$ & $0\;\;+\;\;E-S_\tau=E-S_\tau$ \\
     $S_\tau \geq E$ & $0$ & $S_\tau-E\;\;-\;\;S_\tau+E=0$ \\
 \end{tabular}
@@ -2414,6 +2420,7 @@ For high dividends (stock prices) the option is worth less than the exercise val
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Options Approach to Valuing Risky Debt}
 \includepdf[page={2-}]{pdfs/topic15}
+\addtocounter{framenumber}{34}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% TOPIC 16   %%%%%%%%%%%%%%%
@@ -2440,7 +2447,7 @@ with hedging arguments, we derived the Black-Scholes PDE.
 Log-normal Distribution\\
 \[ y \sim \mathcal{LN}(\mu t, \sigma^2 t)\]
 \[ x = \ln y \sim \mathcal{N}(\mu t, \sigma^2 t)\]
-\[ f(\ln y) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\frac{(\n y-\mu t)^2}{\sigma^2 t}}\]
+\[ f(\ln y) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\frac{(\ln y -\mu t)^2}{\sigma^2 t}}\]
 \end{frame}
 
 \subsection{Preference-Free Pricing}
@@ -2571,7 +2578,7 @@ So,
 \begin{align*}
     E[y] &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{x\sigma \sqrt{t} + \mu t} e^{-\frac{1}{2} x^2} \; dx\\
     &= e^{\mu t} \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x^2-2x\sigma \sqrt{t} + \sigma^2 t] + \frac{1}{2}\sigma^2 t}\;dx\\
-    &= e^{(\mu+\frac{1}{2}\sigma^2)t} \cdot \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x-\frac{1}{2}\sigma\sqrt{t}]^2}\;dx \bigg\} = 1\\
+    &= e^{(\mu+\frac{1}{2}\sigma^2)t} \cdot \bigg\{ \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}[x-\sigma\sqrt{t}]^2}\;dx \bigg\} = e^{(\mu+\frac{1}{2}\sigma^2)t} \cdot \bigg\{ 1 \bigg\}\\
     &\\
     E[y] &= e^{(\mu+\frac{1}{2}\sigma^2)t}\\
 \end{align*}
@@ -2586,7 +2593,7 @@ So,
 \begin{frame}
 Recent (equilibrium and arbitrage) theories of the term structure and the pricing of bonds start from assumptions about the stochastic evolution of one or more interest rates in a continuous time model.\\
 \hfill\break
-To start, let's consider only one interest rate - assume that the instantaneously riskless interest rate follows the stochastic different equation (diffusion process or Ito's process):\\
+To start, let's consider only one interest rate - assume that the instantaneously riskless interest rate follows the stochastic differential equation (diffusion process or Ito's process):\\
 \begin{equation} \tag{1}
     dr = \alpha(r)\;dt + \sigma(r)\;dz
 \end{equation}
@@ -2603,8 +2610,9 @@ where,
     \sigma^2: & \;\; \text{instantaneous variance}\\
     \alpha\;dt: & \;\; \text{expected change in $r$}\\
     \sigma\;dz: & \;\; \text{unanticipated change in $r$}\\
-    dz\sim\mathcal{N}(0,dt): & \;\; \text{normally distributed random variable with zero mean and variance $dt$}\\
-    dz=\sqrt{dt}\tilde\varepsilon: & \;\; \text{where $\tilde\varepsilon \sim \mathcal{N}(0,1)$}\\
+    dz\sim\mathcal{N}(0,dt): & \;\; \text{normally distributed random variable}\\
+    & \;\;\text{with zero mean and variance $dt$}\\
+    dz=\sqrt{dt}\;\tilde\varepsilon: & \;\; \text{where $\tilde\varepsilon \sim \mathcal{N}(0,1)$}\\
 \end{align*}
 \end{frame}
 
@@ -2710,9 +2718,9 @@ $\implies$ The value of any default-free bond can be expressed as a function of 
 \hfill\break
 \underline{Applying Ito's Lemma}:\\
 \begin{equation} \tag{2}
-    dB = B_r\;dr + B-\tau\;d\tau + \frac{1}{2} B_{rr}\;(dr)^2
+    dB = B_r\;dr + B_\tau\;d\tau + \frac{1}{2} B_{rr}\;(dr)^2
 \end{equation}
-Noting that $dr^2 = \sigma^2dt$, $d\tau=-dt$, and from (4)
+Noting that $dr^2 = \sigma^2dt$, $d\tau=-dt$, and from (1)
 \begin{align*}
     dB &= B_r(\alpha\;dt+\sigma\;dz) - B_\tau\;dt + \frac{1}{2}\sigma^2 B_{rr}\;dt
 \end{align*}
@@ -2730,7 +2738,7 @@ Noting that $dr^2 = \sigma^2dt$, $d\tau=-dt$, and from (4)
 By investing amounts $X_1$ and $X_2$ in bonds of maturity $\tau_1$ and $\tau_2$, we can form a portfolio $P$ with instantaneous return:
 \begin{align*}
     dP &= X_1[\mu_B(\tau_1)\;dt+\sigma_B(\tau_1)\;dz]+X_2[\mu_B(\tau_2)\;dt+\sigma_B(\tau_2)\;dz]\\
-    &= [\mu_B(\tau_1)+\mu_B(\tau_2)]\;dt+[\sigma_B(\tau_1)+\sigma_B(\tau_2)]\;dz
+    &= [X_1\mu_B(\tau_1)+X_2\mu_B(\tau_2)]\;dt+[X_1\sigma_B(\tau_1)+X_2\sigma_B(\tau_2)]\;dz
 \end{align*}
 if we choose $X_1$ and $X_2$ such that
 \begin{equation} \tag{4}
@@ -2754,7 +2762,7 @@ and this applies to bonds of all maturities
 
 \begin{frame}
 \begin{equation} \tag{6}
-    \textit{(independent of the maturity)} \;\; \frac{\mu_b - r}{\sigma_B} = \lambda(r) \;\;\;\;\;\;
+    \textit{(independent of the maturity)} \;\; \frac{\mu_B - r}{\sigma_B} = \lambda(r) \;\;\;\;\;\;
 \end{equation}
 the risk premium ($\mu_B - r$) per unit of risk ($\sigma_B$) is constant for all maturities.\\
 \hfill\break
@@ -2916,7 +2924,7 @@ forming a riskless portfolio of 2 discount bonds\\
     dl &= \beta_2(r,l)dt + \eta_1(r,l)dz_2
 \end{align*}
 with $dz_1\;dz_2 = \rho\;dt$\\
-$l$ carries information about future spot rates (inflation) $\rightarrow \beta_1$  
+$l$ carries information about future spot rates (inflation) $\rightarrow \beta_2$  
 \end{frame}
 
 \subsection{Longstaff-Schwartz}
@@ -2924,7 +2932,7 @@ $l$ carries information about future spot rates (inflation) $\rightarrow \beta_1
 Dynamics of Exogenous state variables:
 \begin{align*}
     dx &= (\gamma-\delta x)\;dt +\sqrt{x}\;dz_2\\
-    dx &= (\eta-\zeta y)\;dt +\sqrt{y}\;dz_3
+    dy &= (\eta-\zeta y)\;dt +\sqrt{y}\;dz_3
 \end{align*}
 ...with $dz_2\cdot dz_3$ = 0\\
 \hfill\break
@@ -2974,9 +2982,9 @@ Variance of Changes in Interest Rates
 Fundamental PDE for all Interest Contigent Claims:
 \[ H \equiv H(x,y,\tau)\]
 \begin{align*}
-    &\frac{x}{2}H_{xx}+\frac{y}{2}H_{yy}+(\gamma-\delta x)H_x + (\eta-V y)H_y - H\tau - (\alpha x + \beta y)H + C(x,y,\tau) = 0\\
+    &\frac{x}{2}H_{xx}+\frac{y}{2}H_{yy}+(\gamma-\delta x)H_x + (\eta-\nu y)H_y - H\tau - (\alpha x + \beta y)H + C(x,y,\tau) = 0\\
     &\\
-    & \textit{where } V = \zeta+\lambda\\
+    & \textit{where } \nu = \zeta+\lambda\\
     & \;\;\;\; \lambda: \textit{ market price of risk (endogenous)}\\
     & \;\;\;\; C(x,y,\tau): \textit{ rate of cash flow to the claim}
 \end{align*}
@@ -3022,12 +3030,14 @@ Let,
     aW&: \textit{amount invested in the prod. process}\\
     bW&: \textit{amount invested in the contingent claim}\\
     C&: \textit{consumption}\\
-    W-aW-bW&: \textit{amount invested in riskless asset (r)}\\
+    W-aW-bW&: \textit{amount invested in riskless asset (r)}
 \end{align*}
 Budget constraint
-\begin{equation} \tag{5}
-    dW = aW[\alpha\;dt+q\;dw]+bW[\beta\;dt+h\;dw+k\;dz]+W[1-a-b]r\;dt-C\;dt
-\end{equation}
+\[dW = aW[\alpha\;dt+q\;dw]+bW[\beta\;dt+h\;dw+k\;dz]+W[1-a-b]r\;dt-C\;dt\]
+\begin{align*} \tag{5}
+    dW = [aW(\alpha-r)+bW(\beta-r)+rW-C]\;dt \;\;\;\;\;\;\;\;&\\
+    + W[ag+bh]\;dw + Wbk\;dz&
+\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -3037,7 +3047,10 @@ Indirect utility function
 \end{equation}
 \[ J(W,y,t) = \max_{c,a,b}\;E_t [U(C,y,t)dt+J(W(t+dt),y(t+dt),t+dt)]\]
 where,
-\[ J(W,y,t)+J_W dW+J_y dy +J_t dt + \frac{1}{2} J_{WW} dW^2 + \frac{1}{2} J_{yy} dy^2 + J_{Wy} dW dy \]
+\begin{align*}
+    J(W(t+dt),y(t+dt),t+dt) = J(W,y,t)+J_W dW+J_y dy +J_t dt&\\
+    + \frac{1}{2} J_{WW} dW^2 + \frac{1}{2} J_{yy} dy^2 + J_{Wy} dW dy &
+\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -3058,8 +3071,8 @@ First order conditions:
     J_W W (\alpha-r) + J_{WW}W^2(g(ag+bh)+\rho bkg) + J_{Wy}W(\sigma\rho g) = 0
 \end{equation}
 \begin{align*} \tag{10}
-    J_W W (\beta-r) + J_{WW}W^2\{h(ag+bh)+\rho bkg) + bk^2 + \rho kag&\\
-     + \delta \rho bkh \} + J_{Wy}W(\sigma\rho h + \sigma k)& = 0\\
+    J_W W (\beta-r) + J_{WW}W^2\bigg\{h(ag+bh) + bk^2 + \rho kag \;\;\;\;\;\;\;\;\;&\\
+     + 2\rho bkh \bigg\} + J_{Wy}W(\sigma\rho h + \sigma k)& = 0
 \end{align*}
 In equilibrium,
 \begin{align*}
@@ -3079,7 +3092,7 @@ where $\lambda^*$ is the Lagrangian multiplier corresponding to the constraint $
 \hfill\break
 (\textbf{ii}) Planning problem with borrowing and lending but no contingent claims (since in equilibrium no one borrows or lends, this equilibrium is the same as the previous):\\
 \begin{equation} \tag{9''}
-    \alpha W \;J_W - r W\;J_W + ^2W^2\;J_{WW} + g\sigma \rho W \;J_{Wy} = 0
+    \alpha W \;J_W - r W\;J_W + g^2W^2\;J_{WW} + g\sigma \rho W \;J_{Wy} = 0
 \end{equation}
 \end{frame}
 
@@ -3088,7 +3101,7 @@ From $(9')$ and $(9'')$:
 \[ r = \frac{\lambda^*}{W\;J_W} \]
 From $(9')$
 \[ \lambda^* = \alpha W\;J_W + g^2W^2\;J_{WW} + g\sigma\rho W\;J_{Wy}\]
-\hfill
+\hfill\break
 Then the equilibrium riskless rate is:\\
 \begin{equation} \tag{11}
     r = \alpha + g^2 \frac{W\;J_{WW}}{J_W} + g\sigma\rho \frac{J_{Wy}}{J_W}
@@ -3102,11 +3115,12 @@ with $\sigma_W = g$, $\alpha_W = (\alpha-\frac{C}{W})$, and $(\frac{dW}{W})dy = 
 \begin{equation} \tag{11'}
     r = \alpha + \sigma_W^2 \frac{W\;J_{WW}}{J_W} + \sigma_{Wy} \frac{J_{Wy}}{J_W}
 \end{equation}
+\hfill\break
 Note that for logarithmic utility function:
 \[ \frac{W\;J_{WW}}{J_W} = -1 \;,\;\; J_{Wy}=0\]
 and,
 \begin{equation} \tag{11''}
-    r = \alpha + g^2 = \alpha - \sigma_W^2
+    r = \alpha - g^2 = \alpha - \sigma_W^2
 \end{equation}
 \end{frame}
 
@@ -3126,11 +3140,11 @@ By Ito's Lemma:
 \begin{frame}
 \begin{align*} \tag{13}
     dF = \bigg[ F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2&\\
-     + F_{Wy} \sigma g \rho W \bigg]\;dt + F_W W g dw + F_y\sigma\;dz &\\
+     + F_{Wy} \sigma g \rho W \bigg]\;dt + F_W W g \;dw + F_y\sigma\;dz &
 \end{align*}
 Comparing $(3)$ and $(13)$ we get,
 \begin{align*} \tag{14}
-    \beta F - \delta = F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W\\
+    \beta F - \delta = F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} g^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W\\
 \end{align*}
 \begin{equation} \tag{15}
     h F = F_W\cdot W g
@@ -3143,7 +3157,7 @@ Comparing $(3)$ and $(13)$ we get,
 \begin{frame}
 Substituting $(14)$, $(15)$, $(16)$ into $(12)$ gives CIR fundamental PDE,
 \begin{align*}
-    F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} q^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W + \delta&\\
+    F_W(\alpha W-C) + \mu F_y + F_t + \frac{1}{2}F_{WW} g^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{Wy} \sigma g \rho W + \delta&\\
     = rF - \frac{W\;J_{WW}}{J_W}\bigg\{ F_W W g^2 + F_y \sigma g \rho\bigg\} - \frac{J_{Wy}}{J_W}\bigg\{ F_W W g \sigma\rho + F_y \sigma^2 \bigg\}&\\
 \end{align*}
 Simplifying and substituting in $(11)$ gives:
@@ -3199,8 +3213,8 @@ with boundary condition $F(r,T) = 1$
 From equation $(6)$,
 \[ 0 = \max_{c,a,b}\;E_t \bigg[U\;dt+J_W\;dW + J_y\;dy + J_t\;dt + \frac{1}{2}J_{WW}\;dW^2 + \frac{1}{2}J_{yy}\;dy^2 + J_{Wy}\;dWdy\bigg] \]
 From equation $(5)$,
-\[ E[dW] = [aW(\alpha-r) + bW(\beta-r) + rW-C]\;dt \]
-\[ E[dW^2] = [W^2(ag+bh)^2 + W^2 b^2 k^2 + 2W^2 C + \rho(ag+bh) b^2 k]\;dt \]
+\[ E[dW] = \bigg[aW(\alpha-r) + bW(\beta-r) + rW-C\bigg]\;dt \]
+\[ E[dW^2] = \bigg[W^2(ag+bh)^2 + W^2 b^2 k^2 + 2W^2 C + \rho(ag+bh) b^2 k\bigg]\;dt \]
 \end{frame}
 
 \begin{frame}
@@ -3212,14 +3226,13 @@ where $g^2 \rightarrow \sigma_W^2$ and $g\sigma\rho \rightarrow \sigma_{Wg}$.
 \begin{split}
     \textcolor{blue}{F_W(\alpha W} - C) + \mu F_y + F_t \frac{1}{2}F_{WW}\sigma_W^2 W^2 + \frac{1}{2}F_{yy}\sigma^2 + F_{yW}\sigma_{Wy}W + \delta &
     \\
-    = rF -\textcolor{red}{\frac{W J_{WW}}{J_W}\bigg\{F_W \sigma_W^2 W} + F_y \sigma_{Wy}\bigg\} -\textcolor{orange}{\frac{J_{Wy}}{J_{W}}\bigg\{F_W W \sigma_{Wy}} + F_y \sigma^2\bigg\}&
+    = rF -\textcolor{red}{\frac{W J_{WW}}{J_W}\bigg\{F_W \sigma_W^2 W} + F_y \sigma_{Wy}\bigg\} -\textcolor{teal}{\frac{J_{Wy}}{J_{W}}\bigg\{F_W W \sigma_{Wy}} + F_y \sigma^2\bigg\}&
 \end{split}
 \end{align}
 But from $(11)$,
-\[ F_W\cdot W r = \textcolor{blue}{F_W W\alpha} + \textcolor{red}{\sigma_W^2 \frac{W^2 J_{WW}}{J_W} F_W} + \textcolor{orange}{\sigma_{Wy} \frac{W J_{Wy}}{J_W}F_W} \]
+\[ F_W\cdot W r = \textcolor{blue}{F_W W\alpha} + \textcolor{red}{\sigma_W^2 \frac{W^2 J_{WW}}{J_W} F_W} + \textcolor{teal}{\sigma_{Wy} \frac{W J_{Wy}}{J_W}F_W} \]
 Substituting in $(16^*)$ gives the Fundamental PDE $(17)$
 \end{frame}
-
 % \section*{References}
 % \begin{frame}[allowframebreaks]{References}
 %     \printbibliography
